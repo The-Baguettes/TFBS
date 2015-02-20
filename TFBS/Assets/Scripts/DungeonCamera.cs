@@ -13,6 +13,7 @@ public class DungeonCamera : MonoBehaviour
     void LateUpdate()
     {
         Vector3 desiredPosition =target.transform.position + offset ;
-        transform.position = desiredPosition; 
+        transform.position = desiredPosition;
+
     }
 }
