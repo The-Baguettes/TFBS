@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public bool grounded;
     void Update()
     {
-        while (transform.position.y <= 1)
+        if (transform.position.y <= 1)
         {
             grounded = true;
         }
