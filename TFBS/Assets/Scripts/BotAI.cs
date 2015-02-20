@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BotAI : MonoBehaviour
 {
@@ -17,20 +16,20 @@ public class BotAI : MonoBehaviour
     {
         AI();
     }
+
     void AI()
     {
         if (Vector3.Distance(transform.position, Leader.position) >= MiniDistance)
         {
             transform.position += transform.forward * AIspeed * Time.deltaTime;
             transform.LookAt(Leader);
-            
         }
-        if (Vector3.Distance(transform.position, Leader.position) >= MaxDistance)
-        {
+
+		if (Vector3.Distance(transform.position, Leader.position) >= MaxDistance)
             Patrol();
-        }
     }
-    void Patrol()
+
+	void Patrol()
     {
         
     }
