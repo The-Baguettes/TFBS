@@ -2,13 +2,13 @@
 
 public class SettingsMenu : MonoBehaviour
 {
-	public void Back()
-	{
-		Scene.MainMenu.Activate();
-	}
+    public void Back()
+    {
+        Scene.MainMenu.Activate();
+    }
 
-	public void Controls()
-	{
-		// TODO
-	}
+    public void Controls()
+    {
+        // TODO
+    }
 }

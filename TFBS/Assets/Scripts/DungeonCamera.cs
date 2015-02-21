@@ -5,14 +5,14 @@ public class DungeonCamera : MonoBehaviour
     public GameObject target;
     Vector3 offset;
 
-	void Start()
+    void Start()
     {
         offset = transform.position - target.transform.position;
     }
 
     void LateUpdate()
     {
-        Vector3 desiredPosition =target.transform.position + offset ;
+        Vector3 desiredPosition = target.transform.position + offset ;
         transform.position = desiredPosition;
     }
 }

@@ -25,12 +25,12 @@ public class BotAI : MonoBehaviour
             transform.LookAt(Leader);
         }
 
-		if (Vector3.Distance(transform.position, Leader.position) >= MaxDistance)
+        if (Vector3.Distance(transform.position, Leader.position) >= MaxDistance)
             Patrol();
     }
 
-	void Patrol()
+    void Patrol()
     {
-        
+
     }
 }
