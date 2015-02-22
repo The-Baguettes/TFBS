@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 
-public class SettingsMenu : MonoBehaviour
+public class SettingsMenu : Navigation
 {
     public void Awake()
     {
@@ -12,17 +11,7 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-    public void Back()
-    {
-        SceneManager.LoadPreviousScene();
-    }
-
-    public void Controls()
-    {
-        // TODO
-    }
-
-    public void Music(float volume)
+    public void AdjustMusic(float volume)
     {
         SharedState.MusicSource.volume = volume;
     }

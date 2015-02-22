@@ -1,68 +1,39 @@
 ﻿using UnityEngine;
-using UnityEditor;
-using System.Collections;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : Navigation
 {
     public Canvas PauseCanvas; //Our scene canvas 
 
-	void Start () 
+    public void Start() 
     {
         Screen.lockCursor = true;
         Screen.showCursor = false; 
-	}
-
-    public void Settings()
-    {
-        SceneManager.LoadScene(Scene.SettingsMenu);
     }
 
-    public void MainMenu()
+    public void Update()
     {
-        SceneManager.LoadScene(Scene.MainMenu);
-    }
-
-    public void Quit()
-    {
-        if (Application.isEditor)
-            EditorApplication.isPlaying = false;
-        else
-            Application.Quit();
-    }
-	
-    public void Update ()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && PauseCanvas.enabled) // If the key echap is pressed then the following instruction is loaded
+        // If the escape key is pressed then the following instruction is loaded
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseCanvas.enabled = false;
-            Time.timeScale = 1; // Time scale won't working 
-            Screen.lockCursor = true;
-            Screen.showCursor = false; 
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseCanvas.enabled = true;
-            Time.timeScale = 0; // Time scale won't working 
-            Screen.lockCursor = false;
-            Screen.showCursor = true; 
+            if (PauseCanvas.enabled)
+                Resume();
+            else
+                Pause();
         }
    	}
 
-    public void Unpaused_espace ()
+    public void Pause()
     {
-        if (PauseCanvas.enabled && Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseCanvas.enabled = false;
-            Time.timeScale = 1;
-            Screen.lockCursor = true;
-            Screen.showCursor = false; 
-        }
+        PauseCanvas.enabled = true;
+        Time.timeScale = 0; // FIXME should pause game
+        Screen.lockCursor = false;
+        Screen.showCursor = true; 
     }
-
-    public void Unpaused ()
+    
+    public void Resume()
     {
         PauseCanvas.enabled = false;
-        Time.timeScale = 1;
+        Time.timeScale = 1; // FIXME should resume game
         Screen.lockCursor = true;
         Screen.showCursor = false; 
     }
