@@ -14,12 +14,12 @@ public class PauseMenu : MonoBehaviour
 
     public void Settings()
     {
-        Scene.SettingsMenu.Activate();
+        SceneManager.LoadScene(Scene.SettingsMenu);
     }
 
     public void MainMenu()
     {
-        Scene.MainMenu.Activate();
+        SceneManager.LoadScene(Scene.MainMenu);
     }
 
     public void Quit()

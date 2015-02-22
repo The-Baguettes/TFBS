@@ -5,12 +5,12 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        Scene.GameBeginning.Activate();
+        SceneManager.LoadScene(MetaScene.FirstLevel);
     }
 
     public void Settings()
     {
-        Scene.SettingsMenu.Activate();
+        SceneManager.LoadScene(Scene.SettingsMenu);
     }
 
     public void Quit()

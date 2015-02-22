@@ -14,7 +14,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void Back()
     {
-        Scene.MainMenu.Activate();
+        SceneManager.LoadPreviousScene();
     }
 
     public void Controls()
