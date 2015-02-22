@@ -7,8 +7,9 @@ public class SharedState : Singleton<SharedState>, ISingleton
     /// </summary>
     public static AudioSource MusicSource
     {
-        get { return SharedState.MusicSourceContainer.SharedObject; }
-        set { SharedState.MusicSourceContainer.SharedObject = value; }
+        get { return MusicSourceContainer != null
+            ? MusicSourceContainer.SharedObject : null; }
+        set { MusicSourceContainer.SharedObject = value; }
     }
 
     static SharedObjectContainer<AudioSource, MusicManager> MusicSourceContainer;
