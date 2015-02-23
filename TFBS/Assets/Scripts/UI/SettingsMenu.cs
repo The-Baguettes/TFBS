@@ -13,6 +13,7 @@ public class SettingsMenu : Navigation
 
     public void AdjustMusic(float volume)
     {
-        SharedState.MusicSource.volume = volume;
+        if (SharedState.MusicSource != null)
+            SharedState.MusicSource.volume = volume;
     }
 }
