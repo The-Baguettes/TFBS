@@ -4,10 +4,11 @@ public class PauseMenu : Navigation
 {
     public Canvas PauseCanvas; //Our scene canvas 
 
+
     public void Start() 
     {
         Screen.lockCursor = true;
-        Screen.showCursor = false; 
+        Screen.showCursor = false;
     }
 
     public void Update()
@@ -36,5 +37,18 @@ public class PauseMenu : Navigation
         Time.timeScale = 1; // FIXME should resume game
         Screen.lockCursor = true;
         Screen.showCursor = false; 
+    }
+
+    public void Map()
+    {
+        
+        if (GameObject.Find("Camera").camera.depth < GameObject.Find("Main Camera").camera.depth)
+        {
+            GameObject.Find("Camera").camera.depth = GameObject.Find("Main Camera").camera.depth + 1;   
+        }
+        else
+        {
+            GameObject.Find("Camera").camera.depth = GameObject.Find("Main Camera").camera.depth - 1;
+        }
     }
 }
