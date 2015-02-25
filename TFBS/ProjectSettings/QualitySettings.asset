@@ -104,7 +104,7 @@ QualitySettings:
     antiAliasing: 2
     softParticles: 1
     softVegetation: 1
-    vSyncCount: 0
+    vSyncCount: 1
     lodBias: 1.5
     maximumLODLevel: 0
     particleRaycastBudget: 1024
@@ -130,6 +130,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
     Android: 3
+    BlackBerry: 0
     FlashPlayer: 3
     Standalone: 4
     Web: 4
