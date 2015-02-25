@@ -1881,7 +1881,6 @@ GameObject:
   - 20: {fileID: 1014413631}
   - 124: {fileID: 1014413630}
   - 92: {fileID: 1014413629}
-  - 81: {fileID: 1014413628}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1889,13 +1888,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1014413628
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1014413627}
-  m_Enabled: 1
 --- !u!92 &1014413629
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3380,7 +3372,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1869115910}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 0}
