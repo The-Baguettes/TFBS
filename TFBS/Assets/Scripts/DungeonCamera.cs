@@ -3,16 +3,19 @@
 public class DungeonCamera : MonoBehaviour
 {
     public GameObject target;
-    Vector3 offset;
+    Player player;
 
     void Start()
     {
-        offset = transform.position - target.transform.position;
+        player = GameObject.FindObjectOfType<Player>();
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 3, player.transform.position.z - 7);
     }
 
     void LateUpdate()
     {
-        Vector3 desiredPosition = target.transform.position + offset ;
-        transform.position = desiredPosition;
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 3, player.transform.position.z - 7);
+        float desiredAngle = target.transform.eulerAngles.y;
+        Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
+        transform.rotation = rotation;
     }
 }
