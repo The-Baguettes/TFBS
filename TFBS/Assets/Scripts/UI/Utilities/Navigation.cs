@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Navigation : MonoBehaviour
 {
@@ -11,10 +10,11 @@ public class Navigation : MonoBehaviour
     
     public void Quit()
     {
-        if (Application.isEditor)
-            EditorApplication.isPlaying = false;
-        else
-            Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
     #endregion
 
