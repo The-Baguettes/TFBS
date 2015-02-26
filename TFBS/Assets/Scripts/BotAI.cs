@@ -22,7 +22,7 @@ public class BotAI : MonoBehaviour
 
     void AI()
     {
-        if (Vector3.Distance(transform.position, Leader.position) <= MaxDistance)
+        if (Vector3.Distance(transform.position, Leader.position ) <= MaxDistance)
         {
             transform.position += transform.forward * AIspeed * Time.deltaTime;
             transform.LookAt(Leader);
