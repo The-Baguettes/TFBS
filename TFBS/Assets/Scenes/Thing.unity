@@ -189,6 +189,7 @@ GameObject:
   - 65: {fileID: 1114583210}
   - 23: {fileID: 1114583209}
   - 114: {fileID: 1114583208}
+  - 54: {fileID: 1114583213}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -258,6 +259,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!54 &1114583213
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1114583207}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1292445274
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95669f0a95263645b53e1082e7568e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1305628404}
 --- !u!114 &1292445281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1305628404}
+  rotateSpeed: 5
 --- !u!1 &1305628404
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,11 +481,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6119fb8a37cdb418d2fefc3b7712e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprintSpeed: 15
   movementSpeed: 10
   sneakSpeed: 5
   turningSpeed: 200
   vertical: 0
+  PlayerHealth: 100
   Sneak: 0
+  Sprint: 0
 --- !u!1 &1488227680
 GameObject:
   m_ObjectHideFlags: 0
