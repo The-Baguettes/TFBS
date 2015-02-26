@@ -22,7 +22,7 @@ public class DoorAnimation : MonoBehaviour
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, rot, Time.deltaTime * smooth);
     }
 
-    void OnMouseEnter()
+    public void OnMouseEnter()
     {
         open = !open;
     }
