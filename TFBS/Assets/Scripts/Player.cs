@@ -14,8 +14,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+
         Move();
-        OnTriggerEnter(collider);
+        Debug.Log(PlayerHealth);
         Death();
     }
     void Move()
@@ -23,7 +24,6 @@ public class Player : MonoBehaviour
         Sneak = Input.GetButton("Sneak");
         Sprint = Input.GetButton("Sprint");
         float horizontal = Input.GetAxis("Horizontal") * turningSpeed * Time.deltaTime;
-        Debug.Log(horizontal);
         transform.Rotate(0, horizontal, 0);
         if (Sneak)
         {
@@ -41,18 +41,20 @@ public class Player : MonoBehaviour
             transform.Translate(0, 0, vertical);
         }
     }
-    void OnTriggerEnter(Collider Player)
+    void OnCollisionEnter(Collision collision)
     {
-        if (Player.gameObject.tag == "AI")
+        if (collision.gameObject.tag == "Enemy")
         {
-            PlayerHealth -= 1;
+            PlayerHealth -= 50.0f;
         }
+
     }
     void Death()
     {
         if (PlayerHealth == 0)
         {
-            GameObject.Destroy(this); 
+          //  Destroy(this.gameObject);
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
 }
