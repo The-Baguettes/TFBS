@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
         Move();
         Debug.Log(PlayerHealth);
         Death();
@@ -49,12 +48,19 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    
+
     void Death()
     {
-        if (PlayerHealth == 0)
+        if (PlayerHealth <= 0)
         {
-          //  Destroy(this.gameObject);
-            Application.LoadLevel(Application.loadedLevel);
+            OverlayMenu GameOver = new OverlayMenu();
+            GameOver.GameOver();
+            // Destroy(this.gameObject);
+            // Application.LoadLevel(Application.loadedLevel);
+
         }
     }
+
 }

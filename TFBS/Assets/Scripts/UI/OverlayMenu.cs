@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class PauseMenu : Navigation
+public class OverlayMenu : Navigation
 {
-    public Canvas PauseCanvas; //Our scene canvas 
-
+    public Canvas PauseCanvas; //Our scene canvas
+    public Canvas GameOverCanvas;
 
     public void Start() 
     {
@@ -11,7 +11,7 @@ public class PauseMenu : Navigation
         Screen.showCursor = false;
     }
 
-    public void Update()
+    public void PauseUpdate()
     {
         // If the escape key is pressed then the following instruction is loaded
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -37,6 +37,18 @@ public class PauseMenu : Navigation
         Time.timeScale = 1; // FIXME should resume game
         Screen.lockCursor = true;
         Screen.showCursor = false; 
+    }
+
+    public void GameOver()
+    {
+        GameOverCanvas.enabled = true;
+        Time.timeScale = 0;
+        Screen.lockCursor = false;
+        Screen.showCursor = true;
+        if (Input.anyKeyDown)
+        {
+            Application.LoadLevel("MainMenu");
+        }
     }
 
     public void Map()
