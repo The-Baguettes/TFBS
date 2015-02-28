@@ -2,31 +2,22 @@
 
 public class DungeonCamera : MonoBehaviour
 {
-  /*  public GameObject target;
-    Player player; */
-    public GameObject target;
-    public float rotateSpeed = 5;
-    Vector3 offset;
+    static Vector3 positionOffset = new Vector3(0f, 2.5f, -2.7f);
+    static Vector3 lookatOffset = new Vector3(0f, 0f, 3f);
+
+    GameObject target;
 
     void Start()
     {
-      /*  player = GameObject.FindObjectOfType<Player>();
-        transform.position = player.transform.position; */
-        offset = target.transform.position - transform.position;
+        target = GameObject.FindWithTag(Tags.Player);
     }
 
     void LateUpdate()
     {
-  /*      transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z + 2);
-        float desiredAngle = target.transform.eulerAngles.y;
-        Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
-        transform.rotation = rotation; */
-
-        float horizontal = Input.GetAxis("Horizontal") * rotateSpeed;
-        target.transform.Rotate(0, horizontal, 0);
-        float desiredAngle = target.transform.eulerAngles.y;
-        Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
-        transform.position = target.transform.position - (rotation * offset);
-        transform.LookAt(target.transform);
+        Quaternion rotation = Quaternion.Euler(0, target.transform.eulerAngles.y, 0);
+        Vector3 t_pos = target.transform.position;
+        
+        transform.position = t_pos + rotation * positionOffset;
+        transform.LookAt(t_pos + rotation * lookatOffset);
     }
 }

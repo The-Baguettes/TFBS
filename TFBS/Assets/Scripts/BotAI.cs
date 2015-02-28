@@ -1,39 +1,34 @@
 ﻿using UnityEngine;
-using System;
 using System.Collections;
 
 public class BotAI : MonoBehaviour
 {
-    Transform Leader;
     float AIspeed = 3.5f;
-    float MaxDistance = 50.0f;
-    float MinDistance = 1.0f;
-    float AIrotate = 90.0f;
+    float MaxDistance = 50f;
+    float MinDistance = 1f;
+    float AIrotate = 90f;
+
+    Transform Leader;
     bool AImoving = true;
 
     void Start()
     {
-        Leader = GameObject.FindGameObjectWithTag("Player").transform;
+        Leader = GameObject.FindWithTag(Tags.Player).transform;
     }
 
     void Update()
     {
-        AI();
-    }
+        float distance = Vector3.Distance(transform.position, Leader.position);
 
-    void AI()
-    {
-        if (Vector3.Distance(transform.position, Leader.position) <= MaxDistance && Vector3.Distance(transform.position, Leader.position) > MinDistance)
+        if (distance == MinDistance)
+            transform.LookAt(Leader); 
+        else if (MinDistance < distance && distance <= MaxDistance)
         {
             transform.position += transform.forward * AIspeed * Time.deltaTime;
             transform.LookAt(Leader);
         }
-        else if (Vector3.Distance(transform.position, Leader.position) <= MinDistance)
-        {
-            transform.LookAt(Leader);
-        }
-
-        else { StartCoroutine(Patrol()); }
+        else
+            StartCoroutine(Patrol());
 
     }
 
@@ -49,6 +44,4 @@ public class BotAI : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         AImoving = true;
     }
-
-
 }

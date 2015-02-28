@@ -3,64 +3,51 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
-    public float sprintSpeed = 15.0f;
-    public float movementSpeed = 10.0f;
-    public float sneakSpeed = 5.0f;
-    public float turningSpeed = 200.0f;
-    public float vertical;
-    public float PlayerHealth = 100.0f;
-    public bool Sneak;
-    public bool Sprint;
+    public float sprintSpeed = 15f;
+    public float movementSpeed = 10f;
+    public float sneakSpeed = 5f;
+    public float turningSpeed = 200f;
+    public float PlayerHealth = 100f;
 
     void Update()
     {
         Move();
-        Debug.Log(PlayerHealth);
         Death();
     }
+
     void Move()
     {
-        Sneak = Input.GetButton("Sneak");
-        Sprint = Input.GetButton("Sprint");
-        float horizontal = Input.GetAxis("Horizontal") * turningSpeed * Time.deltaTime;
-        transform.Rotate(0, horizontal, 0);
+        bool Sneak = Input.GetButton("Sneak");
+        bool Sprint = Input.GetButton("Sprint");
+
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        transform.Rotate(0, horizontal * turningSpeed * Time.deltaTime, 0);
+        
         if (Sneak)
-        {
-            vertical = Input.GetAxis("Vertical") * sneakSpeed * Time.deltaTime;
-            transform.Translate(0, 0, vertical);
-        }
+            transform.Translate(0, 0, vertical * sneakSpeed * Time.deltaTime);
         else if (Sprint)
-        {
-            vertical = Input.GetAxis("Vertical") * sprintSpeed * Time.deltaTime;
-            transform.Translate(0, 0, vertical);
-        }
+            transform.Translate(0, 0, vertical * sprintSpeed * Time.deltaTime);
         else
-        {
-            float vertical = Input.GetAxis("Vertical") * movementSpeed * Time.deltaTime;
-            transform.Translate(0, 0, vertical);
-        }
+            transform.Translate(0, 0, vertical * movementSpeed * Time.deltaTime);
     }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
-        {
-            PlayerHealth -= 50.0f;
-        }
-
+            PlayerHealth -= 50f;
     }
-
-    
 
     void Death()
     {
+        return;
         if (PlayerHealth <= 0)
         {
-         //   OverlayMenu GameOver = new OverlayMenu();
-          //  GameOver.GameOver();
-            // Destroy(this.gameObject);
-            // Application.LoadLevel(Application.loadedLevel);
-
+            // OverlayMenu GameOver = new OverlayMenu();
+            // GameOver.GameOver();
+            Destroy(this.gameObject);
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
-
 }
