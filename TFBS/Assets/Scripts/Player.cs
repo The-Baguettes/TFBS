@@ -55,8 +55,8 @@ public class Player : MonoBehaviour
     {
         if (PlayerHealth <= 0)
         {
-            OverlayMenu GameOver = new OverlayMenu();
-            GameOver.GameOver();
+         //   OverlayMenu GameOver = new OverlayMenu();
+          //  GameOver.GameOver();
             // Destroy(this.gameObject);
             // Application.LoadLevel(Application.loadedLevel);
 

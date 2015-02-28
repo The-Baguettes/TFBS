@@ -7,6 +7,7 @@ public class BotAI : MonoBehaviour
     Transform Leader;
     float AIspeed = 3.5f;
     float MaxDistance = 50.0f;
+    float MinDistance = 1.0f;
     float AIrotate = 90.0f;
     bool AImoving = true;
 
@@ -22,9 +23,13 @@ public class BotAI : MonoBehaviour
 
     void AI()
     {
-        if (Vector3.Distance(transform.position, Leader.position ) <= MaxDistance)
+        if (Vector3.Distance(transform.position, Leader.position) <= MaxDistance && Vector3.Distance(transform.position, Leader.position) > MinDistance)
         {
             transform.position += transform.forward * AIspeed * Time.deltaTime;
+            transform.LookAt(Leader);
+        }
+        else if (Vector3.Distance(transform.position, Leader.position) <= MinDistance)
+        {
             transform.LookAt(Leader);
         }
 
