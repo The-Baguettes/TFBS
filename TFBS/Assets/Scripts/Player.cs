@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -17,17 +16,17 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        bool Sneak = Input.GetButton("Sneak");
-        bool Sprint = Input.GetButton("Sprint");
+        bool sneak = Input.GetButton(Inputs.Sneak);
+        bool sprint = Input.GetButton(Inputs.Sprint);
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis(Inputs.Horizontal);
+        float vertical = Input.GetAxis(Inputs.Vertical);
 
         transform.Rotate(0, horizontal * turningSpeed * Time.deltaTime, 0);
         
-        if (Sneak)
+        if (sneak)
             transform.Translate(0, 0, vertical * sneakSpeed * Time.deltaTime);
-        else if (Sprint)
+        else if (sprint)
             transform.Translate(0, 0, vertical * sprintSpeed * Time.deltaTime);
         else
             transform.Translate(0, 0, vertical * movementSpeed * Time.deltaTime);
@@ -35,7 +34,7 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == Tags.Enemy)
             PlayerHealth -= 50f;
     }
 
