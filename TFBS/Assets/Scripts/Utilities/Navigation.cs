@@ -28,10 +28,5 @@ public class Navigation : MonoBehaviour
     {
         SceneManager.LoadScene(Scene.SettingsMenu);
     }
-
-    public void SettingsControlsMenu()
-    {
-        // TODO
-    }
     #endregion
 }
