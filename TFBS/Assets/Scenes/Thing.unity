@@ -1389,6 +1389,7 @@ GameObject:
   - 65: {fileID: 1305628407}
   - 23: {fileID: 1305628406}
   - 54: {fileID: 1305628405}
+  - 95: {fileID: 1305628411}
   - 114: {fileID: 1305628410}
   m_Layer: 0
   m_Name: Player
@@ -1479,6 +1480,21 @@ MonoBehaviour:
   sneakSpeed: 5
   turningSpeed: 200
   PlayerHealth: 100
+--- !u!95 &1305628411
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1305628404}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1360455368
 GameObject:
   m_ObjectHideFlags: 0

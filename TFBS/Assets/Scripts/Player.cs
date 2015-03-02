@@ -8,6 +8,13 @@ public class Player : MonoBehaviour
     public float turningSpeed = 200f;
     public float PlayerHealth = 100f;
 
+    Animator animator;
+
+    void Start()
+    {
+        animator = FindObjectOfType<Animator>();
+    }
+
     void Update()
     {
         Move();
@@ -23,13 +30,28 @@ public class Player : MonoBehaviour
         float vertical = Input.GetAxis(Inputs.Vertical);
 
         transform.Rotate(0, horizontal * turningSpeed * Time.deltaTime, 0);
-        
+
+        if (vertical == 0)
+        {
+            animator.Play(Animations.Idle);
+            return;
+        }
+
         if (sneak)
+        {
+            animator.Play(vertical > 0 ? Animations.SneakForwards: Animations.SneakBackwards);
             transform.Translate(0, 0, vertical * sneakSpeed * Time.deltaTime);
+        }
         else if (sprint)
+        {
+            animator.Play(vertical > 0 ? Animations.RunForwards : Animations.RunBackwards);
             transform.Translate(0, 0, vertical * sprintSpeed * Time.deltaTime);
+        }
         else
+        {
+            animator.Play(vertical > 0 ? Animations.WalkForwards : Animations.WalkBackwards);
             transform.Translate(0, 0, vertical * movementSpeed * Time.deltaTime);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
