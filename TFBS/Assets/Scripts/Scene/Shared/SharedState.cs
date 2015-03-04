@@ -17,7 +17,7 @@ public class SharedState : Singleton<SharedState>, ISingleton
     // Called only once by Singleton
     public void Init()
     {
-        MusicSourceContainer = new SharedObjectContainer<AudioSource, MusicManager>(Instance.audio);
+        MusicSourceContainer = new SharedObjectContainer<AudioSource, MusicManager>(Instance.GetComponent<AudioSource>());
     }
 
     public void OnLevelWasLoaded(int _)

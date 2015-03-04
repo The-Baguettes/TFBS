@@ -8,7 +8,7 @@ public class OverlayMenu : Navigation
     public void Start() 
     {
         Screen.lockCursor = true;
-        Screen.showCursor = false;
+        Cursor.visible = false;
     }
 
     public void PauseUpdate()
@@ -28,7 +28,7 @@ public class OverlayMenu : Navigation
         PauseCanvas.enabled = true;
         Time.timeScale = 0; // FIXME should pause game
         Screen.lockCursor = false;
-        Screen.showCursor = true; 
+        Cursor.visible = true; 
     }
     
     public void Resume()
@@ -36,7 +36,7 @@ public class OverlayMenu : Navigation
         PauseCanvas.enabled = false;
         Time.timeScale = 1; // FIXME should resume game
         Screen.lockCursor = true;
-        Screen.showCursor = false; 
+        Cursor.visible = false; 
     }
 
     public void GameOver()
@@ -44,7 +44,7 @@ public class OverlayMenu : Navigation
         GameOverCanvas.enabled = true;
         Time.timeScale = 0;
         Screen.lockCursor = false;
-        Screen.showCursor = true;
+        Cursor.visible = true;
         if (Input.anyKeyDown)
         {
             Application.LoadLevel("MainMenu");
@@ -53,14 +53,9 @@ public class OverlayMenu : Navigation
 
     public void Map()
     {
-        
-        if (GameObject.Find("Camera").camera.depth < GameObject.Find("Main Camera").camera.depth)
-        {
-            GameObject.Find("Camera").camera.depth = GameObject.Find("Main Camera").camera.depth + 1;   
-        }
-        else
-        {
-            GameObject.Find("Camera").camera.depth = GameObject.Find("Main Camera").camera.depth - 1;
-        }
+        Camera camera = GameObject.Find("Camera").GetComponent<Camera>();
+        Camera main_camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+        camera.depth = main_camera.depth + (camera.depth < main_camera.depth ? 1 : -1);
     }
 }
