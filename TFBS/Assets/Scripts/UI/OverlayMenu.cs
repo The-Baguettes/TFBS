@@ -7,7 +7,7 @@ public class OverlayMenu : Navigation
 
     public void Start() 
     {
-        Screen.lockCursor = true;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
@@ -27,7 +27,7 @@ public class OverlayMenu : Navigation
     {
         PauseCanvas.enabled = true;
         Time.timeScale = 0; // FIXME should pause game
-        Screen.lockCursor = false;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true; 
     }
     
@@ -35,7 +35,7 @@ public class OverlayMenu : Navigation
     {
         PauseCanvas.enabled = false;
         Time.timeScale = 1; // FIXME should resume game
-        Screen.lockCursor = true;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; 
     }
 
@@ -43,7 +43,7 @@ public class OverlayMenu : Navigation
     {
         GameOverCanvas.enabled = true;
         Time.timeScale = 0;
-        Screen.lockCursor = false;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         if (Input.anyKeyDown)
         {
