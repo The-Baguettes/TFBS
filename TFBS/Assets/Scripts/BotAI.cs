@@ -21,7 +21,7 @@ public class BotAI : MonoBehaviour
         float distance = Vector3.Distance(transform.position, Leader.position);
 
         if (distance == MinDistance)
-            transform.LookAt(Leader); 
+            transform.LookAt(Leader);
         else if (MinDistance < distance && distance <= MaxDistance)
         {
             transform.position += transform.forward * AIspeed * Time.deltaTime;

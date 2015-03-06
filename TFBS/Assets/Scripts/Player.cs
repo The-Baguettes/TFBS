@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
 
     void Death()
     {
-        return;
+#if false
         if (PlayerHealth <= 0)
         {
             // OverlayMenu GameOver = new OverlayMenu();
@@ -70,5 +70,6 @@ public class Player : MonoBehaviour
             Destroy(this.gameObject);
             Application.LoadLevel(Application.loadedLevel);
         }
+#endif
     }
 }
