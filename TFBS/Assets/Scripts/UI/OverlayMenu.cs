@@ -30,7 +30,7 @@ public class OverlayMenu : Navigation
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true; 
     }
-    
+
     public void Resume()
     {
         PauseCanvas.enabled = false;
