@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        animator = FindObjectOfType<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -51,5 +51,4 @@ public class Player : MonoBehaviour
             transform.Translate(0, 0, vertical * movementSpeed * Time.deltaTime);
         }
     }
-
 }

@@ -6,8 +6,9 @@ public class FireBullet : MonoBehaviour
     public Rigidbody projectile;
     public float speed = 20;
     public float ammo = 30;
-    public  int magasine = 4;
-    private GameObject player;
+    public int magasine = 4;
+
+    GameObject player;
     float MinDistance = 1f;
     float MaxDistance = 50f;
     float elapsedtime = 0f;
