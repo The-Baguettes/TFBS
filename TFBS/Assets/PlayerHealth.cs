@@ -4,6 +4,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;
     public int currentHealth;
+   
+    
 
     void Awake()
     {
@@ -12,20 +14,22 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == Tags.Bullet)
+        //if (col.tag == Tags.Bullet)
             TakeDamage(20);
     }
 
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-
         if (currentHealth <= 0)
-            Death();
+        {
+            OverlayMenu bla = new OverlayMenu();
+            bla.GameOver();
+        }
     }
-    void Death()
+    public bool Death()
     {
-       // Destroy(gameObject);
-       //Game Over script here
+        
+        return currentHealth <= 0;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 public class OverlayMenu : Navigation
 {
     public Canvas PauseCanvas; //Our scene canvas
@@ -7,20 +8,26 @@ public class OverlayMenu : Navigation
 
     public void Start() 
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
     }
 
-    public void PauseUpdate()
+    void Update()
     {
         // If the escape key is pressed then the following instruction is loaded
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (PauseCanvas.enabled)
+            {
                 Resume();
+            }
             else
-                Pause();
+            {
+                Pause();                
+            }
         }
+        ScreenGameOver();
+        
    	}
 
     public void Pause()
@@ -47,15 +54,22 @@ public class OverlayMenu : Navigation
         Cursor.visible = true;
         if (Input.anyKeyDown)
         {
-            Application.LoadLevel("MainMenu");
+            SceneManager.LoadScene(Scene.MainMenu);
         }
+    }
+
+    public void ScreenGameOver ()
+    {        
+        if (GameObject.FindGameObjectWithTag(Tags.Player).GetComponent<PlayerHealth>().currentHealth == 0)  
+        {
+            GameOver();
+        }        
     }
 
     public void Map()
     {
         Camera camera = GameObject.Find("Camera").GetComponent<Camera>();
         Camera main_camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-
         camera.depth = main_camera.depth + (camera.depth < main_camera.depth ? 1 : -1);
     }
 }
