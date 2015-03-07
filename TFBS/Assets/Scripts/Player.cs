@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(PlayerHealth);
         Move();
         Death();
     }
@@ -58,6 +59,10 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == Tags.Enemy)
             PlayerHealth -= 50f;
+        if (collision.gameObject.name == "Bullet")
+        {
+            PlayerHealth -= 50f;
+        }
     }
 
     void Death()

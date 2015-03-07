@@ -5,7 +5,8 @@ public class FireBullet : MonoBehaviour
 {
     public Rigidbody projectile;
     public float speed = 20;
-    public float ammo = 10;
+    public float ammo = 30;
+    public  int magasine = 4;
     private GameObject player;
     float MinDistance = 1f;
     float MaxDistance = 50f;
@@ -19,7 +20,7 @@ public class FireBullet : MonoBehaviour
     void Update()
     {
         elapsedtime += Time.deltaTime;
-        if (ammo > 0 && elapsedtime >1.0f)
+        if (ammo > 0 && elapsedtime >0.2f)
         {
             if (Vector3.Distance(transform.position, player.transform.position) >= MinDistance && Vector3.Distance(transform.position, player.transform.position) <= MaxDistance )
             {
@@ -31,6 +32,13 @@ public class FireBullet : MonoBehaviour
                 ammo = ammo - 1f;
             }
         }
+        if (ammo == 0 && elapsedtime >2.5)
+        {
+            elapsedtime = 0;
+            ammo = 10;
+            magasine-=1;
+        }
+       
     }
 
 
