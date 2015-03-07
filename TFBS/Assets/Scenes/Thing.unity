@@ -876,6 +876,7 @@ GameObject:
   - 23: {fileID: 786623703}
   - 114: {fileID: 786623702}
   - 54: {fileID: 786623701}
+  - 114: {fileID: 786623707}
   m_Layer: 0
   m_Name: AI
   m_TagString: Enemy
@@ -965,6 +966,19 @@ Transform:
   - {fileID: 1223299561}
   m_Father: {fileID: 1504631391}
   m_RootOrder: 1
+--- !u!114 &786623707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 786623700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f7fb5c3a3163044beb849c766cdf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
 --- !u!1 &885769639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1341,7 @@ GameObject:
   - 23: {fileID: 1114583209}
   - 114: {fileID: 1114583208}
   - 54: {fileID: 1114583213}
+  - 114: {fileID: 1114583214}
   m_Layer: 0
   m_Name: AI
   m_TagString: Enemy
@@ -1416,6 +1431,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1114583214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1114583207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f7fb5c3a3163044beb849c766cdf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
 --- !u!1 &1119862175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,6 +2037,7 @@ GameObject:
   - 54: {fileID: 1305628405}
   - 95: {fileID: 1305628411}
   - 114: {fileID: 1305628410}
+  - 114: {fileID: 1305628412}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2102,7 +2131,6 @@ MonoBehaviour:
   movementSpeed: 10
   sneakSpeed: 5
   turningSpeed: 200
-  PlayerHealth: 100
 --- !u!95 &1305628411
 Animator:
   serializedVersion: 3
@@ -2120,6 +2148,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1305628412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1305628404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a36604567ad8f4193f0f707daaf0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
 --- !u!1 &1360455368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,6 +2453,7 @@ GameObject:
   - 23: {fileID: 1504668679}
   - 114: {fileID: 1504668678}
   - 54: {fileID: 1504668677}
+  - 114: {fileID: 1504668683}
   m_Layer: 0
   m_Name: AI
   m_TagString: Enemy
@@ -2501,6 +2543,19 @@ Transform:
   - {fileID: 1544664508}
   m_Father: {fileID: 1504631391}
   m_RootOrder: 2
+--- !u!114 &1504668683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1504668676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f7fb5c3a3163044beb849c766cdf0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
 --- !u!4 &1544664508
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: e7f7a9d0324f1f645ba39c0ecd78abff, type: 3}

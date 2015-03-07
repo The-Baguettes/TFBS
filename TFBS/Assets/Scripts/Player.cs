@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
     public float movementSpeed = 10f;
     public float sneakSpeed = 5f;
     public float turningSpeed = 200f;
-    public float PlayerHealth = 100f;
 
     Animator animator;
 
@@ -17,9 +16,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(PlayerHealth);
         Move();
-        Death();
     }
 
     void Move()
@@ -55,26 +52,4 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == Tags.Enemy)
-            PlayerHealth -= 50f;
-        if (collision.gameObject.name == "Bullet")
-        {
-            PlayerHealth -= 50f;
-        }
-    }
-
-    void Death()
-    {
-#if false
-        if (PlayerHealth <= 0)
-        {
-            // OverlayMenu GameOver = new OverlayMenu();
-            // GameOver.GameOver();
-            Destroy(this.gameObject);
-            Application.LoadLevel(Application.loadedLevel);
-        }
-#endif
-    }
 }
