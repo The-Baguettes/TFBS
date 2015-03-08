@@ -10,7 +10,7 @@ public class OverlayMenu : Navigation
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
-    }
+    }   
 
     void Update()
     {
@@ -26,8 +26,7 @@ public class OverlayMenu : Navigation
                 Pause();                
             }
         }
-        ScreenGameOver();
-        
+        ScreenGameOver();        
    	}
 
     public void Pause()
@@ -60,7 +59,7 @@ public class OverlayMenu : Navigation
 
     public void ScreenGameOver ()
     {        
-        if (GameObject.FindGameObjectWithTag(Tags.Player).GetComponent<PlayerHealth>().currentHealth == 0)  
+        if (GameObject.FindGameObjectWithTag(Tags.Player).GetComponent<PlayerHealth>().currentHealth <= 0)  
         {
             GameOver();
         }        
