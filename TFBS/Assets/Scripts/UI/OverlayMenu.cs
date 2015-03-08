@@ -26,7 +26,7 @@ public class OverlayMenu : Navigation
                 Pause();                
             }
         }
-        ScreenGameOver();        
+        ScreenGameOver();
    	}
 
     public void Pause()
@@ -51,10 +51,6 @@ public class OverlayMenu : Navigation
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        if (Input.anyKeyDown)
-        {
-            SceneManager.LoadScene(Scene.MainMenu);
-        }
     }
 
     public void ScreenGameOver ()

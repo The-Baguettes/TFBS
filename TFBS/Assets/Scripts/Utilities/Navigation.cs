@@ -29,4 +29,10 @@ public class Navigation : MonoBehaviour
         SceneManager.LoadScene(Scene.SettingsMenu);
     }
     #endregion
+
+    public void Play()
+    {
+        SceneManager.LoadScene(MetaScene.FirstLevel);
+        Time.timeScale = 1;
+    }
 }

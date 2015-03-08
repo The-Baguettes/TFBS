@@ -14,22 +14,12 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        //if (col.tag == Tags.Bullet)
+        if (col.tag == Tags.Bullet)
             TakeDamage(20);
     }
 
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        if (currentHealth <= 0)
-        {
-            OverlayMenu bla = new OverlayMenu();
-            bla.GameOver();
-        }
-    }
-    public bool Death()
-    {
-        
-        return currentHealth <= 0;
     }
 }

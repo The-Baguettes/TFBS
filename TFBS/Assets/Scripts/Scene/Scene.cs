@@ -5,4 +5,5 @@
     SettingsMenu,
     Thing,
     Environment,
+    Game,
 }
