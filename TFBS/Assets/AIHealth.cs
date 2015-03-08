@@ -26,6 +26,6 @@ public class AIHealth : MonoBehaviour
     void Death()
     {
         Destroy(gameObject);
-        //Game Over script here
+        //Death animation script here
     }
 }
