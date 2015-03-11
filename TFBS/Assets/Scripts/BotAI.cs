@@ -39,9 +39,8 @@ public class BotAI : MonoBehaviour
             NavMeshAgent agent = GetComponent<NavMeshAgent>();
             agent.destination =Leader.transform.position;
         }
-        else
+        else if (Vector3.Distance(transform.position, waypoints[w]) < 1)
         {
-
             GetComponent<NavMeshAgent>().SetDestination(waypoints[w = (w + 1) % waypoints.Length]);
         }
     }

@@ -12,6 +12,12 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = startingHealth;
     }
 
+    void Update()
+    {
+        if (Input.GetButtonDown("Die"))
+            currentHealth = -1;
+    }
+
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == Tags.Bullet)

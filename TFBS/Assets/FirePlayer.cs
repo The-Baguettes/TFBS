@@ -19,6 +19,9 @@ public class FirePlayer : MonoBehaviour
 
     void Update()
     {
+        if (OverlayMenu.isPaused)
+            return;
+
         elapsedtime += Time.deltaTime;
         if (ammo > 0 && elapsedtime > 0.2f && Input.GetButtonDown(Inputs.Fire))
         {

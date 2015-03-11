@@ -17,27 +17,24 @@ public class FireBullet : MonoBehaviour
     
     void Update()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 forward = transform.TransformDirection(Vector3.right);
         elapsedtime += Time.deltaTime;
-        if (ammo > 0 && elapsedtime >0.2f &&(Physics.Raycast(transform.position, forward, out hit) && hit.collider.tag == Tags.Player))
+        //Debug.Log(elapsedtime);
+        if (ammo > 0 && elapsedtime > 0.2f && Physics.Raycast(transform.position, forward, out hit) && hit.collider.tag == Tags.Player)
         {
-                transform.LookAt(player.transform.position);
-                elapsedtime = 0;
-                Rigidbody instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
-                instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
-                AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip,transform.position);
-                ammo = ammo - 1f;
+            elapsedtime = 0f;
+            transform.LookAt(player.transform.position);
+            Rigidbody instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
+            instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(0, 0, speed));
+            AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip,transform.position);
+            ammo = ammo - 1f;
             
-        }
-        if (ammo == 0 && elapsedtime >2.5)
+        } else if (ammo == 0 && elapsedtime >2.5)
         {
-            elapsedtime = 0;
+            elapsedtime = 0f;
             ammo = 10;
             magasine-=1;
         }
-       
     }
-
-
 }
 

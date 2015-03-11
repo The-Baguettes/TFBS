@@ -33,6 +33,5 @@ public class Navigation : MonoBehaviour
     public void Play()
     {
         SceneManager.LoadScene(MetaScene.FirstLevel);
-        Time.timeScale = 1;
     }
 }

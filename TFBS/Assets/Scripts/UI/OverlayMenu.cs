@@ -6,14 +6,18 @@ public class OverlayMenu : Navigation
     public Canvas PauseCanvas; //Our scene canvas
     public Canvas GameOverCanvas;
 
+    public static bool isPaused;
+
     public void Start() 
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
+        Time.timeScale = 1;
     }   
 
     void Update()
     {
+        isPaused = PauseCanvas.enabled;
         // If the escape key is pressed then the following instruction is loaded
         if (Input.GetKeyDown(KeyCode.Escape))
         {
