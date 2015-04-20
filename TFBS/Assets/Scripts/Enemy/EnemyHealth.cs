@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class AIHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     public int startingHealth = 100;
     public int currentHealth;
