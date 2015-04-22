@@ -20,23 +20,15 @@ public class OpenDoor : MonoBehaviour
 
     void Update()
     {
-        if (open)
-        {
-            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
-        }
-        else
-        {
-            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
-        }
-
-        if (Input.GetKeyDown("f") && enter)
-        {
-            open = !open;
-        }
         if (IA)
-        {
+            open = true;
+        else if (Input.GetKeyDown("f") && enter)
             open = !open;
-        }
+
+        if (open)
+            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
+        else
+            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
     }
 
     void OnGUI()
