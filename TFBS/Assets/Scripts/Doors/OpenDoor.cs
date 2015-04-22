@@ -25,17 +25,18 @@ public class OpenDoor : MonoBehaviour
         else if (Input.GetKeyDown("f") && enter)
             open = !open;
 
-        if (open)
-            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
-        else
-            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
+        open_or_close(open);
     }
 
     void OnGUI()
     {
-        if (enter)
+        if (enter && open)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'F' to open door");
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 200, 30), "Press 'F' to close the door");
+        }
+        else if (enter)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'F' to open the door");
         }
     }
 
@@ -60,7 +61,16 @@ public class OpenDoor : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             IA = false;
+            open = false;
         }
+    }
+
+    void open_or_close(bool open)
+    {
+        if (open)
+            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
+        else
+            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
     }
 }
 
