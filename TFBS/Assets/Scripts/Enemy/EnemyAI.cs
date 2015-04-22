@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class EnemyAI : MonoBehaviour
 {
-    const int fieldOfView = 120 / 2;
+    const int fieldOfView = 160 / 2;
     
     public GameObject WaypointsContainer;
 
@@ -11,9 +11,10 @@ public class EnemyAI : MonoBehaviour
     NavMeshAgent navAgent;
 
     bool lookingAround;
-    bool canEndLookAround;
-    bool isFollowingPlayer;
+    float totalRotation;
     float angleBeforeLookAround;
+
+    bool isFollowingPlayer;
 
     int currentWaypoint;
     List<Transform> waypoints;
@@ -33,29 +34,9 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         if (lookingAround)
-        {
             UpdateLookAround();
-
-            if (isLeaderInSight())
-            {
-                lookingAround = false;
-                isFollowingPlayer = true;
-                navAgent.SetDestination(leader.transform.position);
-            }
-
-            return;
-        }
-
-        if (isFollowingPlayer)
-        {
-            if (!isLeaderInSight())
-            {
-                isFollowingPlayer = false;
-                StartLookAround();
-            }
-            else
-                navAgent.SetDestination(leader.transform.position);
-        }
+        else if (isFollowingPlayer)
+            UpdateFollowLeader();
         else if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 1)
         {
             isFollowingPlayer = false;
@@ -63,32 +44,51 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    #region FollowLeader
+    void StartFollowLeader()
+    {
+        isFollowingPlayer = true;
+        navAgent.SetDestination(leader.transform.position);
+    }
+
+    void UpdateFollowLeader()
+    {
+        if (!isLeaderInSight())
+        {
+            isFollowingPlayer = false;
+            StartLookAround();
+        }
+    }
+    #endregion
+
     #region LookAround
     void StartLookAround()
     {
         lookingAround = true;
-        canEndLookAround = false;
         angleBeforeLookAround = transform.eulerAngles.y;
+        totalRotation = 0f;
     }
 
     void UpdateLookAround()
     {
-        if (!canEndLookAround)
-        {
-            if (transform.eulerAngles.y < angleBeforeLookAround)
-                // We passed first step in the rotation
-                canEndLookAround = true;
-        }
-        else if (transform.eulerAngles.y >= angleBeforeLookAround)
+        float rot = 60f * Time.deltaTime;
+        totalRotation += rot;
+
+        if (totalRotation < 360)
+            transform.Rotate(Vector3.up, rot);
+        else
             // The full turn is done
-            EndLookAround();
-    
-        transform.Rotate(Vector3.up, 60f * Time.deltaTime);
+            CompleteLookAround();
     }
 
-    void EndLookAround()
+    void StopLookAround()
     {
         lookingAround = false;
+    }
+
+    void CompleteLookAround()
+    {
+        StopLookAround();
 
         // Go back to the exact rotation before looking around
         transform.Rotate(Vector3.up, angleBeforeLookAround - transform.eulerAngles.y);
@@ -102,8 +102,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (col.transform == leader && isLeaderInFieldOfView() && isLeaderInSight())
         {
-            isFollowingPlayer = true;
-            navAgent.SetDestination(leader.transform.position);
+            StopLookAround();
+            StartFollowLeader();
         }
     }
 
