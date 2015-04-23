@@ -31,7 +31,7 @@ public class FirePlayer : MonoBehaviour
             instantiatedProjectile.velocity = transform.TransformDirection(0, 0, -speed);
             AudioSource.PlayClipAtPoint(fire, transform.position);
         }
-        else if (magasine > 0 && Input.GetKeyDown(KeyCode.R))
+        else if (magasine > 0 && Input.GetKeyDown(KeyCode.R) && elapsedtime > 1.0f)
         {
             ammo = 30;
             magasine--;
