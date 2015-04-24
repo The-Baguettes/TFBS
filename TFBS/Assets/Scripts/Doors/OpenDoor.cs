@@ -8,7 +8,7 @@ public class OpenDoor : MonoBehaviour
     private bool open;
     private bool enter;
     private bool IA;
-
+   // public Object door_handle;
     private Vector3 defaultRot;
     private Vector3 openRot;
 
@@ -16,6 +16,8 @@ public class OpenDoor : MonoBehaviour
     {
         defaultRot = transform.eulerAngles;
         openRot = new Vector3(defaultRot.x, defaultRot.y - DoorOpenAngle, defaultRot.z);
+     
+        
     }
 
     void Update()
@@ -68,9 +70,13 @@ public class OpenDoor : MonoBehaviour
     void open_or_close(bool open)
     {
         if (open)
+        {
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
+        }
         else
+        {
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
+        }
     }
 }
 
