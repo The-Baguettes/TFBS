@@ -6,11 +6,10 @@ public class HUD : MonoBehaviour
     public Text GunText;
     public Text TimeText;
     public Text LifeText;
-    float clock = 0;
-    int bullet = 0;
-    int counter = 0;
-    int kill;
-    GameObject []AI;
+    public Text MissionGoalText;
+
+    int counter;
+
     PlayerHealth playerHealth;
     WeaponSelector weaponSelector;
     
@@ -23,41 +22,32 @@ public class HUD : MonoBehaviour
 
     int get_AI()
     {
-        AI = GameObject.FindGameObjectsWithTag("Enemy");
-        return AI.Length;
+        return GameObject.FindGameObjectsWithTag(Tags.Enemy).Length;
     }
+
     void TimeManager()
     {
-        clock += Time.deltaTime;
-        TimeText.text = "Time :" + clock;
+        TimeText.text = "Time: " + Time.timeSinceLevelLoad;
     }
 
     void LifeManager()
     {
-        LifeText.text = "HP :" + playerHealth.currentHealth;
-        if(playerHealth.currentHealth < 50)
-        {
+        LifeText.text = "HP: " + playerHealth.currentHealth;
+
+        if (playerHealth.currentHealth < 50)
             LifeText.color = Color.red;
-            LifeText.text = "HP :" + playerHealth.currentHealth;
-        }
     }
 
     void Update() 
     {
         TimeManager();
         LifeManager();
-        if(Input.GetMouseButtonDown(0))
-        {
-            bullet += 1;
-        }
-        if(get_AI() < counter)
-        {
-            kill = counter - get_AI();
-        }
-        GunText.text = "Used bullets : " + bullet +
-            '\n' + "Weapon : " + weaponSelector.SelectedWeapon + '\n' + "Kills : " + kill + '\n' +
-            "Ammo :" + weaponSelector.FirePlayer.ammo + '/' + weaponSelector.FirePlayer.magasine  + 
-            '\n' + '\n' + "Number of remaining AI:" + get_AI();
 
+        int enemies = get_AI();
+        GunText.text = "Kills: " + (counter - enemies) + '\n'
+            + "Weapon: " + weaponSelector.SelectedWeapon + '\n'
+            + "Ammo: " + weaponSelector.FirePlayer.ammo + '/' + weaponSelector.FirePlayer.magasine;
+
+        MissionGoalText.text = "Enemies: " + enemies;
     }
 }

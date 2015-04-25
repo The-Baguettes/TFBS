@@ -5851,7 +5851,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d19532b2a9860438299e0590f9165a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txt: {fileID: 1223558271}
+  GunText: {fileID: 1223558271}
+  TimeText: {fileID: 1338135163}
+  LifeText: {fileID: 2070263129}
+  MissionGoalText: {fileID: 1227193448}
 --- !u!1001 &551263632
 Prefab:
   m_ObjectHideFlags: 0
@@ -11362,8 +11365,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Mission Goals\n\nDisplay\nThe \nFuture\nMission\nGoals \nIn this \nText
-    \nBox\nWe \nHave to find the objectives of \neach mission"
+  m_Text: 
 --- !u!222 &1227193449
 CanvasRenderer:
   m_ObjectHideFlags: 0
