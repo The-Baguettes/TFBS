@@ -5470,6 +5470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Txt: {fileID: 0}
+  Ennemies: {fileID: 0}
 --- !u!1001 &527022476
 Prefab:
   m_ObjectHideFlags: 0
@@ -5862,6 +5863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Txt: {fileID: 1223558271}
+  Ennemies: {fileID: 723217429}
 --- !u!1001 &551263632
 Prefab:
   m_ObjectHideFlags: 0
@@ -11235,7 +11237,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -270, y: -23}
+  m_AnchoredPosition: {x: -576, y: 59}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1223558271
@@ -16691,7 +16693,6 @@ GameObject:
   - 124: {fileID: 1965655943}
   - 81: {fileID: 1965655942}
   - 114: {fileID: 1965655941}
-  - 114: {fileID: 1965655947}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16775,18 +16776,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!114 &1965655947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1965655940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19d19532b2a9860438299e0590f9165a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Txt: {fileID: 0}
 --- !u!1 &1967627078
 GameObject:
   m_ObjectHideFlags: 0
