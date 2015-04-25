@@ -13,8 +13,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {       
         if (Input.GetButtonDown("Die"))
-            currentHealth = -1;
-        
+            currentHealth = -1;        
 
     }
 
