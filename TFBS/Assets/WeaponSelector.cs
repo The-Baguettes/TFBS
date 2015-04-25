@@ -1,38 +1,40 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class WeaponSelector : MonoBehaviour {
+public class WeaponSelector : MonoBehaviour
+{
+    public string SelectedWeapon { get; private set; }
+    public FirePlayer FirePlayer { get; private set; }
 
     GameObject ak47;
     GameObject m4a1;
-    public bool ak47_isactive;
-    public bool m4a1_isactive;
-	void Start () 
+
+    GameObject curr;
+
+    void Start()
     {
-        ak47 = GameObject.FindWithTag("Ak47");
-        m4a1 = GameObject.FindWithTag("M4A1");
-        m4a1.gameObject.SetActive(true);
-        ak47.gameObject.SetActive(false);
-	}	
-	void Update () 
+        ak47 = GameObject.FindWithTag(Tags.AK47);
+        m4a1 = GameObject.FindWithTag(Tags.M4A1);
+
+        curr = ak47; // To deactivate it
+        SwitchTo(m4a1);
+    }
+
+    void Update() 
     {
-        WeaponSelect();
-	}
-    void WeaponSelect() 
+        if (Input.GetKeyDown("1"))
+            SwitchTo(m4a1);
+        else if (Input.GetKeyDown("2"))
+            SwitchTo(ak47);
+    }
+
+    void SwitchTo(GameObject weapon)
     {
-        if (Input.GetKeyDown("1")) 
-        {
-            m4a1.gameObject.SetActive(true);
-            ak47.gameObject.SetActive(false);
-            m4a1_isactive = true;
-            ak47_isactive = false;
-        }
-        if (Input.GetKeyDown("2")) 
-        {
-            m4a1.gameObject.SetActive(false);
-            ak47.gameObject.SetActive(true);
-            m4a1_isactive = false;
-            ak47_isactive = true;
-        }
+        curr.SetActive(false);
+    
+        curr = weapon;
+        curr.SetActive(true);
+
+        SelectedWeapon = curr.name;
+        FirePlayer = curr.transform.FindChild("Spawn").GetComponent<FirePlayer>();
     }
 }

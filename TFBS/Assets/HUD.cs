@@ -1,20 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class HUD : MonoBehaviour
 {
     public Text Txt;
-    float score;
-    Player Player;
-    void Start ()
-    {
 
+    PlayerHealth playerHealth;
+    WeaponSelector weaponSelector;
+    
+    void Start()
+    {
+        playerHealth = GameObject.FindObjectOfType<PlayerHealth>();
+        weaponSelector = GameObject.FindObjectOfType<WeaponSelector>();
     }
 
     void Update() 
-        // TO FIX Find how to get life component at each Update, nb of kills and the selected weapon 
     {
-        Txt.text = "Actual life :" + score + '\n' + "Selected Weapon :" + '\n' +  "Kill :";
+        Txt.text = "HP: " + playerHealth.currentHealth + '\n'
+            + "Weapon: " + weaponSelector.SelectedWeapon + '\n'
+            + "Ammo: " + weaponSelector.FirePlayer.ammo + '/' + weaponSelector.FirePlayer.magasine + '\n';
+        //    +"Kill:" + "??";
     }
 }
