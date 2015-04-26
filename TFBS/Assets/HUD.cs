@@ -7,7 +7,8 @@ public class HUD : MonoBehaviour
     public Text TimeText;
     public Text LifeText;
     public Text MissionGoalText;
-
+    public Canvas DeathCanvas;
+    
     int counter;
 
     PlayerHealth playerHealth;
@@ -27,7 +28,7 @@ public class HUD : MonoBehaviour
 
     void TimeManager()
     {
-        TimeText.text = "Time: " + Time.timeSinceLevelLoad;
+        TimeText.text = "Time: " + (int)Time.timeSinceLevelLoad;
     }
 
     void LifeManager()
@@ -35,7 +36,10 @@ public class HUD : MonoBehaviour
         LifeText.text = "HP: " + playerHealth.currentHealth;
 
         if (playerHealth.currentHealth < 50)
+        {
             LifeText.color = Color.red;
+            DeathCanvas.enabled = true; 
+        }        
     }
 
     void Update() 
