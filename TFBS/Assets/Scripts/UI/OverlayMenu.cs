@@ -1,42 +1,44 @@
 ﻿using UnityEngine;
 
-
 public class OverlayMenu : Navigation
 {
-    public Canvas PauseCanvas; //Our scene canvas
+    public Canvas PauseCanvas;
     public Canvas GameOverCanvas;
 
     public static bool isPaused;
 
+    Camera mapCamera;
+    Camera mainCamera;
+    PlayerHealth playerHealth;
+
     public void Start() 
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
-        Time.timeScale = 1;
+        mapCamera = GameObject.FindWithTag(Tags.MapCamera).GetComponent<Camera>();
+        mainCamera = GameObject.FindWithTag(Tags.MainCamera).GetComponent<Camera>();
+        playerHealth = GameObject.FindWithTag(Tags.Player).GetComponent<PlayerHealth>();
+
+        Resume();
     }   
 
     void Update()
     {
-        isPaused = PauseCanvas.enabled;
-        // If the escape key is pressed then the following instruction is loaded
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (playerHealth.currentHealth <= 0)
+            GameOver();
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (PauseCanvas.enabled)
-            {
                 Resume();
-            }
             else
-            {
                 Pause();                
-            }
+
+            isPaused = PauseCanvas.enabled;
         }
-        ScreenGameOver();
    	}
 
     public void Pause()
     {
         PauseCanvas.enabled = true;
-        Time.timeScale = 0; // FIXME should pause game
+        Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true; 
     }
@@ -44,7 +46,7 @@ public class OverlayMenu : Navigation
     public void Resume()
     {
         PauseCanvas.enabled = false;
-        Time.timeScale = 1; // FIXME should resume game
+        Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false; 
     }
@@ -57,18 +59,8 @@ public class OverlayMenu : Navigation
         Cursor.visible = true;
     }
 
-    public void ScreenGameOver ()
-    {        
-        if (GameObject.FindGameObjectWithTag(Tags.Player).GetComponent<PlayerHealth>().currentHealth <= 0)  
-        {
-            GameOver();
-        }        
-    }
-
     public void Map()
     {
-        Camera camera = GameObject.Find("Camera").GetComponent<Camera>();
-        Camera main_camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        camera.depth = main_camera.depth + (camera.depth < main_camera.depth ? 1 : -1);
+        mapCamera.depth = mainCamera.depth + (mapCamera.depth < mainCamera.depth ? 1 : -1);
     }
 }
