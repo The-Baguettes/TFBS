@@ -37,10 +37,11 @@ public class EnemyAI : MonoBehaviour
             UpdateLookAround();
         else if (isFollowingPlayer)
             UpdateFollowLeader();
-        else if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 1)
+        else if (!navAgent.pathPending && navAgent.remainingDistance <= 1
+                 && (!navAgent.hasPath || navAgent.velocity.sqrMagnitude == 0f))
         {
-            isFollowingPlayer = false;
-            navAgent.SetDestination(waypoints[currentWaypoint = ++currentWaypoint % waypoints.Count].position);
+            currentWaypoint = ++currentWaypoint % waypoints.Count;
+            navAgent.SetDestination(waypoints[currentWaypoint].position);
         }
     }
 
@@ -67,6 +68,9 @@ public class EnemyAI : MonoBehaviour
         lookingAround = true;
         angleBeforeLookAround = transform.eulerAngles.y;
         totalRotation = 0f;
+
+        if (navAgent.isOnNavMesh)
+            navAgent.Stop();
     }
 
     void UpdateLookAround()
@@ -83,6 +87,7 @@ public class EnemyAI : MonoBehaviour
 
     void StopLookAround()
     {
+        navAgent.Resume();
         lookingAround = false;
     }
 
@@ -102,9 +107,16 @@ public class EnemyAI : MonoBehaviour
     {
         if (col.transform == leader && isLeaderInFieldOfView() && isLeaderInSight())
         {
-            StopLookAround();
+            if (lookingAround)
+                StopLookAround();
             StartFollowLeader();
         }
+    }
+
+    public void OnTakeDamage()
+    {
+        if (!isFollowingPlayer)
+            StartLookAround();
     }
 
     bool isLeaderInFieldOfView()

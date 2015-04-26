@@ -5,15 +5,21 @@ public class EnemyHealth : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
 
+    EnemyAI ai;
+
     void Awake()
     {
         currentHealth = startingHealth;
+        ai = GetComponent<EnemyAI>();
     }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == Tags.Bullet)
+        {
             TakeDamage(20);
+            ai.OnTakeDamage();
+        }
     }
 
     public void TakeDamage(int amount)
