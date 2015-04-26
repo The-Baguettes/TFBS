@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Medicine : MonoBehaviour
 {
-    public GameObject Life1;
-    public GameObject Life2;
-    int random;
     GameObject Cube;
+    List<Transform> spawnPoints;
 
     void Start()
     {
-        random = Random.Range(1, 3);    
-        Cube = Random_generate();
-        Cube.tag = "Medecine";
+        spawnPoints = new List<Transform>();
+        GetComponentsInChildren<Transform>(spawnPoints);
+        spawnPoints.Remove(transform);
+
+        SpawnCube();
     }
 
     void rotation(GameObject cube) // Allow the cube to rotate 
@@ -20,21 +20,15 @@ public class Medicine : MonoBehaviour
         cube.transform.Rotate(cube.transform.position * Time.deltaTime * 2);
     }
 
-    GameObject Random_generate()
+    void SpawnCube()
     {            
-        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);        
-        if(random == 1)
-        {
-            cube.transform.position = Life1.transform.position;
-        }
-        if(random == 2)
-        {
-            cube.transform.position = Life2.transform.position;
-        }
-        return cube;
+        Cube = GameObject.CreatePrimitive(PrimitiveType.Cube);        
+        //Cube.tag = "Medecine";
+        Cube.transform.position = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
+        // TODO: Create DropRotate class, and add as component to Cube
+        // This way we don't need an Update here, so we don't need to store the Cube.
+        // So we can spawn as many as we want.
     }
-
-   
 
     void Update()
     {
