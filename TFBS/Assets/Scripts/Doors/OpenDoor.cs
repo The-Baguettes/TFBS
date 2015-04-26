@@ -1,82 +1,72 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class OpenDoor : MonoBehaviour
 {
-    float smooth = 2.0f;
+    const float smooth = 2.0f;
+    readonly Rect uiRect = new Rect(Screen.width / 2 - 75, Screen.height - 100, 200, 30);
+
     public float DoorOpenAngle = 90.0f;
-    private bool open;
-    private bool enter;
-    private bool IA;
-   // public Object door_handle;
-    private Vector3 defaultRot;
-    private Vector3 openRot;
+
+    bool open;
+    bool playerIsNear;
+    bool botIsNear;
+
+    // public Object door_handle;
+    Vector3 closedRot;
+    Vector3 openRot;
 
     void Start()
     {
-        defaultRot = transform.eulerAngles;
-        openRot = new Vector3(defaultRot.x, defaultRot.y - DoorOpenAngle, defaultRot.z);
-     
-        
+        closedRot = transform.eulerAngles;
+        openRot = new Vector3(closedRot.x, closedRot.y - DoorOpenAngle, closedRot.z);
     }
 
     void Update()
     {
-        if (IA)
+        if (botIsNear)
             open = true;
-        else if (Input.GetKeyDown("f") && enter)
+        else if (playerIsNear && Input.GetKeyDown("f"))
             open = !open;
 
-        open_or_close(open);
+        Animate();
     }
 
     void OnGUI()
     {
-        if (enter && open)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 200, 30), "Press 'F' to close the door");
-        }
-        else if (enter)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), "Press 'F' to open the door");
-        }
+        if (!playerIsNear)
+            return;
+
+        if (open)
+            GUI.Label(uiRect, "Press 'F' to close the door");
+        else
+            GUI.Label(uiRect, "Press 'F' to open the door");
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider col)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            enter = true;
-        }
-        if (other.gameObject.tag == "Enemy")
-        {
-            IA = true;
-        }
+        if (col.gameObject.tag == Tags.Player)
+            playerIsNear = true;
+        else if (col.gameObject.tag == Tags.Enemy)
+            botIsNear = true;
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider col)
     {
-        if (other.gameObject.tag == "Player")
+        if (col.gameObject.tag == Tags.Player)
+            playerIsNear = false;
+        else if (col.gameObject.tag == Tags.Enemy)
         {
-            enter = false;
-        }
-        if (other.gameObject.tag == "Enemy")
-        {
-            IA = false;
+            botIsNear = false;
             open = false;
         }
     }
 
-    void open_or_close(bool open)
+    void Animate()
     {
-        if (open)
-        {
-            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
-        }
-        else
-        {
-            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
-        }
+        transform.eulerAngles = Vector3.Slerp(
+            transform.eulerAngles,
+            open ? openRot : closedRot,
+            Time.deltaTime * smooth
+        );
     }
 }
-
