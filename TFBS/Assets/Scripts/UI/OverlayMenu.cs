@@ -63,7 +63,7 @@ public class OverlayMenu : Navigation
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        deathCanvas.enabled = playerHealth.currentHealth < 50;
+        deathCanvas.enabled = false;
     }
 
     public void Map()
