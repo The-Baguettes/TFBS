@@ -31,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Death()
     {
+        DropSpawner.SpawnCube<AmmoDrop>(transform);
         Destroy(gameObject);
         //Death animation script here
     }

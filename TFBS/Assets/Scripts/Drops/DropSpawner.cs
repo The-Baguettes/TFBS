@@ -30,8 +30,24 @@ public class DropSpawner : MonoBehaviour
         if (spawn.childCount != 0)
             return;
 
+        SpawnCube(spawn, dropTypes[random.Next(dropTypes.Length)], true);
+    }
+
+    public static void SpawnCube<T>(Transform position)
+        where T : DropBase
+    {
+        SpawnCube(position, typeof(T), false);
+    }
+
+    static void SpawnCube(Transform position, Type dropType, bool randomDrop)
+    {
         GameObject drop = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        drop.AddComponent(dropTypes[random.Next(dropTypes.Length)]);
-        drop.transform.SetParent(spawn, false);
+        drop.AddComponent(dropType);
+
+        if (randomDrop)
+            // Set as child and copy position
+            drop.transform.SetParent(position, false);
+        else
+            drop.transform.position = position.position;
     }
 }
