@@ -2,7 +2,9 @@
 
 public class AmmoDrop : DropBase
 {
-    protected override void OnPickup()
+    override protected Color32 color { get { return Color.black; } }
+
+    override protected void OnPickup()
     {
         firePlayer.magasine += 1;
     }

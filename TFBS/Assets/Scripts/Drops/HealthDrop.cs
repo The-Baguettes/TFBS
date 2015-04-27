@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class HealthDrop : DropBase
 {
-    protected override void OnPickup()
+    override protected Color32 color { get { return Color.green; } }
+
+    override protected void OnPickup()
     {
         playerHealth.currentHealth += 20;
     }
