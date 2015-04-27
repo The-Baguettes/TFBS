@@ -4,10 +4,13 @@ public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;
     public int currentHealth;
+
+    HUD hud;
  
     void Awake()
     {
         currentHealth = startingHealth;
+        hud = FindObjectOfType<HUD>();
     }
 
     void Update()
@@ -26,5 +29,11 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+
+        if (currentHealth < 50)
+        {
+            hud.LifeText.color = Color.red;
+            hud.DeathCanvas.enabled = true;
+        }
     }
 }

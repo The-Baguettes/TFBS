@@ -34,12 +34,6 @@ public class HUD : MonoBehaviour
     void LifeManager()
     {
         LifeText.text = "HP: " + playerHealth.currentHealth;
-
-        if (playerHealth.currentHealth < 50)
-        {
-            LifeText.color = Color.red;
-            DeathCanvas.enabled = true; 
-        }        
     }
 
     void Update() 

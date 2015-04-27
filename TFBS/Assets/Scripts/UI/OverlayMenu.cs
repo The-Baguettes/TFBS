@@ -7,12 +7,14 @@ public class OverlayMenu : Navigation
 
     public static bool isPaused;
 
+    Canvas deathCanvas;
     Camera mapCamera;
     Camera mainCamera;
     PlayerHealth playerHealth;
 
     public void Start() 
     {
+        deathCanvas = FindObjectOfType<HUD>().DeathCanvas;
         mapCamera = GameObject.FindWithTag(Tags.MapCamera).GetComponent<Camera>();
         mainCamera = GameObject.FindWithTag(Tags.MainCamera).GetComponent<Camera>();
         playerHealth = GameObject.FindWithTag(Tags.Player).GetComponent<PlayerHealth>();
@@ -37,6 +39,7 @@ public class OverlayMenu : Navigation
 
     public void Pause()
     {
+        deathCanvas.enabled = false;
         PauseCanvas.enabled = true;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
@@ -48,7 +51,9 @@ public class OverlayMenu : Navigation
         PauseCanvas.enabled = false;
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false; 
+        Cursor.visible = false;
+
+        deathCanvas.enabled = playerHealth.currentHealth < 50;
     }
 
     public void GameOver()
@@ -57,6 +62,8 @@ public class OverlayMenu : Navigation
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        deathCanvas.enabled = playerHealth.currentHealth < 50;
     }
 
     public void Map()
