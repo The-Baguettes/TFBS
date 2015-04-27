@@ -1,13 +1,17 @@
 using UnityEngine;
 
-public class Drop : MonoBehaviour
+public abstract class DropBase : MonoBehaviour
 {
-    public PlayerHealth PlayerHealth;
+    protected FirePlayer firePlayer;
+    protected PlayerHealth playerHealth;
 
-    void Start()
+    void Awake()
     {
         tag = Tags.NoHit;
         transform.GetComponent<Collider>().isTrigger = true;
+
+        firePlayer = FindObjectOfType<FirePlayer>();
+        playerHealth = FindObjectOfType<PlayerHealth>();
     }
 
     void Update()
@@ -15,13 +19,14 @@ public class Drop : MonoBehaviour
         transform.Rotate(transform.position * Time.deltaTime * 2);
     }
 
+    protected abstract void OnPickup();
+
     void OnTriggerEnter(Collider col)
     {
         if (col.tag != Tags.Player)
             return;
 
-        PlayerHealth.currentHealth += 20;
-
+        OnPickup();
         Destroy(gameObject);
     }
 }

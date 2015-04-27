@@ -1,15 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class DropSpawner : MonoBehaviour
 {
-    PlayerHealth playerHealth;
+    static readonly Type[] dropTypes = {
+        typeof(AmmoDrop),
+        typeof(HealthDrop),
+    };
+    static readonly System.Random random = new System.Random();
+
     List<Transform> spawnPoints;
 
     void Start()
     {
-        playerHealth = GameObject.FindObjectOfType<PlayerHealth>();
-
         spawnPoints = new List<Transform>();
         GetComponentsInChildren<Transform>(spawnPoints);
         spawnPoints.Remove(transform);
@@ -20,15 +24,14 @@ public class DropSpawner : MonoBehaviour
 
     void SpawnCube()
     {
-        Transform spawn = spawnPoints[Random.Range(0, spawnPoints.Count)];
+        Transform spawn = spawnPoints[random.Next(spawnPoints.Count)];
 
         // Don't spawn multiple drops in the same place
         if (spawn.childCount != 0)
             return;
 
-        // TODO: Add different kinds of drops
         GameObject drop = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        drop.AddComponent<Drop>().PlayerHealth = playerHealth;
+        drop.AddComponent(dropTypes[random.Next(dropTypes.Length)]);
         drop.transform.SetParent(spawn, false);
     }
 }
