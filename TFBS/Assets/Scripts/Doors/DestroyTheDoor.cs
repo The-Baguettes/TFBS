@@ -4,8 +4,10 @@ using System.Collections;
 public class DestroyTheDoor : MonoBehaviour {
 
     public int durability;
+    public GameObject body;
+    public Transform prefab;
     Object parent;
-    
+
     void Start()
     {
         parent = this.transform.parent.gameObject;
@@ -15,7 +17,7 @@ public class DestroyTheDoor : MonoBehaviour {
     {
         if (durability == 0)
         {
-            //play an animation
+            Instantiate(prefab, body.transform.position, Quaternion.identity);
             GameObject.Destroy(parent);
         }
     }
