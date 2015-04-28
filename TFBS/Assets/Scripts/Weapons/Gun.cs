@@ -3,6 +3,7 @@
 public abstract class Gun : Weapon
 {
     public int MagazineSize { get; protected set; }
+    public float ReloadCooldown { get; protected set; }
 
     public Projectile Projectile;
     public Transform ProjectileSpawn { get; protected set; }
@@ -48,7 +49,7 @@ public abstract class Gun : Weapon
    
     public void Reload()
     {
-        if (UsesLeft == MagazineSize)
+        if (UsesLeft == MagazineSize || !CoolDownOver())
             return;
 
         if (MagazineCount <= 0)
@@ -61,6 +62,7 @@ public abstract class Gun : Weapon
         if (ReloadClip != null)
             AudioSource.PlayClipAtPoint(ReloadClip, transform.position);
 
+        NextUseTime = Time.time + ReloadCooldown;
         MagazineCount--;
         UsesLeft = MagazineSize;
     }
