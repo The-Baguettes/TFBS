@@ -8,8 +8,6 @@ public class WeaponManager : MonoBehaviour
 
     public List<Weapon> Weapons { get; protected set; }
 
-    float lastUseTime = -1;
-
     void Start()
     {
         Weapons = new List<Weapon>();
@@ -19,25 +17,10 @@ public class WeaponManager : MonoBehaviour
             Weapons[i].gameObject.SetActive(false);
     }
 
-    public void UseActive()
+    public void UseActive(Transform target = null)
     {
-        if (ActiveWeapon == null || lastUseTime != -1 && Time.time - lastUseTime < ActiveWeapon.UseCooldown)
-            return;
-
-        if (!ActiveWeapon.IsUsable())
-        {
-            if (ActiveWeapon.UseFailClip != null)
-                AudioSource.PlayClipAtPoint(ActiveWeapon.UseFailClip, transform.position);
-            return;
-        }
-
-        lastUseTime = Time.time;
-
-        ActiveWeapon.UsesLeft--;
-        ActiveWeapon.Use();
-
-        if (ActiveWeapon.UseClip != null)
-            AudioSource.PlayClipAtPoint(ActiveWeapon.UseClip, transform.position);
+        if (ActiveWeapon != null)
+            ActiveWeapon.Use(target);
     }
 
     public void SwitchToWeapon(int n)

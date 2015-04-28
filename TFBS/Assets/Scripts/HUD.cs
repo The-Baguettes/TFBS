@@ -16,8 +16,10 @@ public class HUD : MonoBehaviour
     
     void Start()
     {
-        playerHealth = GameObject.FindObjectOfType<PlayerHealth>();
-        weaponManager = GameObject.FindObjectOfType<WeaponManager>();
+        GameObject player = GameObject.FindWithTag(Tags.Player);
+
+        playerHealth = player.GetComponent<PlayerHealth>();
+        weaponManager = player.GetComponentInChildren<WeaponManager>();
         counter = get_AI();
     }
 

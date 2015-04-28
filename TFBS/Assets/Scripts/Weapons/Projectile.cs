@@ -8,7 +8,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected float DestroyAfter = 5f;
 
-    float firedAt = -1;
+    float destroyTime = float.PositiveInfinity;
 
     protected abstract void OnAwake();
 
@@ -18,22 +18,28 @@ public abstract class Projectile : MonoBehaviour
         OnAwake();
     }
 
+    void Start()
+    {
+        GameObject[] nohit = GameObject.FindGameObjectsWithTag(Tags.NoHit);
+
+        Collider col = GetComponent<Collider>();
+        for (int i = 0; i < nohit.Length; i++)
+            Physics.IgnoreCollision(col, nohit[i].GetComponent<Collider>());
+    }
+
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == Tags.NoHit)
-            return;
-
         Destroy(gameObject);
     }
 
     public void OnFire()
     {
-        firedAt = Time.timeSinceLevelLoad;
+        destroyTime = Time.timeSinceLevelLoad + DestroyAfter;
     }
 
     void Update()
     {
-        if (firedAt == -1 || Time.timeSinceLevelLoad - firedAt < DestroyAfter)
+        if (Time.timeSinceLevelLoad < destroyTime)
             return;
 
         Destroy(gameObject);

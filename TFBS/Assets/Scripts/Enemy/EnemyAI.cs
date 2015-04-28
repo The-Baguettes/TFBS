@@ -7,6 +7,8 @@ public class EnemyAI : MonoBehaviour
     
     public GameObject WaypointsContainer;
 
+    Gun firearm;
+
     Transform leader;
     NavMeshAgent navAgent;
 
@@ -22,7 +24,9 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         leader = GameObject.FindWithTag(Tags.Player).transform;
-        
+
+        firearm = GetComponentInChildren<Gun>();
+
         waypoints = new List<Transform>();
         WaypointsContainer.GetComponentsInChildren<Transform>(waypoints);
         waypoints.Remove(WaypointsContainer.transform);
@@ -110,6 +114,7 @@ public class EnemyAI : MonoBehaviour
             if (lookingAround)
                 StopLookAround();
             StartFollowLeader();
+            Shoot();
         }
     }
 
@@ -128,5 +133,13 @@ public class EnemyAI : MonoBehaviour
     {
         RaycastHit hit;
         return Physics.Raycast(transform.position, transform.forward, out hit) && hit.collider.tag == Tags.Player;
+    }
+
+    void Shoot()
+    {
+        if (firearm.UsesLeft == 0)
+            firearm.Reload();
+
+        firearm.Use(leader);
     }
 }

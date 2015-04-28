@@ -36,20 +36,16 @@ public abstract class Gun : Weapon
             UsesLeft = MagazineSize;
     }
 
-    public override bool IsUsable()
+    protected override void OnUse(Transform target)
     {
-        return UsesLeft > 0;
-    }
-
-    public override void Use()
-    {
+        // TODO: Aim at target
         Projectile proj = Instantiate(Projectile, ProjectileSpawn.position, ProjectileSpawn.rotation) as Projectile;
         Rigidbody body = proj.GetComponent<Rigidbody>();
         
         body.velocity = ProjectileSpawn.TransformDirection(0, 0, proj.Speed);
         proj.OnFire();
     }
-    
+   
     public void Reload()
     {
         if (UsesLeft == MagazineSize)
