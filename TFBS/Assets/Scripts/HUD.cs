@@ -12,12 +12,12 @@ public class HUD : MonoBehaviour
     int counter;
 
     PlayerHealth playerHealth;
-    WeaponSelector weaponSelector;
+    WeaponManager weaponManager;
     
     void Start()
     {
         playerHealth = GameObject.FindObjectOfType<PlayerHealth>();
-        weaponSelector = GameObject.FindObjectOfType<WeaponSelector>();
+        weaponManager = GameObject.FindObjectOfType<WeaponManager>();
         counter = get_AI();
     }
 
@@ -42,9 +42,16 @@ public class HUD : MonoBehaviour
         LifeManager();
 
         int enemies = get_AI();
-        GunText.text = "Kills: " + (counter - enemies) + '\n'
-            + "Weapon: " + weaponSelector.SelectedWeapon + '\n'
-            + "Ammo: " + weaponSelector.FirePlayer.ammo + '/' + weaponSelector.FirePlayer.magasine;
+        GunText.text = "Kills: " + (counter - enemies) + '\n';
+        if (weaponManager.ActiveWeapon != null)
+        {
+            GunText.text += "Weapon: " + weaponManager.ActiveWeapon.name + '\n';
+
+            if (weaponManager.ActiveGun == null)
+                GunText.text += "Uses: " + weaponManager.ActiveWeapon.UseCount;
+            else
+                GunText.text += "Ammo: " + weaponManager.ActiveGun.UseCount + '/' + weaponManager.ActiveGun.MagazineCount;
+        }
 
         MissionGoalText.text = "Enemies: " + enemies;
     }

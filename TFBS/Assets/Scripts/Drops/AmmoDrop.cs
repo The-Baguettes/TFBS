@@ -4,8 +4,12 @@ public class AmmoDrop : DropBase
 {
     override protected Color32 color { get { return Color.black; } }
 
-    override protected void OnPickup()
+    override protected bool Pickup()
     {
-        firePlayer.magasine += 1;
+        if (weaponManager.ActiveGun == null)
+            return false;
+
+        weaponManager.ActiveGun.MagazineCount += 1;
+        return true;
     }
 }
