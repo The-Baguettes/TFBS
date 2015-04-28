@@ -75,7 +75,7 @@ public class EnemyAI : MonoBehaviour
 
     void UpdateLookAround()
     {
-        float rot = 60f * Time.deltaTime;
+        float rot = 200f * Time.deltaTime;
         totalRotation += rot;
 
         if (totalRotation < 360)

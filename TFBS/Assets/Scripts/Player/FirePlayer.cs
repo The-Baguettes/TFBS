@@ -23,12 +23,12 @@ public class FirePlayer : MonoBehaviour
             return;
 
         elapsedtime += Time.deltaTime;
-        if (ammo > 0 && elapsedtime > 0.2f && Input.GetButtonDown(Inputs.Fire))
+        if (ammo > 0 && /* elapsedtime > 0.01f  && */Input.GetButton(Inputs.Fire))
         {
             elapsedtime = 0;
             ammo--;
             Rigidbody instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
-            instantiatedProjectile.velocity = transform.TransformDirection(0, 0, -speed);
+            instantiatedProjectile.velocity = transform.TransformDirection(0, 0, -speed *2);
             AudioSource.PlayClipAtPoint(fire, transform.position);
         }
         else if (magasine > 0 && Input.GetKeyDown(KeyCode.R) && elapsedtime > 1.0f)
