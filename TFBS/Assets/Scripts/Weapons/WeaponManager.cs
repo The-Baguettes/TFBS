@@ -33,7 +33,7 @@ public class WeaponManager : MonoBehaviour
 
         lastUseTime = Time.time;
 
-        ActiveWeapon.UseCount--;
+        ActiveWeapon.UsesLeft--;
         ActiveWeapon.Use();
 
         if (ActiveWeapon.UseClip != null)

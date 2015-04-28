@@ -48,9 +48,9 @@ public class HUD : MonoBehaviour
             GunText.text += "Weapon: " + weaponManager.ActiveWeapon.name + '\n';
 
             if (weaponManager.ActiveGun == null)
-                GunText.text += "Uses: " + weaponManager.ActiveWeapon.UseCount;
+                GunText.text += "Uses: " + weaponManager.ActiveWeapon.UsesLeft;
             else
-                GunText.text += "Ammo: " + weaponManager.ActiveGun.UseCount + '/' + weaponManager.ActiveGun.MagazineCount;
+                GunText.text += "Ammo: " + weaponManager.ActiveGun.UsesLeft + '/' + weaponManager.ActiveGun.MagazineCount;
         }
 
         MissionGoalText.text = "Enemies: " + enemies;

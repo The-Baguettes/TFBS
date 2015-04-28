@@ -28,23 +28,23 @@ public abstract class Gun : Weapon
         if (tmp != null)
             ReloadFailClip = tmp.GetComponent<AudioSource>().clip;
 
-        UseCount = -1;
+        UsesLeft = -1;
 
         OnStart();
 
-        if (UseCount == -1)
-            UseCount = MagazineSize;
+        if (UsesLeft == -1)
+            UsesLeft = MagazineSize;
     }
 
     public override bool IsUsable()
     {
-        return UseCount > 0;
+        return UsesLeft > 0;
     }
 
     public override void Use()
     {
-        Rigidbody body = Instantiate(Projectile.gameObject.GetComponent<Rigidbody>(), ProjectileSpawn.position, ProjectileSpawn.rotation) as Rigidbody;
-        Projectile proj = body.GetComponent<Projectile>();
+        Projectile proj = Instantiate(Projectile, ProjectileSpawn.position, ProjectileSpawn.rotation) as Projectile;
+        Rigidbody body = proj.GetComponent<Rigidbody>();
         
         body.velocity = ProjectileSpawn.TransformDirection(0, 0, proj.Speed);
         proj.OnFire();
@@ -52,7 +52,7 @@ public abstract class Gun : Weapon
     
     public void Reload()
     {
-        if (UseCount == MagazineSize)
+        if (UsesLeft == MagazineSize)
             return;
 
         if (MagazineCount <= 0)
@@ -66,6 +66,6 @@ public abstract class Gun : Weapon
             AudioSource.PlayClipAtPoint(ReloadClip, transform.position);
 
         MagazineCount--;
-        UseCount = MagazineSize;
+        UsesLeft = MagazineSize;
     }
 }
