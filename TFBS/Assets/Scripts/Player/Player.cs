@@ -39,8 +39,13 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton(Inputs.Fire))
             weaponManager.UseActive();
-        else if (weaponManager.ActiveGun != null && Input.GetButtonDown(Inputs.Reload))
-            weaponManager.ActiveGun.Reload();
+        else if (weaponManager.ActiveGun != null)
+        {
+            if (Input.GetButtonDown(Inputs.WeaponMeta))
+                weaponManager.ActiveGun.ToggleSilencer();
+            else if (Input.GetButtonDown(Inputs.Reload))
+                weaponManager.ActiveGun.Reload();
+        }
     }
 
     void Move()

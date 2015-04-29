@@ -6,4 +6,5 @@
     public const string Sneak = "Sneak";
     public const string Sprint = "Sprint";
     public const string Vertical = "Vertical";
+    public const string WeaponMeta = "WeaponMeta";
 }

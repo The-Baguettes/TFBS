@@ -13,6 +13,9 @@ public abstract class Gun : Weapon
 
     public int MagazineCount { get; set; }
 
+    protected GameObject Silencer;
+    protected AudioClip FireSilencedClip;
+        
     protected abstract void OnStart();
 
     void Start()
@@ -28,6 +31,16 @@ public abstract class Gun : Weapon
         tmp = transform.FindChild("ReloadFailSound");
         if (tmp != null)
             ReloadFailClip = tmp.GetComponent<AudioSource>().clip;
+
+        tmp = transform.FindChild("Silencer");
+        if (tmp != null)
+        {
+            Silencer = tmp.gameObject;
+
+            tmp = transform.FindChild("FireSilencedSound");
+            if (tmp != null)
+                FireSilencedClip = tmp.GetComponent<AudioSource>().clip;
+        }
 
         UsesLeft = -1;
 
@@ -65,5 +78,17 @@ public abstract class Gun : Weapon
         NextUseTime = Time.time + ReloadCooldown;
         MagazineCount--;
         UsesLeft = MagazineSize;
+    }
+
+    public void ToggleSilencer()
+    {
+        if (Silencer == null)
+            return;
+
+        Silencer.SetActive(!Silencer.activeSelf);
+
+        AudioClip tmp = UseClip;
+        UseClip = FireSilencedClip;
+        FireSilencedClip = tmp;
     }
 }
