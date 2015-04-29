@@ -2,6 +2,5 @@
 {
     protected override void OnAwake()
     {
-        Speed = 30f;
     }
 }

@@ -15,7 +15,12 @@ public abstract class Gun : Weapon
 
     protected GameObject Silencer;
     protected AudioClip FireSilencedClip;
-        
+
+    /// <summary>
+    /// Speed of a the projectile after being fired.
+    /// </summary>
+    protected float FireStrength;
+
     protected abstract void OnStart();
 
     void Start()
@@ -56,7 +61,7 @@ public abstract class Gun : Weapon
         Projectile proj = Instantiate(Projectile, ProjectileSpawn.position, ProjectileSpawn.rotation) as Projectile;
         Rigidbody body = proj.GetComponent<Rigidbody>();
         
-        body.velocity = ProjectileSpawn.TransformDirection(0, 0, proj.Speed);
+        body.velocity = ProjectileSpawn.TransformDirection(0, 0, FireStrength);
         proj.OnFire();
     }
    
