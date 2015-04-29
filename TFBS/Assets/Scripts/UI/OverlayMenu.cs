@@ -10,21 +10,21 @@ public class OverlayMenu : Navigation
     Canvas deathCanvas;
     Camera mapCamera;
     Camera mainCamera;
-    PlayerHealth playerHealth;
+    PlayerDamage playerDamage;
 
     public void Start() 
     {
         deathCanvas = FindObjectOfType<HUD>().DeathCanvas;
         mapCamera = GameObject.FindWithTag(Tags.MapCamera).GetComponent<Camera>();
         mainCamera = GameObject.FindWithTag(Tags.MainCamera).GetComponent<Camera>();
-        playerHealth = GameObject.FindWithTag(Tags.Player).GetComponent<PlayerHealth>();
+        playerDamage = GameObject.FindWithTag(Tags.Player).GetComponent<PlayerDamage>();
 
         Resume();
     }   
 
     void Update()
     {
-        if (playerHealth.currentHealth <= 0)
+        if (playerDamage.HealthPoints <= 0)
             GameOver();
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -53,7 +53,7 @@ public class OverlayMenu : Navigation
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        deathCanvas.enabled = playerHealth.currentHealth < 50;
+        deathCanvas.enabled = playerDamage.HealthPoints < 50;
     }
 
     public void GameOver()

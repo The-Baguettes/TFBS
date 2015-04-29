@@ -62,7 +62,7 @@ public abstract class Gun : Weapon
         Rigidbody body = proj.GetComponent<Rigidbody>();
         
         body.velocity = ProjectileSpawn.TransformDirection(0, 0, FireStrength);
-        proj.OnFire();
+        proj.OnFire(ProjectileSpawn.position);
     }
    
     public void Reload()

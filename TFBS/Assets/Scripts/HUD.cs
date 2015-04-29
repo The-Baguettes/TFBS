@@ -11,14 +11,14 @@ public class HUD : MonoBehaviour
     
     int counter;
 
-    PlayerHealth playerHealth;
+    PlayerDamage playerDamage;
     WeaponManager weaponManager;
     
     void Start()
     {
         GameObject player = GameObject.FindWithTag(Tags.Player);
 
-        playerHealth = player.GetComponent<PlayerHealth>();
+        playerDamage = player.GetComponent<PlayerDamage>();
         weaponManager = player.GetComponentInChildren<WeaponManager>();
         counter = get_AI();
     }
@@ -35,7 +35,7 @@ public class HUD : MonoBehaviour
 
     void LifeManager()
     {
-        LifeText.text = "HP: " + playerHealth.currentHealth;
+        LifeText.text = "HP: " + playerDamage.HealthPoints;
     }
 
     void Update() 
