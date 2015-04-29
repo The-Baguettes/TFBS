@@ -18,7 +18,7 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (OverlayMenu.isPaused)
+        if (OverlayMenu.IsPaused)
             return;
 
         float move_h = Input.GetAxis(Inputs.Horizontal);

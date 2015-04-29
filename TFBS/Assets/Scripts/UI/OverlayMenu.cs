@@ -5,7 +5,7 @@ public class OverlayMenu : Navigation
     public Canvas PauseCanvas;
     public Canvas GameOverCanvas;
 
-    public static bool isPaused;
+    public static bool IsPaused;
 
     Canvas deathCanvas;
     Camera mapCamera;
@@ -32,13 +32,12 @@ public class OverlayMenu : Navigation
                 Resume();
             else
                 Pause();                
-
-            isPaused = PauseCanvas.enabled;
         }
    	}
 
     public void Pause()
     {
+        IsPaused = true;
         deathCanvas.enabled = false;
         PauseCanvas.enabled = true;
         Time.timeScale = 0;
@@ -48,6 +47,7 @@ public class OverlayMenu : Navigation
 
     public void Resume()
     {
+        IsPaused = false;
         PauseCanvas.enabled = false;
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
@@ -58,6 +58,7 @@ public class OverlayMenu : Navigation
 
     public void GameOver()
     {
+        IsPaused = true;
         GameOverCanvas.enabled = true;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
