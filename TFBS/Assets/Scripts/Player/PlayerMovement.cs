@@ -2,10 +2,10 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    const float runSpeed = 15f;
+    const float sprintSpeed = 15f;
     const float walkSpeed = 10f;
     const float sneakSpeed = 5f;
-    const float turningSpeed = 200f;
+    const float rotationSpeed = 200f;
 
     Animator animator;
 
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Sprint(float amount)
     {
-        Move(amount, runSpeed, Animations.SprintForwards, Animations.SprintBackwards);
+        Move(amount, sprintSpeed, Animations.SprintForwards, Animations.SprintBackwards);
 
     }
 
@@ -45,6 +45,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void Rotate(float amount)
     {
-        transform.Rotate(0, amount * turningSpeed * Time.deltaTime, 0);
+        transform.Rotate(0, amount * rotationSpeed * Time.deltaTime, 0);
     }
 }
