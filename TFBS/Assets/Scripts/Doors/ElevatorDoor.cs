@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ElevatorDoor : MonoBehaviour {
-
-  
+public class ElevatorDoor : MonoBehaviour
+{
     bool playerIsNear = false;
-    const float smooth = 2.0f;
-    public float a;
-    public GameObject Door;
+  //  const float smooth = 10.0f;
+    float lerpPosition = 0.0f;
+    public int a;
     Vector3 Vopen;
     Vector3 Vclose;
+    private Vector3 velocity = Vector3.zero;
 	void Start ()
     {
-        Vclose = Door.transform.position;
-        Vopen = new Vector3(Vclose.x + a, Vclose.y, Vclose.z);
+        Vclose = transform.position;
+        Vopen  = new Vector3(Vclose.x, Vclose.y, Vclose.z + a);
 	}
 	
     void OnTriggerEnter(Collider col)
@@ -28,23 +28,31 @@ public class ElevatorDoor : MonoBehaviour {
             playerIsNear = false;        
     }
 
-    void Open()
-    {
-        transform.eulerAngles = Vector3.Lerp(Door.transform.position, Vopen, Time.deltaTime * 2.0f);
-        Door.transform.position = Vopen;
-    }
-
-    void Close()
-    {
-        transform.eulerAngles = Vector3.Lerp(Door.transform.position, Vclose, Time.deltaTime * 2.0f);
-        Door.transform.position = Vclose;
-    }
 
 	void Update () 
     {
         if (playerIsNear)
-            Open();
-        if (!playerIsNear)
-            Close();
-	}
+        {
+            if (transform.position == Vopen)
+                lerpPosition = 0.0f;
+            else
+            {
+                transform.position = Vector3.Lerp(Vclose, Vopen, lerpPosition);
+            }
+        }
+        else
+        {           
+            if (transform.position == Vclose)
+                lerpPosition = 0.0f;
+            else 
+            {
+               transform.position = Vector3.Lerp(Vopen, Vclose, lerpPosition);
+            }
+        }
+        lerpPosition += Time.deltaTime;
+    }
+
+   
+    
 }
+
