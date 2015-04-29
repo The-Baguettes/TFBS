@@ -2,8 +2,8 @@
 {
     public const string Idle = "Idle";
 
-    public const string RunBackwards = "Run Backwards";
-    public const string RunForwards = "Run Forwards";
+    public const string SprintBackwards = "Sprint Backwards";
+    public const string SprintForwards = "Sprint Forwards";
     
     public const string SneakBackwards = "Sneak Backwards";
     public const string SneakForwards = "Sneak Forwards";
