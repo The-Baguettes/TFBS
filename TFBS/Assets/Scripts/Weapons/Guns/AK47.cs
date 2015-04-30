@@ -1,4 +1,4 @@
-﻿public class AK47 : Gun
+﻿public class AK47 : BaseGun
 {
     protected override void OnStart()
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public abstract class BaseWeapon : MonoBehaviour
 {
     public float UseCooldown { get; protected set; }
 

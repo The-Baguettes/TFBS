@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerDamage : Damageable
+public class PlayerDamage : BaseDamageable
 {
     HUD hud;
  

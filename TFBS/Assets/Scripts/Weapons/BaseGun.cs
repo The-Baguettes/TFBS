@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class Gun : Weapon
+public abstract class BaseGun : BaseWeapon
 {
     public int MagazineSize { get; protected set; }
     public float ReloadCooldown { get; protected set; }

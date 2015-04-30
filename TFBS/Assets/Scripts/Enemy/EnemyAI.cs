@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
     
     public GameObject WaypointsContainer;
 
-    Gun firearm;
+    BaseGun firearm;
 
     Transform leader;
     NavMeshAgent navAgent;
@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
     {
         leader = GameObject.FindWithTag(Tags.Player).transform;
 
-        firearm = GetComponentInChildren<Gun>();
+        firearm = GetComponentInChildren<BaseGun>();
 
         waypoints = new List<Transform>();
         WaypointsContainer.GetComponentsInChildren<Transform>(waypoints);

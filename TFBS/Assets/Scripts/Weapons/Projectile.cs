@@ -33,7 +33,7 @@ public abstract class Projectile : MonoBehaviour, IDamager
 
     void OnTriggerEnter(Collider col)
     {
-        Damageable dam = col.GetComponent<Damageable>();
+        BaseDamageable dam = col.GetComponent<BaseDamageable>();
         if (dam != null)
             dam.TakeDamage(this);
 

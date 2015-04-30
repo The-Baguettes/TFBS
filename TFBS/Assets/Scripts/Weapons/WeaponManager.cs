@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public Weapon ActiveWeapon { get; protected set; }
-    public Gun ActiveGun { get; protected set; }
+    public BaseWeapon ActiveWeapon { get; protected set; }
+    public BaseGun ActiveGun { get; protected set; }
 
-    public List<Weapon> Weapons { get; protected set; }
+    public List<BaseWeapon> Weapons { get; protected set; }
 
     void Start()
     {
-        Weapons = new List<Weapon>();
-        GetComponentsInChildren<Weapon>(Weapons);
+        Weapons = new List<BaseWeapon>();
+        GetComponentsInChildren<BaseWeapon>(Weapons);
 
         for (int i = 0; i < Weapons.Count; i++)
             Weapons[i].gameObject.SetActive(false);
@@ -32,7 +32,7 @@ public class WeaponManager : MonoBehaviour
             ActiveWeapon.gameObject.SetActive(false);
 
         ActiveWeapon = Weapons[n];
-        ActiveGun = ActiveWeapon as Gun;
+        ActiveGun = ActiveWeapon as BaseGun;
 
         ActiveWeapon.gameObject.SetActive(true);
     }

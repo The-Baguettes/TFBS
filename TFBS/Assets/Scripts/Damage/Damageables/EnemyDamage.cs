@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyDamage : Damageable
+public class EnemyDamage : BaseDamageable
 {
     EnemyAI AI;
 
