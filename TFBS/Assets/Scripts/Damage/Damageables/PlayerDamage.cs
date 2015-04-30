@@ -14,7 +14,7 @@ public class PlayerDamage : BaseDamageable
 
     protected override void OnDeath()
     {
-        GameObject.FindWithTag(Tags.MainCamera).SetActive(false);
+        FindObjectOfType<DungeonCamera>().enabled = false;
         hud.DeathCanvas.enabled = false;
     }
 
