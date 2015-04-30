@@ -6,6 +6,7 @@ public class HUD : MonoBehaviour
     public Text GunText;
     public Text TimeText;
     public Text LifeText;
+    public Text ArmorText;
     public Text MissionGoalText;
     public Canvas DeathCanvas;
     
@@ -33,9 +34,23 @@ public class HUD : MonoBehaviour
         TimeText.text = "Time: " + (int)Time.timeSinceLevelLoad;
     }
 
+    void ArmorManager(int armor)
+    {
+        ArmorText.text = "Armor: " + armor;
+    }
+
     void LifeManager()
     {
-        LifeText.text = "HP: " + playerDamage.HealthPoints;
+        if (playerDamage.HealthPoints > 100)
+        {
+            LifeText.text = "HP: 100";
+            ArmorManager(playerDamage.HealthPoints - 100);
+        }
+        else
+        {
+            ArmorText.text = "";
+            LifeText.text = "HP: " + playerDamage.HealthPoints;
+        }
     }
 
     void Update() 

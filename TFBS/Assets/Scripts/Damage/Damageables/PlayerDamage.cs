@@ -7,7 +7,7 @@ public class PlayerDamage : BaseDamageable
     protected override void OnStart()
     {
         MaxHealthPoints = 200;
-        HealthPoints = 100;
+        HealthPoints = 150;
 
         hud = FindObjectOfType<HUD>();
     }
