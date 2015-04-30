@@ -1,58 +1,50 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class ElevatorDoor : MonoBehaviour
 {
-    bool playerIsNear = false;
-  //  const float smooth = 10.0f;
-    float lerpPosition = 0.0f;
-    public int a;
-    Vector3 Vopen;
-    Vector3 Vclose;
-    private Vector3 velocity = Vector3.zero;
-	void Start ()
+    public int OffsetFromCenter;
+
+    bool isPlayerNear = false;
+    float animationProgress = 0.0f;
+
+    Vector3 positionOpened;
+    Vector3 positionClosed;
+
+    void Start()
     {
-        Vclose = transform.position;
-        Vopen  = new Vector3(Vclose.x, Vclose.y, Vclose.z + a);
-	}
-	
+        positionClosed = transform.position;
+        positionOpened  = new Vector3(positionClosed.x, positionClosed.y, positionClosed.z + OffsetFromCenter);
+    }
+
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == Tags.Player)         
-            playerIsNear = true;
+        if (col.tag == Tags.Player)
+            isPlayerNear = true;
     }
 
     void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.tag == Tags.Player)
-            playerIsNear = false;        
+        if (col.tag == Tags.Player)
+            isPlayerNear = false;
     }
 
-
-	void Update () 
+    void Update()
     {
-        if (playerIsNear)
+        if (isPlayerNear)
         {
-            if (transform.position == Vopen)
-                lerpPosition = 0.0f;
+            if (transform.position == positionOpened)
+                animationProgress = 0.0f;
             else
-            {
-                transform.position = Vector3.Lerp(Vclose, Vopen, lerpPosition);
-            }
+                transform.position = Vector3.Lerp(positionClosed, positionOpened, animationProgress);
         }
         else
-        {           
-            if (transform.position == Vclose)
-                lerpPosition = 0.0f;
-            else 
-            {
-               transform.position = Vector3.Lerp(Vopen, Vclose, lerpPosition);
-            }
+        {
+            if (transform.position == positionClosed)
+                animationProgress = 0.0f;
+            else
+               transform.position = Vector3.Lerp(positionOpened, positionClosed, animationProgress);
         }
-        lerpPosition += Time.deltaTime;
+
+        animationProgress += Time.deltaTime;
     }
-
-   
-    
 }
-
