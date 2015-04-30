@@ -42,6 +42,14 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
+        /* I need this for some test -CAI Richard-
+        if (Input.GetButtonDown(Inputs.Reload))
+        {
+            PlayerDamage playerDamage = GameObject.FindWithTag(Tags.Player).GetComponent<PlayerDamage>();
+            playerDamage.Heal(10);
+        }
+        */
+
         if (Input.GetButton(Inputs.Fire))
             weaponManager.UseActive();
         else if (weaponManager.ActiveGun != null)

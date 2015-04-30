@@ -9,12 +9,12 @@ public class HUD : MonoBehaviour
     public Text ArmorText;
     public Text MissionGoalText;
     public Canvas DeathCanvas;
-    
+
     int counter;
 
     PlayerDamage playerDamage;
     WeaponManager weaponManager;
-    
+
     void Start()
     {
         GameObject player = GameObject.FindWithTag(Tags.Player);
@@ -48,12 +48,17 @@ public class HUD : MonoBehaviour
         }
         else
         {
-            ArmorText.text = "";
-            LifeText.text = "HP: " + playerDamage.HealthPoints;
+            ArmorText.text = "No armor";
+            if (playerDamage.HealthPoints < 0)
+            {
+                LifeText.text = "You died";
+            }
+            else
+                LifeText.text = "HP: " + playerDamage.HealthPoints;
         }
     }
 
-    void Update() 
+    void Update()
     {
         TimeManager();
         LifeManager();
