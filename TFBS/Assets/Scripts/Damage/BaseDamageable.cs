@@ -8,8 +8,7 @@ public abstract class BaseDamageable : BaseComponent
     public delegate void HealthPointChangeEventHandler(int value, int delta);
 
     public event BaseComponent.EventHandler OnDeath;
-    public event HealthPointChangeEventHandler OnAddHealthPoints;
-    public event HealthPointChangeEventHandler OnRemoveHealthPoints;
+    public event HealthPointChangeEventHandler OnChangeHealthPoints;
 
     protected int MaxHealthPoints;
 
@@ -31,7 +30,7 @@ public abstract class BaseDamageable : BaseComponent
             amount = 0;
         
         HealthPoints += amount;
-        OnAddHealthPoints(HealthPoints, amount);
+        OnChangeHealthPoints(HealthPoints, amount);
     }
 
     public virtual void RemoveHealthPoints(IDamager damager)
@@ -49,6 +48,6 @@ public abstract class BaseDamageable : BaseComponent
             Destroy(gameObject);
         }
         else
-            OnRemoveHealthPoints(HealthPoints, delta);
+            OnChangeHealthPoints(HealthPoints, delta);
     }
 }

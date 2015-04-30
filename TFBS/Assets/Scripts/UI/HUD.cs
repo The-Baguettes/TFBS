@@ -32,15 +32,14 @@ public class HUD : BaseComponent
         playerDamage = player.GetComponent<PlayerDamage>();
 
         playerDamage.OnDeath += playerDamage_OnDeath;
-        playerDamage.OnAddHealthPoints += playerDamage_OnAddHealthPoints;
-        playerDamage.OnRemoveHealthPoints += playerDamage_OnRemoveHealthPoints;
+        playerDamage.OnChangeHealthPoints += playerDamage_OnChangeHealthPoints;
+
     }
 
     protected override void UnHookEvents()
     {
-        playerDamage.OnDeath += playerDamage_OnDeath;
-        playerDamage.OnAddHealthPoints -= playerDamage_OnAddHealthPoints;
-        playerDamage.OnRemoveHealthPoints -= playerDamage_OnRemoveHealthPoints;
+        playerDamage.OnDeath -= playerDamage_OnDeath;
+        playerDamage.OnChangeHealthPoints -= playerDamage_OnChangeHealthPoints;
     }
     #endregion
 
@@ -51,14 +50,9 @@ public class HUD : BaseComponent
         DeathCanvas.enabled = false;
     }
 
-    void playerDamage_OnAddHealthPoints(int value, int delta)
+    void playerDamage_OnChangeHealthPoints(int value, int delta)
     {
-        if (value > 50)
-            DeathCanvas.enabled = false;
-    }
-
-    void playerDamage_OnRemoveHealthPoints(int value, int delta)
-    {
+        DeathCanvas.enabled = value < 50;
 
         if (value > 100)
         {
@@ -69,9 +63,6 @@ public class HUD : BaseComponent
         {
             ArmorText.text = "No armor";
             LifeText.text = "HP: " + value;
-
-            if (value < 50)
-                DeathCanvas.enabled = true;
         }
     }
     #endregion
