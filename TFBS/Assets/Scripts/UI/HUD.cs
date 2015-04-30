@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class HUD : MonoBehaviour
+public class HUD : BaseComponent
 {
     public Text GunText;
     public Text TimeText;
@@ -12,17 +13,68 @@ public class HUD : MonoBehaviour
 
     int counter;
 
-    PlayerDamage playerDamage;
     WeaponManager weaponManager;
 
-    void Start()
+    sealed protected override void OnStart()
     {
         GameObject player = GameObject.FindWithTag(Tags.Player);
-
-        playerDamage = player.GetComponent<PlayerDamage>();
+        
         weaponManager = player.GetComponentInChildren<WeaponManager>();
         counter = get_AI();
     }
+
+    #region EventRegistration
+    PlayerDamage playerDamage;
+
+    protected override void HookUpEvents()
+    {
+        GameObject player = GameObject.FindWithTag(Tags.Player);
+        playerDamage = player.GetComponent<PlayerDamage>();
+
+        playerDamage.OnDeath += playerDamage_OnDeath;
+        playerDamage.OnAddHealthPoints += playerDamage_OnAddHealthPoints;
+        playerDamage.OnRemoveHealthPoints += playerDamage_OnRemoveHealthPoints;
+    }
+
+    protected override void UnHookEvents()
+    {
+        playerDamage.OnDeath += playerDamage_OnDeath;
+        playerDamage.OnAddHealthPoints -= playerDamage_OnAddHealthPoints;
+        playerDamage.OnRemoveHealthPoints -= playerDamage_OnRemoveHealthPoints;
+    }
+    #endregion
+
+    #region EventHandlers
+    void playerDamage_OnDeath()
+    {
+        LifeText.text = "You died";
+        DeathCanvas.enabled = false;
+    }
+
+    void playerDamage_OnAddHealthPoints(int value, int delta)
+    {
+        if (value > 50)
+            DeathCanvas.enabled = false;
+    }
+
+    void playerDamage_OnRemoveHealthPoints(int value, int delta)
+    {
+
+        if (value > 100)
+        {
+            LifeText.text = "HP: 100";
+            ArmorManager(value - 100);
+        }
+        else
+        {
+            ArmorText.text = "No armor";
+            LifeText.text = "HP: " + value;
+
+            if (value < 50)
+                DeathCanvas.enabled = true;
+        }
+    }
+    #endregion
 
     int get_AI()
     {
@@ -39,29 +91,9 @@ public class HUD : MonoBehaviour
         ArmorText.text = "Armor: " + armor;
     }
 
-    void LifeManager()
-    {
-        if (playerDamage.HealthPoints > 100)
-        {
-            LifeText.text = "HP: 100";
-            ArmorManager(playerDamage.HealthPoints - 100);
-        }
-        else
-        {
-            ArmorText.text = "No armor";
-            if (playerDamage.HealthPoints < 0)
-            {
-                LifeText.text = "You died";
-            }
-            else
-                LifeText.text = "HP: " + playerDamage.HealthPoints;
-        }
-    }
-
     void Update()
     {
         TimeManager();
-        LifeManager();
 
         int enemies = get_AI();
         GunText.text = "Kills: " + (counter - enemies) + '\n';

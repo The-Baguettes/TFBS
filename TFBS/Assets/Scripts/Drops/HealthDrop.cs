@@ -6,7 +6,7 @@ public class HealthDrop : DropBase
 
     override protected bool Pickup()
     {
-        playerDamage.Heal(20);
+        playerDamage.AddHealthPoints(20);
         return true;
     }
 }

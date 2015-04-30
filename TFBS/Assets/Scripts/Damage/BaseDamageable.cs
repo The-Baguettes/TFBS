@@ -1,43 +1,47 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public abstract class BaseDamageable : MonoBehaviour
+public abstract class BaseDamageable : BaseComponent
 {
     public int HealthPoints { get; protected set; }
 
+    public delegate void HealthPointChangeEventHandler(int value, int delta);
+
+    public event BaseComponent.EventHandler OnDeath;
+    public event HealthPointChangeEventHandler OnAddHealthPoints;
+    public event HealthPointChangeEventHandler OnRemoveHealthPoints;
+
     protected int MaxHealthPoints;
 
-    protected abstract void OnStart();
+    protected abstract void Setup();
 
-    protected virtual void OnDeath()
-    { }
-
-    protected virtual void OnTakeDamage()
-    { }
-
-    protected void Start()
+    sealed protected override void OnStart()
     {
         HealthPoints = -1;
 
-        OnStart();
+        Setup();
 
         if (HealthPoints == -1)
             HealthPoints = MaxHealthPoints;
     }
 
-    public virtual void Heal(int amount)
+    public virtual void AddHealthPoints(int amount)
     {
-        HealthPoints += amount;
-
         if (HealthPoints > MaxHealthPoints)
-            HealthPoints = MaxHealthPoints;
+            amount = 0;
+        
+        HealthPoints += amount;
+        OnAddHealthPoints(HealthPoints, amount);
     }
 
-    public virtual void TakeDamage(IDamager damager)
+    public virtual void RemoveHealthPoints(IDamager damager)
     {
-        HealthPoints -= (int)Mathf.Lerp(
+        int delta = (int)Mathf.Lerp(
             damager.MinDamage, damager.MaxDamage,
             5 / Vector3.Distance(transform.position, damager.UsedFrom)
         );
+
+        HealthPoints -= delta;
 
         if (HealthPoints < 0)
         {
@@ -45,6 +49,6 @@ public abstract class BaseDamageable : MonoBehaviour
             Destroy(gameObject);
         }
         else
-            OnTakeDamage();
+            OnRemoveHealthPoints(HealthPoints, delta);
     }
 }

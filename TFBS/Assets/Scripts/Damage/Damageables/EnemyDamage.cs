@@ -2,21 +2,14 @@
 
 public class EnemyDamage : BaseDamageable
 {
-    EnemyAI AI;
-
-    protected override void OnStart()
+    protected override void Setup()
     {
         MaxHealthPoints = 100;
-        
-        AI = GetComponent<EnemyAI>();
+
+        OnDeath += EnemyDamage_OnDeath;
     }
 
-    protected override void OnTakeDamage()
-    {
-        AI.OnTakeDamage();
-    }
-
-    protected override void OnDeath()
+    void EnemyDamage_OnDeath()
     {
         DropSpawner.SpawnCube<AmmoDrop>(transform);
     }

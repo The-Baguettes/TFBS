@@ -35,7 +35,7 @@ public abstract class Projectile : MonoBehaviour, IDamager
     {
         BaseDamageable dam = col.GetComponent<BaseDamageable>();
         if (dam != null)
-            dam.TakeDamage(this);
+            dam.RemoveHealthPoints(this);
 
         Destroy(gameObject);
     }

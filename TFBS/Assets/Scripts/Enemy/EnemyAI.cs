@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : BaseComponent
 {
     const int fieldOfView = 160 / 2;
     
@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     int currentWaypoint;
     List<Transform> waypoints;
 
-    void Start()
+    protected override void OnStart()
     {
         leader = GameObject.FindWithTag(Tags.Player).transform;
 
@@ -34,6 +34,30 @@ public class EnemyAI : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.SetDestination(waypoints[0].position);
     }
+
+    #region EventManagement
+    EnemyDamage enemyDamage;
+
+    protected override void HookUpEvents()
+    {
+        enemyDamage = GetComponent<EnemyDamage>();
+
+        enemyDamage.OnRemoveHealthPoints += new BaseDamageable.HealthPointChangeEventHandler(OnRemoveHealthPoints);
+    }
+
+    protected override void UnHookEvents()
+    {
+        enemyDamage.OnRemoveHealthPoints -= new BaseDamageable.HealthPointChangeEventHandler(OnRemoveHealthPoints);
+    }
+    #endregion
+
+    #region EventHandlers
+    void OnRemoveHealthPoints(int healthPoints, int delta)
+    {
+        if (!isFollowingPlayer)
+            StartLookAround();
+    }
+    #endregion
 
     void Update()
     {
@@ -116,12 +140,6 @@ public class EnemyAI : MonoBehaviour
             StartFollowLeader();
             Shoot();
         }
-    }
-
-    public void OnTakeDamage()
-    {
-        if (!isFollowingPlayer)
-            StartLookAround();
     }
 
     bool isLeaderInFieldOfView()
