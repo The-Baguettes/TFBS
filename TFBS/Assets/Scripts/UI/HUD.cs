@@ -99,6 +99,8 @@ public class HUD : BaseComponent
     {
         TimeManager();
 
-        MissionGoalText.text = "Enemies: " + get_AI();
+        //objectives of the mission, here example of a simple mission
+        MissionGoalText.text = "Objectives: Kill the ennemies.\n\n\n";
+        MissionGoalText.text += "Enemies left: " + get_AI();
     }
 }
