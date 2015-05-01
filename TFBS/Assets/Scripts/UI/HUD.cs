@@ -9,6 +9,7 @@ public class HUD : BaseComponent
     public Text ArmorText;
     public Text MissionGoalText;
     public Canvas DeathCanvas;
+    public string Objective = "Kill all the ennemies";
 
     #region EventManagement
     PlayerDamage playerDamage;
@@ -100,7 +101,7 @@ public class HUD : BaseComponent
         TimeManager();
 
         //objectives of the mission, here example of a simple mission
-        MissionGoalText.text = "Objectives: Kill the ennemies.\n\n\n";
+        MissionGoalText.text ="Objective: " + Objective + "\n\n\n";
         MissionGoalText.text += "Enemies left: " + get_AI();
     }
 }
