@@ -6,4 +6,5 @@
     Thing,
     Environment,
     Game,
+    Floor1,
 }
