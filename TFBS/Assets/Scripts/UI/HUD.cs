@@ -10,20 +10,9 @@ public class HUD : BaseComponent
     public Text MissionGoalText;
     public Canvas DeathCanvas;
 
-    int counter;
-
-    WeaponManager weaponManager;
-
-    sealed protected override void OnStart()
-    {
-        GameObject player = GameObject.FindWithTag(Tags.Player);
-        
-        weaponManager = player.GetComponentInChildren<WeaponManager>();
-        counter = get_AI();
-    }
-
     #region EventManagement
     PlayerDamage playerDamage;
+    WeaponManager playerWeaponManager;
 
     protected override void HookUpEvents()
     {
@@ -34,6 +23,9 @@ public class HUD : BaseComponent
         playerDamage.OnChangeHealthPoints += playerDamage_OnChangeHealthPoints;
 
         playerDamage.OnInitialized(playerDamage_OnInitialized);
+
+        playerWeaponManager = player.GetComponentInChildren<WeaponManager>();
+        playerWeaponManager.OnWeaponSwitch += playerWeaponManager_OnWeaponSwitch;
     }
 
     protected override void UnHookEvents()
@@ -43,6 +35,9 @@ public class HUD : BaseComponent
             playerDamage.OnDeath -= playerDamage_OnDeath;
             playerDamage.OnChangeHealthPoints -= playerDamage_OnChangeHealthPoints;
         }
+
+        if (playerWeaponManager != null)
+            playerWeaponManager.OnWeaponSwitch -= playerWeaponManager_OnWeaponSwitch;
     }
     #endregion
 
@@ -73,6 +68,16 @@ public class HUD : BaseComponent
             LifeText.text = "HP: " + value;
         }
     }
+
+    void playerWeaponManager_OnWeaponSwitch(BaseWeapon weapon, BaseGun gun)
+    {
+        GunText.text = "Weapon: " + weapon.name + '\n';
+
+        if (gun == null)
+            GunText.text += "Uses: " + weapon.UsesLeft;
+        else
+            GunText.text += "Ammo: " + weapon.UsesLeft + '/' + gun.MagazineCount;
+    }
     #endregion
 
     int get_AI()
@@ -94,18 +99,6 @@ public class HUD : BaseComponent
     {
         TimeManager();
 
-        int enemies = get_AI();
-        GunText.text = "Kills: " + (counter - enemies) + '\n';
-        if (weaponManager.ActiveWeapon != null)
-        {
-            GunText.text += "Weapon: " + weaponManager.ActiveWeapon.name + '\n';
-
-            if (weaponManager.ActiveGun == null)
-                GunText.text += "Uses: " + weaponManager.ActiveWeapon.UsesLeft;
-            else
-                GunText.text += "Ammo: " + weaponManager.ActiveGun.UsesLeft + '/' + weaponManager.ActiveGun.MagazineCount;
-        }
-
-        MissionGoalText.text = "Enemies: " + enemies;
+        MissionGoalText.text = "Enemies: " + get_AI();
     }
 }

@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : BaseComponent
 {
     public BaseWeapon ActiveWeapon { get; protected set; }
     public BaseGun ActiveGun { get; protected set; }
 
     public List<BaseWeapon> Weapons { get; protected set; }
 
-    void Start()
+    public delegate void WeaponSwitchHandler(BaseWeapon weapon, BaseGun gun);
+
+    public event WeaponSwitchHandler OnWeaponSwitch;
+
+    protected override void OnStart()
     {
         Weapons = new List<BaseWeapon>();
         GetComponentsInChildren<BaseWeapon>(Weapons);
@@ -35,5 +39,8 @@ public class WeaponManager : MonoBehaviour
         ActiveGun = ActiveWeapon as BaseGun;
 
         ActiveWeapon.gameObject.SetActive(true);
+
+        if (OnWeaponSwitch != null)
+            OnWeaponSwitch(ActiveWeapon, ActiveGun);
     }
 }
