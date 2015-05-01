@@ -34,6 +34,7 @@ public class HUD : BaseComponent
         playerDamage.OnDeath += playerDamage_OnDeath;
         playerDamage.OnChangeHealthPoints += playerDamage_OnChangeHealthPoints;
 
+        playerDamage.OnInitialized(playerDamage_OnInitialized);
     }
 
     protected override void UnHookEvents()
@@ -44,6 +45,11 @@ public class HUD : BaseComponent
     #endregion
 
     #region EventHandlers
+    void playerDamage_OnInitialized()
+    {
+        playerDamage_OnChangeHealthPoints(playerDamage.HealthPoints, 0);
+    }
+
     void playerDamage_OnDeath()
     {
         LifeText.text = "You died";

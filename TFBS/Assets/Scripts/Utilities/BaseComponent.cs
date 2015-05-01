@@ -4,6 +4,9 @@ public abstract class BaseComponent : MonoBehaviour
 {
     public delegate void EventHandler();
 
+    bool isInitialized;
+    event EventHandler onInitialized;
+
     #region OverridableMethods
     protected virtual void OnStart()
     { }
@@ -18,10 +21,26 @@ public abstract class BaseComponent : MonoBehaviour
     {
         OnStart();
         HookUpEvents();
+
+        isInitialized = true;
+
+        if (onInitialized != null)
+        {
+            onInitialized();
+            onInitialized = null;
+        }
     }
 
     protected void OnDestroy()
     {
         UnHookEvents();
+    }
+
+    public void OnInitialized(EventHandler handler)
+    {
+        if (isInitialized)
+            handler();
+        else
+            onInitialized += handler;
     }
 }
