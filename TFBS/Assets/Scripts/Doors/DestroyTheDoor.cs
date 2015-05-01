@@ -8,7 +8,6 @@ public class DestroyTheDoor : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        print(col.tag);
         if (col.tag != Tags.Bullet)
             return;
 
