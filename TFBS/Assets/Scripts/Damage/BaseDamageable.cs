@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class BaseDamageable : BaseComponent
 {
@@ -30,7 +29,8 @@ public abstract class BaseDamageable : BaseComponent
             amount = 0;
         
         HealthPoints += amount;
-        OnChangeHealthPoints(HealthPoints, amount);
+        if (OnChangeHealthPoints != null)
+            OnChangeHealthPoints(HealthPoints, amount);
     }
 
     public virtual void RemoveHealthPoints(IDamager damager)
@@ -44,10 +44,12 @@ public abstract class BaseDamageable : BaseComponent
 
         if (HealthPoints < 0)
         {
-            OnDeath();
+            if (OnDeath != null)
+                OnDeath();
+
             Destroy(gameObject);
         }
-        else
+        else if (OnChangeHealthPoints != null)
             OnChangeHealthPoints(HealthPoints, delta);
     }
 }
