@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-
-public class PlayerDamage : BaseDamageable
+﻿public class PlayerDamage : BaseDamageable
 {
     protected override void Setup()
     {

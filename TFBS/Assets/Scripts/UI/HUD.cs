@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HUD : BaseComponent
@@ -23,7 +22,7 @@ public class HUD : BaseComponent
         counter = get_AI();
     }
 
-    #region EventRegistration
+    #region EventManagement
     PlayerDamage playerDamage;
 
     protected override void HookUpEvents()

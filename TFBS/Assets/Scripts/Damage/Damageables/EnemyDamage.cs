@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class EnemyDamage : BaseDamageable
+﻿public class EnemyDamage : BaseDamageable
 {
     protected override void Setup()
     {
