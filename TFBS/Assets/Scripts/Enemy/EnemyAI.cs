@@ -47,7 +47,8 @@ public class EnemyAI : BaseComponent
 
     protected override void UnHookEvents()
     {
-        enemyDamage.OnChangeHealthPoints -= enemyDamage_OnChangeHealthPoints;
+        if (enemyDamage != null)
+            enemyDamage.OnChangeHealthPoints -= enemyDamage_OnChangeHealthPoints;
     }
     #endregion
 

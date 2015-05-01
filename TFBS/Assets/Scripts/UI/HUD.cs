@@ -39,8 +39,11 @@ public class HUD : BaseComponent
 
     protected override void UnHookEvents()
     {
-        playerDamage.OnDeath -= playerDamage_OnDeath;
-        playerDamage.OnChangeHealthPoints -= playerDamage_OnChangeHealthPoints;
+        if (playerDamage != null)
+        {
+            playerDamage.OnDeath -= playerDamage_OnDeath;
+            playerDamage.OnChangeHealthPoints -= playerDamage_OnChangeHealthPoints;
+        }
     }
     #endregion
 
