@@ -1,32 +1,23 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class DestroyTheDoor : MonoBehaviour {
+public class DestroyTheDoor : MonoBehaviour
+{
+    public Transform DestroyEffect;
+    
+    int durability = 2;
 
-    public int durability;
-    public GameObject body;
-    public Transform prefab;
-    Object parent;
-
-    void Start()
+    void OnTriggerEnter(Collider col)
     {
-        parent = this.transform.parent.gameObject;
-    }
+        print(col.tag);
+        if (col.tag != Tags.Bullet)
+            return;
 
-    void Update()
-    {
-        if (durability == 0)
+        durability--;
+        
+        if (durability < 0)
         {
-            Instantiate(prefab, body.transform.position, Quaternion.identity);
-            GameObject.Destroy(parent);
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Bullet")
-        {
-            durability--;
+            Instantiate(DestroyEffect, transform.position, Quaternion.identity);
+            GameObject.Destroy(transform.parent.gameObject);
         }
     }
 }

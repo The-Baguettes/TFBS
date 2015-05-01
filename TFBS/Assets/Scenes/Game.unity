@@ -1223,7 +1223,7 @@ GameObject:
   - 23: {fileID: 93588480}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: NoHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4700,9 +4700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability: 2
-  body: {fileID: 391009157}
-  prefab: {fileID: 400000, guid: c8fd86fe5050dc04bb501b291c30f591, type: 2}
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!65 &316517174
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5912,7 +5910,7 @@ GameObject:
   - 23: {fileID: 391009159}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: NoHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6146,7 +6144,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 409305631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.49999997, y: 0, z: 0}
+  m_LocalPosition: {x: -.444000006, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 933652785}
@@ -6162,9 +6160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability: 2
-  body: {fileID: 1291322058}
-  prefab: {fileID: 400000, guid: c8fd86fe5050dc04bb501b291c30f591, type: 2}
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!65 &409305634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6175,7 +6171,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.04999995, y: 1.04999995, z: 1.04999995}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &410026007
 Prefab:
@@ -6277,7 +6273,7 @@ GameObject:
   - 23: {fileID: 426844452}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: NoHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7582,6 +7578,7 @@ MonoBehaviour:
   ArmorText: {fileID: 626965264}
   MissionGoalText: {fileID: 1227193448}
   DeathCanvas: {fileID: 1256274645}
+  Objective: Kill all the ennemies
 --- !u!1 &492072111
 GameObject:
   m_ObjectHideFlags: 0
@@ -9761,7 +9758,7 @@ GameObject:
   - 23: {fileID: 671375369}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: NoHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10105,9 +10102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability: 2
-  body: {fileID: 186509025}
-  prefab: {fileID: 400000, guid: c8fd86fe5050dc04bb501b291c30f591, type: 2}
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!65 &713663264
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10429,7 +10424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &723217429
 Transform:
   m_ObjectHideFlags: 0
@@ -12683,7 +12678,7 @@ GameObject:
   - 23: {fileID: 910331579}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: NoHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13379,9 +13374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability: 2
-  body: {fileID: 93588478}
-  prefab: {fileID: 400000, guid: c8fd86fe5050dc04bb501b291c30f591, type: 2}
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!65 &961689899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13518,7 +13511,7 @@ GameObject:
   - 23: {fileID: 975453770}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: NoHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17007,8 +17000,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1273121507}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 94.5500031, y: 1, z: 16.1299992}
+  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
+  m_LocalPosition: {x: 9.19999981, y: 1, z: 20.2999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 352642978}
@@ -17191,7 +17184,7 @@ GameObject:
   - 23: {fileID: 1291322060}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: NoHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17203,7 +17196,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1291322058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.444000006, y: 0, z: 0}
+  m_LocalPosition: {x: -.430000007, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 933652785}
@@ -18627,9 +18620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability: 2
-  body: {fileID: 671375367}
-  prefab: {fileID: 400000, guid: c8fd86fe5050dc04bb501b291c30f591, type: 2}
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!65 &1412230501
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25830,9 +25821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability: 2
-  body: {fileID: 426844450}
-  prefab: {fileID: 400000, guid: c8fd86fe5050dc04bb501b291c30f591, type: 2}
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!65 &1994449529
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28085,9 +28074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability: 2
-  body: {fileID: 975453768}
-  prefab: {fileID: 400000, guid: c8fd86fe5050dc04bb501b291c30f591, type: 2}
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!65 &2138696166
 BoxCollider:
   m_ObjectHideFlags: 0
