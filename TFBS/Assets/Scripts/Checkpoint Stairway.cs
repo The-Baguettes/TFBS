@@ -13,7 +13,7 @@ public class Checkpoint : MonoBehaviour
         print(checkpointcol.tag);
         if (checkpointcol.tag == Tags.Player) 
         {
-            hud.Objective = "You Passed The Level BiBiBiBiaaaaatch";
+            hud.Objective = "You Passed The Level";
         }
     }
 }
