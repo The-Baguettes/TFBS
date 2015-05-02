@@ -74,7 +74,7 @@ public class HUD : BaseComponent
         }
     }
 
-    void playerWeaponManager_OnUseActive(Transform target)
+    public void playerWeaponManager_OnUseActive()
     {
         if (playerWeaponManager.ActiveGun == null)
             WeaponUseText.text = "Uses: " + playerWeaponManager.ActiveWeapon.UsesLeft;
@@ -85,7 +85,7 @@ public class HUD : BaseComponent
     void playerWeaponManager_OnWeaponSwitch()
     {
         WeaponText.text = "Weapon: " + playerWeaponManager.ActiveWeapon.name;
-        playerWeaponManager_OnUseActive(null);
+        playerWeaponManager.ActiveWeapon.OnInitialized(playerWeaponManager_OnUseActive);
     }
     #endregion
 

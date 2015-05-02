@@ -1,6 +1,6 @@
 ﻿public class M4A1 : BaseGun
 {
-    protected override void OnStart()
+    protected override void Setup()
     {
         ReloadCooldown = 1f;
         UseCooldown = .16f;

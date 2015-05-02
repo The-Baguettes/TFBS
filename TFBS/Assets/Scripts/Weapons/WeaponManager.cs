@@ -8,9 +8,7 @@ public class WeaponManager : BaseComponent
 
     public List<BaseWeapon> Weapons { get; protected set; }
 
-    public delegate void UseActiveHandler(Transform target);
-
-    public event UseActiveHandler OnUseActive;
+    public event EventHandler OnUseActive;
     public event EventHandler OnWeaponSwitch;
 
     protected override void OnStart()
@@ -29,7 +27,7 @@ public class WeaponManager : BaseComponent
             ActiveWeapon.Use(target);
 
             if (OnUseActive != null)
-                OnUseActive(target);
+                OnUseActive();
         }
     }
 

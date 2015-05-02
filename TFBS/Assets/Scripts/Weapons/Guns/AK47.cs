@@ -1,6 +1,6 @@
 ﻿public class AK47 : BaseGun
 {
-    protected override void OnStart()
+    protected override void Setup()
     {
         ReloadCooldown = 1.2f;
         UseCooldown = .16f;

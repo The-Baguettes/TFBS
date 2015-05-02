@@ -21,10 +21,13 @@ public abstract class BaseGun : BaseWeapon
     /// </summary>
     protected float FireStrength;
 
-    protected abstract void OnStart();
+    protected abstract void Setup();
 
-    void Start()
+    HUD hud;
+    protected override void OnStart()
     {
+        hud = FindObjectOfType<HUD>();
+
         ProjectileSpawn = transform.FindChild("ProjectileSpawn");
 
         UseClip = transform.FindChild("FireSound").GetComponent<AudioSource>().clip;
@@ -49,7 +52,7 @@ public abstract class BaseGun : BaseWeapon
 
         UsesLeft = -1;
 
-        OnStart();
+        Setup();
 
         if (UsesLeft == -1)
             UsesLeft = MagazineSize;
@@ -64,7 +67,7 @@ public abstract class BaseGun : BaseWeapon
         body.velocity = ProjectileSpawn.TransformDirection(0, 0, FireStrength);
         proj.OnFire(ProjectileSpawn.position);
     }
-   
+
     public void Reload()
     {
         if (UsesLeft == MagazineSize || !CoolDownOver())
@@ -83,6 +86,8 @@ public abstract class BaseGun : BaseWeapon
         NextUseTime = Time.time + ReloadCooldown;
         MagazineCount--;
         UsesLeft = MagazineSize;
+
+        hud.playerWeaponManager_OnUseActive(); // TODO: Proper event
     }
 
     public void ToggleSilencer()
