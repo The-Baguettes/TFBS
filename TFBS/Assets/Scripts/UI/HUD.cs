@@ -9,6 +9,8 @@ public class HUD : BaseComponent
     public Text ArmorText;
     public Text MissionGoalText;
     public Canvas DeathCanvas;
+    public int AddTime;
+    public int time;
     public string Objective = "Kill all the ennemies";
 
     #region EventManagement
@@ -88,7 +90,9 @@ public class HUD : BaseComponent
 
     void TimeManager()
     {
-        TimeText.text = "Time: " + (int)Time.timeSinceLevelLoad;
+        time = (int)Time.timeSinceLevelLoad;
+        int print_time = time + AddTime;
+        TimeText.text = "Time: " + print_time;
     }
 
     void ArmorManager(int armor)

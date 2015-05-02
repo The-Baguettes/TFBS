@@ -10,7 +10,7 @@ public class SaveLoad : MonoBehaviour {
     static Vector3 position;
     static Quaternion rotation;
     static int currenthealth;
-    static float time;
+    static int time;
 
 	void Start () {
         folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -18,7 +18,7 @@ public class SaveLoad : MonoBehaviour {
         if (!Directory.Exists(folder))
             Directory.CreateDirectory(folder);
 	}
-	
+    
     string SaveInformation()
     {
         string level = Application.loadedLevel.ToString();
@@ -26,8 +26,9 @@ public class SaveLoad : MonoBehaviour {
         string position =  player.transform.position.x + "|" + player.transform.position.y + "|" + player.transform.position.z + "|";
         string rotation = player.transform.rotation.x + "|" + player.transform.rotation.y + "|" + player.transform.rotation.z + "|" + player.transform.rotation.w + "|";
         string health = GameObject.FindObjectOfType<PlayerDamage>().HealthPoints.ToString();
-        string result = level + "\r\n" + position + "\r\n" + rotation + "\r\n" + health;
-        return result; 
+        string time = GameObject.FindObjectOfType<HUD>().time.ToString();
+        string result = level + "\r\n" + position + "\r\n" + rotation + "\r\n" + health + "\r\n" + time;
+        return result;
     }
 
     public void Save()
@@ -51,9 +52,11 @@ public class SaveLoad : MonoBehaviour {
         string pos = loa.ReadLine();
         string rot = loa.ReadLine();
         string hea = loa.ReadLine();
+        string tim = loa.ReadLine();
         position = ToVector3(pos);
         rotation = ToQuaternion(rot);
         currenthealth = (int)ToFloat(hea);
+        time = (int)ToFloat(tim);
         DontDestroyOnLoad(gameObject);        
         SceneManager.LoadScene((Scene)ToFloat(lvl));
     }
@@ -75,7 +78,7 @@ public class SaveLoad : MonoBehaviour {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = position;
         player.transform.rotation = rotation;
-
+        GameObject.FindObjectOfType<HUD>().AddTime = time;
         Destroy(gameObject);
     }
 
