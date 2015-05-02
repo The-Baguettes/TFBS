@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CheckpointGame : MonoBehaviour {
+public class GameObjective : MonoBehaviour {
 
     HUD hud;
     void Start()
@@ -17,4 +17,5 @@ public class CheckpointGame : MonoBehaviour {
             hud.Objective = "You Passed The Level";
         }
     }
+
 }
