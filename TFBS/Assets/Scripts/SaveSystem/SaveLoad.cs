@@ -75,6 +75,9 @@ public class SaveLoad : MonoBehaviour {
 
     void OnLevelWasLoaded()
     {
+        if (Application.loadedLevel == (int)Scene.MainMenu)
+            return;
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = position;
         player.transform.rotation = rotation;
