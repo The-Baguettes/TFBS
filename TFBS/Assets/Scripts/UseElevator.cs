@@ -51,7 +51,7 @@ public class UseElevator : MonoBehaviour
                 GUI.Label(new Rect((Screen.width * 3 / 4) - 25, Screen.height / 2 - 40, 250, 50), "Which floor do you want to go?");
                 if (GUI.Button(new Rect((Screen.width * 3 / 4) - 25, Screen.height / 2, 150, 50), "1st Floor"))
                 {
-                    if (Application.loadedLevel != 3)
+                    if (SceneManager.LoadedScene != Scene.Game)
                     {
                         SceneManager.LoadScene(Scene.Game);
                     }
@@ -64,7 +64,7 @@ public class UseElevator : MonoBehaviour
                 }
                 if (GUI.Button(new Rect((Screen.width * 3 / 4) - 25, Screen.height / 2 + 60, 150, 50), "2nd Floor"))
                 {
-                    if (Application.loadedLevel != 4)
+                    if (SceneManager.LoadedScene != Scene.Floor1)
                     {
                         SceneManager.LoadScene(Scene.Floor1);
                     }

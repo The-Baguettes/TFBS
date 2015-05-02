@@ -3,16 +3,20 @@ using UnityEngine;
 
 public static class SceneManager
 {
+    public static Scene LoadedScene = (Scene)0;
+
     static Stack<Scene> sceneHistory = new Stack<Scene>();
 
     public static void LoadScene(Scene scene)
     {
+        LoadedScene = scene;
         sceneHistory.Push((Scene)Application.loadedLevel);
         Application.LoadLevel((int)scene);
     }
     
     public static void LoadPreviousScene()
     {
-        Application.LoadLevel((int)sceneHistory.Pop());
+        LoadedScene = sceneHistory.Pop();
+        Application.LoadLevel((int)LoadedScene);
     }
 }
