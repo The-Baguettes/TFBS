@@ -44,7 +44,7 @@ public class UseElevator : MonoBehaviour
 
     void OnGUI()
     {
-        if (!PauseCanvas.enabled || !GameOverCanvas.enabled)
+        if (!PauseCanvas.enabled && !GameOverCanvas.enabled)
         {
             if (contact)
             {
