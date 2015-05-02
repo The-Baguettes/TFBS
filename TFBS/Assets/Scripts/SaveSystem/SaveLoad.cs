@@ -13,6 +13,8 @@ public class SaveLoad : MonoBehaviour {
     static int time;
 
 	void Start () {
+    bool loadingSave;
+
         folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         folder = Path.Combine(folder, "TFBS");
         if (!Directory.Exists(folder))
@@ -57,6 +59,8 @@ public class SaveLoad : MonoBehaviour {
         rotation = ToQuaternion(rot);
         currenthealth = (int)ToFloat(hea);
         time = (int)ToFloat(tim);
+
+        loadingSave = true;
         DontDestroyOnLoad(gameObject);        
         SceneManager.LoadScene((Scene)ToFloat(lvl));
     }
@@ -75,7 +79,7 @@ public class SaveLoad : MonoBehaviour {
 
     void OnLevelWasLoaded()
     {
-        if (Application.loadedLevel == (int)Scene.MainMenu)
+        if (!loadingSave)
             return;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
