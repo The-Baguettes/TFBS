@@ -12,7 +12,7 @@ public class OverlayMenu : Navigation
     Camera mainCamera;
     PlayerDamage playerDamage;
 
-    public void Start() 
+    public void Start()
     {
         deathCanvas = FindObjectOfType<HUD>().DeathCanvas;
         mapCamera = GameObject.FindWithTag(Tags.MapCamera).GetComponent<Camera>();
@@ -20,7 +20,7 @@ public class OverlayMenu : Navigation
         playerDamage = GameObject.FindWithTag(Tags.Player).GetComponent<PlayerDamage>();
 
         Resume();
-    }   
+    }
 
     void Update()
     {
@@ -31,9 +31,9 @@ public class OverlayMenu : Navigation
             if (PauseCanvas.enabled)
                 Resume();
             else
-                Pause();                
+                Pause();
         }
-   	}
+    }
 
     public void Pause()
     {
@@ -42,7 +42,7 @@ public class OverlayMenu : Navigation
         PauseCanvas.enabled = true;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true; 
+        Cursor.visible = true;
     }
 
     public void Resume()

@@ -27495,6 +27495,7 @@ GameObject:
   - 4: {fileID: 2104830617}
   - 65: {fileID: 2104830619}
   - 114: {fileID: 2104830618}
+  - 114: {fileID: 2104830620}
   m_Layer: 0
   m_Name: TriggerChangeLevel
   m_TagString: Untagged
@@ -27538,6 +27539,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .962171316, y: 33545.2891, z: 1}
   m_Center: {x: .0189145729, y: 16772.0156, z: 0}
+--- !u!114 &2104830620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2104830616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd53d5156643fd4dbbd8432625fdfaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2105875234
 GameObject:
   m_ObjectHideFlags: 0
