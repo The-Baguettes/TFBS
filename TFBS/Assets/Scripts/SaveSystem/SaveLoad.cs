@@ -4,28 +4,29 @@ using System.IO;
 using System.Collections.Generic;
 using System.Collections;
 
-public class SaveLoad : MonoBehaviour {
+public class SaveLoad : MonoBehaviour
+{
     static string folder;
 
     static Vector3 position;
     static Quaternion rotation;
     static int currenthealth;
     static int time;
-
-	void Start () {
     bool loadingSave;
 
+    void Start()
+    {
         folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         folder = Path.Combine(folder, "TFBS");
         if (!Directory.Exists(folder))
             Directory.CreateDirectory(folder);
-	}
-    
+    }
+
     string SaveInformation()
     {
         string level = Application.loadedLevel.ToString();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        string position =  player.transform.position.x + "|" + player.transform.position.y + "|" + player.transform.position.z + "|";
+        string position = player.transform.position.x + "|" + player.transform.position.y + "|" + player.transform.position.z + "|";
         string rotation = player.transform.rotation.x + "|" + player.transform.rotation.y + "|" + player.transform.rotation.z + "|" + player.transform.rotation.w + "|";
         string health = GameObject.FindObjectOfType<PlayerDamage>().HealthPoints.ToString();
         string time = GameObject.FindObjectOfType<HUD>().time.ToString();
@@ -61,7 +62,7 @@ public class SaveLoad : MonoBehaviour {
         time = (int)ToFloat(tim);
 
         loadingSave = true;
-        DontDestroyOnLoad(gameObject);        
+        DontDestroyOnLoad(gameObject);
         SceneManager.LoadScene((Scene)ToFloat(lvl));
     }
 
@@ -97,7 +98,7 @@ public class SaveLoad : MonoBehaviour {
         for (int i = 0; i < a.Length; i++)
         {
             delimiter = a[i];
-            if(delimiter == '|')
+            if (delimiter == '|')
             {
                 list.Add(memoire);
                 memoire = "";
@@ -105,12 +106,13 @@ public class SaveLoad : MonoBehaviour {
             else
             {
                 memoire = memoire + a[i];
-            }          
+            }
         }
         return list;
     }
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
