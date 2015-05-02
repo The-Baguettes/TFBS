@@ -2666,7 +2666,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -9886,7 +9886,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d19532b2a9860438299e0590f9165a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GunText: {fileID: 2029770380}
+  WeaponText: {fileID: 0}
+  WeaponUseText: {fileID: 0}
   TimeText: {fileID: 2032859716}
   LifeText: {fileID: 346281447}
   ArmorText: {fileID: 1953776958}
