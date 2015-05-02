@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class HUD : BaseComponent
 {
-    public Text GunText;
+    public Text WeaponText;
+    public Text WeaponUseText;
     public Text TimeText;
     public Text LifeText;
     public Text ArmorText;
@@ -28,6 +29,7 @@ public class HUD : BaseComponent
         playerDamage.OnInitialized(playerDamage_OnInitialized);
 
         playerWeaponManager = player.GetComponentInChildren<WeaponManager>();
+        playerWeaponManager.OnUseActive += playerWeaponManager_OnUseActive;
         playerWeaponManager.OnWeaponSwitch += playerWeaponManager_OnWeaponSwitch;
     }
 
@@ -72,14 +74,18 @@ public class HUD : BaseComponent
         }
     }
 
-    void playerWeaponManager_OnWeaponSwitch(BaseWeapon weapon, BaseGun gun)
+    void playerWeaponManager_OnUseActive(Transform target)
     {
-        GunText.text = "Weapon: " + weapon.name + '\n';
-
-        if (gun == null)
-            GunText.text += "Uses: " + weapon.UsesLeft;
+        if (playerWeaponManager.ActiveGun == null)
+            WeaponUseText.text = "Uses: " + playerWeaponManager.ActiveWeapon.UsesLeft;
         else
-            GunText.text += "Ammo: " + weapon.UsesLeft + '/' + gun.MagazineCount;
+            WeaponUseText.text = "Ammo: " + playerWeaponManager.ActiveWeapon.UsesLeft + '/' + playerWeaponManager.ActiveGun.MagazineCount;
+    }
+
+    void playerWeaponManager_OnWeaponSwitch()
+    {
+        WeaponText.text = "Weapon: " + playerWeaponManager.ActiveWeapon.name;
+        playerWeaponManager_OnUseActive(null);
     }
     #endregion
 
