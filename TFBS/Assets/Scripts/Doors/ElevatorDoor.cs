@@ -2,9 +2,9 @@
 
 public class ElevatorDoor : MonoBehaviour
 {
-    public int XOffsetFromCenter;
-    public int YOffsetFromCenter;
-    public int ZOffsetFromCenter;
+    public float XOffsetFromCenter;
+    public float YOffsetFromCenter;
+    public float ZOffsetFromCenter;
     bool isPlayerNear = false;
     float animationProgress = 0.0f;
     
