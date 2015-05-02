@@ -2,18 +2,19 @@
 
 public class ElevatorDoor : MonoBehaviour
 {
-    public int OffsetFromCenter;
-
+    public int XOffsetFromCenter;
+    public int YOffsetFromCenter;
+    public int ZOffsetFromCenter;
     bool isPlayerNear = false;
     float animationProgress = 0.0f;
-
+    
     Vector3 positionOpened;
     Vector3 positionClosed;
 
     void Start()
     {
         positionClosed = transform.position;
-        positionOpened  = new Vector3(positionClosed.x, positionClosed.y, positionClosed.z + OffsetFromCenter);
+        positionOpened  = new Vector3(positionClosed.x + XOffsetFromCenter, positionClosed.y +YOffsetFromCenter, positionClosed.z + ZOffsetFromCenter);
     }
 
     void OnTriggerEnter(Collider col)
