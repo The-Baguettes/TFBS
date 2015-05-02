@@ -11,7 +11,7 @@ public class GameObjective : MonoBehaviour {
     }
     void OnTriggerEnter(Collider checkpointcol)
     {
-        print(checkpointcol.tag);
+        //print(checkpointcol.tag);
         if (checkpointcol.tag == Tags.Player)
         {
             hud.Objective = "You Passed The Level";
