@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class SceneManager
 {
-    public static Scene LoadedScene = (Scene)0;
+    public static Scene LoadedScene = (Scene)Application.loadedLevel;
 
     static Stack<Scene> sceneHistory = new Stack<Scene>();
 
