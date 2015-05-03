@@ -5,47 +5,35 @@ public class ElevatorDoor : MonoBehaviour
     public float XOffsetFromCenter;
     public float YOffsetFromCenter;
     public float ZOffsetFromCenter;
-    bool isPlayerNear = false;
-    float animationProgress = 0.0f;
-    
+
+    DoorTrigger doorTrigger;
+
     Vector3 positionOpened;
     Vector3 positionClosed;
 
     void Start()
     {
+        doorTrigger = GetComponentInParent<DoorTrigger>();
+
         positionClosed = transform.position;
-        positionOpened  = new Vector3(positionClosed.x + XOffsetFromCenter, positionClosed.y +YOffsetFromCenter, positionClosed.z + ZOffsetFromCenter);
-    }
-
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.tag == Tags.Player)
-            isPlayerNear = true;
-    }
-
-    void OnTriggerExit(Collider col)
-    {
-        if (col.tag == Tags.Player)
-            isPlayerNear = false;
+        positionOpened = new Vector3(positionClosed.x + XOffsetFromCenter, positionClosed.y + YOffsetFromCenter, positionClosed.z + ZOffsetFromCenter);
     }
 
     void Update()
     {
-        if (isPlayerNear)
+        if (doorTrigger.IsPlayerNear)
         {
             if (transform.position == positionOpened)
-                animationProgress = 0.0f;
+                doorTrigger.AnimationProgress = 0.0f;
             else
-                transform.position = Vector3.Lerp(positionClosed, positionOpened, animationProgress);
+                transform.position = Vector3.Lerp(positionClosed, positionOpened, doorTrigger.AnimationProgress);
         }
         else
         {
             if (transform.position == positionClosed)
-                animationProgress = 0.0f;
+                doorTrigger.AnimationProgress = 0.0f;
             else
-               transform.position = Vector3.Lerp(positionOpened, positionClosed, animationProgress);
+                transform.position = Vector3.Lerp(positionOpened, positionClosed, doorTrigger.AnimationProgress);
         }
-
-        animationProgress += Time.deltaTime;
     }
 }
