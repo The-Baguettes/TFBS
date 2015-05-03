@@ -25,11 +25,11 @@ public abstract class BaseDamageable : BaseComponent
 
     public virtual void AddHealthPoints(int amount)
     {
-        if (HealthPoints > MaxHealthPoints)
-            amount = 0;
-        
         HealthPoints += amount;
-        if (OnChangeHealthPoints != null)
+
+        if (HealthPoints > MaxHealthPoints)
+            HealthPoints = MaxHealthPoints;
+        else if (OnChangeHealthPoints != null)
             OnChangeHealthPoints(HealthPoints, amount);
     }
 
