@@ -4,6 +4,7 @@ using System.Collections;
 
 public class UseElevator : MonoBehaviour
 {
+    GameObject player;
     bool contact;
     Canvas PauseCanvas;
     Canvas GameOverCanvas;
@@ -29,6 +30,19 @@ public class UseElevator : MonoBehaviour
         GameOverCanvas = GameObject.Find("GameOverCanvas").GetComponent<Canvas>();
         leftDoorClosePosition = leftDoor.transform.position.z;
         isClose = true;
+        player = GameObject.FindWithTag(Tags.Player);
+
+        if (SceneManager.PreviousScene() != Scene.MainMenu || SceneManager.PreviousScene() != Scene.SettingsMenu)
+        {
+            if (SceneManager.LoadedScene == Scene.Game)
+            {
+                ChangePosition(110.7403f, 0.2600501f, 16.77837f, 0f, -0.7216773f, 0f, 0.6922296f);
+            }
+            if (SceneManager.LoadedScene == Scene.Floor1)
+            {
+                ChangePosition(110.4f, 0.2600499f, 16.88f, 0f, -0.7071068f, 0f, 0.7071067f);
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -106,5 +120,11 @@ public class UseElevator : MonoBehaviour
     void Update()
     {
         isClose = leftDoorClosePosition == leftDoor.transform.position.z;
+    }
+
+    void ChangePosition(float x, float y, float z, float rotX, float rotY, float rotZ, float rotW)
+    {
+        player.transform.position = new Vector3(x, y, z);
+        player.transform.rotation = new Quaternion(rotX, rotY, rotZ, rotW);
     }
 }

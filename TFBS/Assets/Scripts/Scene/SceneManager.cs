@@ -19,4 +19,13 @@ public static class SceneManager
         LoadedScene = sceneHistory.Pop();
         Application.LoadLevel((int)LoadedScene);
     }
+
+    public static Scene PreviousScene()
+    {
+        if (sceneHistory.Count == 0)
+        {
+            return Scene.MainMenu;
+        }
+        return sceneHistory.Pop();
+    }
 }
