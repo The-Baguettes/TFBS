@@ -8,17 +8,23 @@ public class PlayerMovement : MonoBehaviour
     const float rotationSpeed = 200f;
 
     Animator animator;
+    WeaponManager weaponManager;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        weaponManager = GetComponentInChildren<WeaponManager>();
     }
 
     void Move(float amount, float speed, string anim_f, string anim_b)
     {
         if (amount == 0)
         {
-            animator.Play(Animations.Idle);
+            if (weaponManager.ActiveGun == null)
+                animator.Play(Animations.Idle);
+            else
+                animator.Play(Animations.IdleAiming);
+
             return;
         }
 
@@ -28,19 +34,26 @@ public class PlayerMovement : MonoBehaviour
 
     public void Sneak(float amount)
     {
-        Move(amount, sneakSpeed, Animations.SneakForwards, Animations.SneakBackwards);
-
+        if (weaponManager.ActiveGun == null)
+            Move(amount, sneakSpeed, Animations.SneakForward, Animations.SneakBackwards);
+        else
+            Move(amount, sneakSpeed, Animations.SneakForwardAiming, Animations.SneakBackwardsAiming);
     }
 
     public void Sprint(float amount)
     {
-        Move(amount, sprintSpeed, Animations.SprintForwards, Animations.SprintBackwards);
-
+        if (weaponManager.ActiveGun == null)
+            Move(amount, sprintSpeed, Animations.SprintForward, Animations.SprintBackwards);
+        else
+            Move(amount, sprintSpeed, Animations.SprintForwardAiming, Animations.SprintBackwardsAiming);
     }
 
     public void Walk(float amount)
     {
-        Move(amount, walkSpeed, Animations.WalkForwards, Animations.WalkBackwards);
+        if (weaponManager.ActiveGun == null)
+            Move(amount, walkSpeed, Animations.WalkForward, Animations.WalkBackwards);
+        else
+            Move(amount, walkSpeed, Animations.WalkForwardAiming, Animations.WalkBackwardsAiming);
     }
 
     public void Rotate(float amount)

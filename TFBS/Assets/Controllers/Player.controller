@@ -22,6 +22,57 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   m_MultiThreadedStateMachine: 1
+--- !u!1102 &110206762
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Walk Backwards Aiming
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 324, y: 180, z: 0}
+  m_IKOnFeet: 1
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7400026, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
+  m_Tag: 
+--- !u!1102 &110223994
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sneak Forwards Aiming
+  m_Speed: .5
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 120, y: 132, z: 0}
+  m_IKOnFeet: 1
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7400022, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
+  m_Tag: 
+--- !u!1102 &110225104
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Walk Forwards Aiming
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 120, y: 180, z: 0}
+  m_IKOnFeet: 1
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7400022, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
+  m_Tag: 
 --- !u!1102 &110242274
 AnimatorState:
   serializedVersion: 5
@@ -46,6 +97,23 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Sprint Forwards
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 120, y: 228, z: 0}
+  m_IKOnFeet: 1
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7400000, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
+  m_Tag: 
+--- !u!1102 &110266494
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprint Forwards Aiming
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -90,6 +158,23 @@ AnimatorState:
   m_Mirror: 0
   m_Motion: {fileID: 7400026, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
   m_Tag: 
+--- !u!1102 &110274812
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprint Backwards Aiming
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 324, y: 228, z: 0}
+  m_IKOnFeet: 1
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7400002, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
+  m_Tag: 
 --- !u!1102 &110282780
 AnimatorState:
   serializedVersion: 5
@@ -105,7 +190,7 @@ AnimatorState:
   m_IKOnFeet: 1
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7400022, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
+  m_Motion: {fileID: 7400004, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
   m_Tag: 
 --- !u!1102 &110287278
 AnimatorState:
@@ -124,6 +209,23 @@ AnimatorState:
   m_Mirror: 0
   m_Motion: {fileID: 7400026, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
   m_Tag: 
+--- !u!1102 &110287378
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Idle Aiming
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 120, y: 84, z: 0}
+  m_IKOnFeet: 1
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7400028, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
+  m_Tag: 
 --- !u!1102 &110287734
 AnimatorState:
   serializedVersion: 5
@@ -139,7 +241,24 @@ AnimatorState:
   m_IKOnFeet: 1
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_Motion: {fileID: 7400028, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
+  m_Motion: {fileID: 7400008, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
+  m_Tag: 
+--- !u!1102 &110287840
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sneak Backwards Aiming
+  m_Speed: .5
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 324, y: 132, z: 0}
+  m_IKOnFeet: 1
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_Motion: {fileID: 7400026, guid: 8ac6a49b33a6243e9a8f28383f6268c8, type: 3}
   m_Tag: 
 --- !u!1107 &110708492
 AnimatorStateMachine:
@@ -160,16 +279,37 @@ AnimatorStateMachine:
     m_Position: {x: 120, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110242274}
-    m_Position: {x: 324, y: 228, z: 0}
+    m_Position: {x: 552, y: 228, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110268572}
     m_Position: {x: 120, y: 132, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110287278}
-    m_Position: {x: 324, y: 180, z: 0}
+    m_Position: {x: 552, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110271592}
+    m_Position: {x: 552, y: 132, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110225104}
+    m_Position: {x: 324, y: 180, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110266494}
+    m_Position: {x: 324, y: 228, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110223994}
     m_Position: {x: 324, y: 132, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110274812}
+    m_Position: {x: 756, y: 228, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110206762}
+    m_Position: {x: 756, y: 180, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110287840}
+    m_Position: {x: 756, y: 132, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 110287378}
+    m_Position: {x: 324, y: 84, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -179,7 +319,7 @@ AnimatorStateMachine:
       second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 120, y: 48, z: 0}
-  m_EntryPosition: {x: 324, y: 84, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_EntryPosition: {x: -72, y: 84, z: 0}
+  m_ExitPosition: {x: -72, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 110287734}
