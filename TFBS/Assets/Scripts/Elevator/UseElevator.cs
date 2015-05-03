@@ -7,6 +7,9 @@ public class UseElevator : MonoBehaviour
     bool contact;
     Canvas PauseCanvas;
     Canvas GameOverCanvas;
+    public GameObject leftDoor;
+    bool isClose;
+    float leftDoorClosePosition;
     //public Scene firstLevel;
     //public Scene secondLevel;
     bool display;
@@ -24,6 +27,8 @@ public class UseElevator : MonoBehaviour
         contact = false;
         PauseCanvas = GameObject.Find("PauseCanvas").GetComponent<Canvas>();
         GameOverCanvas = GameObject.Find("GameOverCanvas").GetComponent<Canvas>();
+        leftDoorClosePosition = leftDoor.transform.position.z;
+        isClose = true;
     }
 
     void OnTriggerEnter(Collider other)
@@ -48,6 +53,10 @@ public class UseElevator : MonoBehaviour
         {
             if (contact)
             {
+                if (!isClose)
+                {
+                    return;
+                }
                 GUI.Label(new Rect((Screen.width * 3 / 4) - 25, Screen.height / 2 - 40, 250, 50), "Which floor do you want to go?");
                 if (GUI.Button(new Rect((Screen.width * 3 / 4) - 25, Screen.height / 2, 150, 50), "1st Floor"))
                 {
@@ -92,5 +101,10 @@ public class UseElevator : MonoBehaviour
                 }
             }
         }
+    }
+
+    void Update()
+    {
+        isClose = leftDoorClosePosition == leftDoor.transform.position.z;
     }
 }
