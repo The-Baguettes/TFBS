@@ -6,4 +6,5 @@
     Environment,
     Game,
     Floor1,
+    Stairway,
 }
