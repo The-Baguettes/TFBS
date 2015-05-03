@@ -28,8 +28,12 @@ public abstract class BaseDamageable : BaseComponent
         HealthPoints += amount;
 
         if (HealthPoints > MaxHealthPoints)
+        {
+            amount = HealthPoints - MaxHealthPoints;
             HealthPoints = MaxHealthPoints;
-        else if (OnChangeHealthPoints != null)
+        }
+        
+        if (OnChangeHealthPoints != null)
             OnChangeHealthPoints(HealthPoints, amount);
     }
 

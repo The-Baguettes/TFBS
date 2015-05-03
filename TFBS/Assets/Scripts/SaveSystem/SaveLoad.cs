@@ -11,7 +11,7 @@ public class SaveLoad : MonoBehaviour
     static Vector3 position;
     static Quaternion rotation;
     static int currenthealth;
-    static int time;
+    static float time;
     bool loadingSave;
 
     void Start()
@@ -29,7 +29,7 @@ public class SaveLoad : MonoBehaviour
         string position = player.transform.position.x + "|" + player.transform.position.y + "|" + player.transform.position.z + "|";
         string rotation = player.transform.rotation.x + "|" + player.transform.rotation.y + "|" + player.transform.rotation.z + "|" + player.transform.rotation.w + "|";
         string health = GameObject.FindObjectOfType<PlayerDamage>().HealthPoints.ToString();
-        string time = GameObject.FindObjectOfType<HUD>().time.ToString();
+        string time = HUD.TotalTime.ToString();
         string result = level + "\r\n" + position + "\r\n" + rotation + "\r\n" + health + "\r\n" + time;
         return result;
     }
@@ -59,7 +59,7 @@ public class SaveLoad : MonoBehaviour
         position = ToVector3(pos);
         rotation = ToQuaternion(rot);
         currenthealth = (int)ToFloat(hea);
-        time = (int)ToFloat(tim);
+        time = ToFloat(tim);
 
         loadingSave = true;
         DontDestroyOnLoad(gameObject);
@@ -86,7 +86,8 @@ public class SaveLoad : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = position;
         player.transform.rotation = rotation;
-        GameObject.FindObjectOfType<HUD>().AddTime = time;
+        HUD.TotalTime = time;
+
         Destroy(gameObject);
     }
 

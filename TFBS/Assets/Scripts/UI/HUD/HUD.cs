@@ -6,13 +6,15 @@ public class HUD : BaseComponent
     public Text WeaponText;
     public Text WeaponUseText;
     public Text TimeText;
-    public Text LifeText;
+    public Text HealthText;
     public Text ArmorText;
-    public Text MissionGoalText;
+    public Text EnemyCountText;
+    public Text ObjectiveText;
     public Canvas DeathCanvas;
-    public int AddTime;
-    public int time;
-    public string Objective = "Kill all the ennemies";
+
+    public static float TotalTime;
+
+    int enemyCount;
 
     #region EventManagement
     PlayerDamage playerDamage;
@@ -31,6 +33,15 @@ public class HUD : BaseComponent
         playerWeaponManager = player.GetComponentInChildren<WeaponManager>();
         playerWeaponManager.OnUseActive += playerWeaponManager_OnUseActive;
         playerWeaponManager.OnWeaponSwitch += playerWeaponManager_OnWeaponSwitch;
+
+        EnemyDamage[] enemyDamages = GameObject.FindObjectsOfType<EnemyDamage>();
+
+        enemyCount = enemyDamages.Length;
+        for (int i = 0; i < enemyCount; i++)
+            enemyDamages[i].OnDeath += enemyDamage_OnDeath;
+
+        UpdateEnemyCount();
+        UpdateTotalTime();
     }
 
     protected override void UnHookEvents()
@@ -47,6 +58,12 @@ public class HUD : BaseComponent
     #endregion
 
     #region EventHandlers
+    void enemyDamage_OnDeath()
+    {
+        --enemyCount;
+        UpdateEnemyCount();
+    }
+
     void playerDamage_OnInitialized()
     {
         playerDamage_OnChangeHealthPoints(playerDamage.HealthPoints, 0);
@@ -54,7 +71,7 @@ public class HUD : BaseComponent
 
     void playerDamage_OnDeath()
     {
-        LifeText.text = "You died";
+        HealthText.text = "";
         DeathCanvas.enabled = false;
     }
 
@@ -64,13 +81,13 @@ public class HUD : BaseComponent
 
         if (value > 100)
         {
-            LifeText.text = "HP: 100";
-            ArmorManager(value - 100);
+            ArmorText.text = (value - 100).ToString();
+            HealthText.text = "100";
         }
         else
         {
-            ArmorText.text = "No armor";
-            LifeText.text = "HP: " + value;
+            ArmorText.text = "";
+            HealthText.text = value.ToString();
         }
     }
 
@@ -89,29 +106,31 @@ public class HUD : BaseComponent
     }
     #endregion
 
-    int get_AI()
-    {
-        return GameObject.FindGameObjectsWithTag(Tags.Enemy).Length;
-    }
-
-    void TimeManager()
-    {
-        time = (int)Time.timeSinceLevelLoad;
-        int print_time = time + AddTime;
-        TimeText.text = "Time: " + print_time;
-    }
-
-    void ArmorManager(int armor)
-    {
-        ArmorText.text = "Armor: " + armor;
-    }
-
     void Update()
     {
-        TimeManager();
+        int oldTime = (int)TotalTime;
+        TotalTime += Time.deltaTime;
 
-        //objectives of the mission, here example of a simple mission
-        MissionGoalText.text ="Objective: " + Objective + "\n\n\n";
-        MissionGoalText.text += "Enemies left: " + get_AI();
+        if (oldTime != (int)TotalTime)
+            UpdateTotalTime();
+    }
+
+    void UpdateEnemyCount()
+    {
+        EnemyCountText.text = "Enemies: " + enemyCount;
+    }
+
+    void UpdateTotalTime()
+    {
+        TimeText.text = "Time: " + (int)TotalTime;
+    }
+
+    public void SetObjective(string value)
+    {
+        if (value == null)
+            // No objectives left
+            ObjectiveText.enabled = false;
+        else
+            ObjectiveText.text = value;
     }
 }

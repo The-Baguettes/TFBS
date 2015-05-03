@@ -1,48 +1,44 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
-public class HealthBar : MonoBehaviour
+public class HealthBar : BaseComponent
 {
     Slider slider;
+
+    protected override void OnStart()
+    {
+        slider = GetComponent<Slider>();
+    }
+
+    #region EventManagement
     PlayerDamage playerDamage;
-    GameObject gameobj;
 
-    void Start()
+    protected override void HookUpEvents()
     {
-        GameObject player = GameObject.FindWithTag(Tags.Player);
-        playerDamage = player.GetComponent<PlayerDamage>();
+        playerDamage = GameObject.FindObjectOfType<PlayerDamage>();
+        playerDamage.OnChangeHealthPoints += playerDamage_OnChangeHealthPoints;
 
-        gameobj = GameObject.Find("HealthBar");
-        slider = gameobj.GetComponent<Slider>();
+        playerDamage.OnInitialized(playerDamage_OnInitialized);
     }
 
-    void Health()
+    protected override void UnHookEvents()
     {
-        if (playerDamage.HealthPoints <= 0)
-        {
-            slider.value = 0f;
-        }
+        playerDamage.OnChangeHealthPoints -= playerDamage_OnChangeHealthPoints;
+    }
+    #endregion
+
+    #region EventHandlers
+    void playerDamage_OnChangeHealthPoints(int value, int delta)
+    {
+        if (value > 100)
+            slider.value = 100;
         else
-        {
-            if (playerDamage.HealthPoints > 100)
-            {
-                slider.value = 100;
-            }
-            else
-            {
-                slider.value = playerDamage.HealthPoints;
-            }
-        }
+            slider.value = value;
     }
 
-
-
-    void Update()
+    void playerDamage_OnInitialized()
     {
-        gameobj = GameObject.Find("HealthBar");
-        slider = gameobj.GetComponent<Slider>();
-        Health();
+        playerDamage_OnChangeHealthPoints(playerDamage.HealthPoints, 0);
     }
-
+    #endregion
 }

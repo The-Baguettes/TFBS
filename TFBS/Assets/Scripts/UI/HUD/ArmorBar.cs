@@ -1,38 +1,44 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
-public class ArmorBar : MonoBehaviour
+public class ArmorBar : BaseComponent
 {
     Slider slider;
+
+    protected override void OnStart()
+    {
+        slider = GetComponent<Slider>();
+    }
+
+    #region EventManagement
     PlayerDamage playerDamage;
-    GameObject gameobj;
-
-    void Start()
+    
+    protected override void HookUpEvents()
     {
-        GameObject player = GameObject.FindWithTag(Tags.Player);
-        playerDamage = player.GetComponent<PlayerDamage>();
+        playerDamage = GameObject.FindObjectOfType<PlayerDamage>();
+        playerDamage.OnChangeHealthPoints += playerDamage_OnChangeHealthPoints;
 
-        gameobj = GameObject.Find("ArmorBar");
-        slider = gameobj.GetComponent<Slider>();
+        playerDamage.OnInitialized(playerDamage_OnInitialized);
     }
 
-
-    void Armor()
+    protected override void UnHookEvents()
     {
-        if (playerDamage.HealthPoints > 100)
-        {
-            slider.value = playerDamage.HealthPoints - 100;
-        }
+        playerDamage.OnChangeHealthPoints -= playerDamage_OnChangeHealthPoints;
+    }
+    #endregion
+
+    #region EventHandlers
+    void playerDamage_OnChangeHealthPoints(int value, int delta)
+    {
+        if (value > 100)
+            slider.value = value - 100;
         else
-        {
-            slider.value = 0f;
-        }
+            slider.value = 0;
     }
 
-    void Update()
+    void playerDamage_OnInitialized()
     {
-        Armor();
+        playerDamage_OnChangeHealthPoints(playerDamage.HealthPoints, 0);
     }
-
+    #endregion
 }

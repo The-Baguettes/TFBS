@@ -1,21 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Floor1Objective : MonoBehaviour {
-
+public class Floor1Objective : MonoBehaviour
+{
     HUD hud;
+
     void Start()
     {
         hud = GameObject.FindObjectOfType<HUD>();
-        hud.Objective = "Eliminates all the ennemies";
-    }
-    void OnTriggerEnter(Collider checkpointcol)
-    {
-        //print(checkpointcol.tag);
-        if (checkpointcol.tag == Tags.Player)
-        {
-            hud.Objective = "You Passed The Level";
-        }
+        hud.SetObjective("Clear the level");
     }
 
+    void OnTriggerEnter(Collider checkpointcol)
+    {
+        if (checkpointcol.tag == Tags.Player)
+            hud.SetObjective(null);
+    }
 }

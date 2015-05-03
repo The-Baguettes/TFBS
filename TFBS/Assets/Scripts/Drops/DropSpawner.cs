@@ -19,7 +19,7 @@ public class DropSpawner : MonoBehaviour
         spawnPoints.Remove(transform);
 
         // Call SpawnCube now (in 0), and then every 60 seconds
-        InvokeRepeating("SpawnCube", 0f, 60f);
+        InvokeRepeating("SpawnCube", 0f, 1f);
     }
 
     void SpawnCube()
