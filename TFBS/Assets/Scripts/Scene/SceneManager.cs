@@ -26,6 +26,6 @@ public static class SceneManager
         {
             return Scene.MainMenu;
         }
-        return sceneHistory.Pop();
+        return sceneHistory.Peek();
     }
 }
