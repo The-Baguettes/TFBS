@@ -158,7 +158,10 @@ public class EnemyAI : BaseComponent
     {
         if (firearm.UsesLeft == 0)
             firearm.Reload();
-
+        transform.LookAt(leader);
+        firearm.transform.LookAt(leader);
+        firearm.transform.Rotate(0, -90, 0);
         firearm.Use(leader);
+        
     }
 }
