@@ -2,7 +2,7 @@
 
 public class PlayerInput : MonoBehaviour
 {
-    static KeyCode[] weaponInputs = new KeyCode[]{
+    static readonly KeyCode[] weaponInputs = {
         KeyCode.Alpha1,
         KeyCode.Alpha2,
     };
