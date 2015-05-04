@@ -11,11 +11,11 @@ public class UseStaircase : MonoBehaviour
         player = GameObject.FindWithTag(Tags.Player);
         if (SceneManager.PreviousScene() != Scene.MainMenu)
         {
-            if (SceneManager.LoadedScene == Scene.Stairway)
+            if (SceneManager.LoadedScene == Scene.Stairway && SceneManager.PreviousScene() == Scene.Game) //game to staiway
             {
                 ChangePosition(2.53f, 0.3f, -3.09f, 0f, 0f, 0f, 0f);
             }
-            if (SceneManager.LoadedScene == Scene.Game)
+            if (SceneManager.LoadedScene == Scene.Game && SceneManager.PreviousScene() == Scene.Stairway) //stairway to game
             {
                 ChangePosition(110.2734f, 0.9393333f, 9.426224f, 0f, -0.7194812f, 0, 0.694512f);
             }
