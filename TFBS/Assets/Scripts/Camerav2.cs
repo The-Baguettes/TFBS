@@ -15,8 +15,8 @@ public class Camerav2 : MonoBehaviour
     public float maxDistance = 20;
     public float minDistance = .6f;
 
-    public float xSpeed = 200.0f;
-    public float ySpeed = 200.0f;
+    public float xSpeed = 50.0f;
+    public float ySpeed = 50.0f;
     public float targetSpeed = 5.0f;
 
 
@@ -103,8 +103,8 @@ public class Camerav2 : MonoBehaviour
 
         // If either mouse buttons are down, let the mouse govern camera position
 
-        xDeg += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
-        yDeg -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+        xDeg -= Input.GetAxis("Mouse X") * xSpeed * 0.02f;
+        yDeg += Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
 
         //Reset the camera angle and Rotate the Target Around the World!
 
