@@ -56,4 +56,9 @@ public abstract class BaseDamageable : BaseComponent
         else if (OnChangeHealthPoints != null)
             OnChangeHealthPoints(HealthPoints, delta);
     }
+
+    public void Reset()
+    {
+        OnStart();
+    }
 }

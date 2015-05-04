@@ -56,6 +56,12 @@ public class OverlayMenu : Navigation
         deathCanvas.enabled = playerDamage.HealthPoints < 50;
     }
 
+    public void TryAgain()
+    {
+        playerDamage.Reset();
+        SceneManager.ReloadScene();
+    }
+
     public void GameOver()
     {
         IsPaused = true;

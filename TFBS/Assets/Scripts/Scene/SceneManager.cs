@@ -28,4 +28,9 @@ public static class SceneManager
         }
         return sceneHistory.Peek();
     }
+
+    public static void ReloadScene()
+    {
+        Application.LoadLevel((int)LoadedScene);
+    }
 }
