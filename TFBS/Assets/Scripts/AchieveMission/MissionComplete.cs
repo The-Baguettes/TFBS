@@ -7,7 +7,7 @@ public class MissionComplete : MonoBehaviour {
     private bool contact;
     private bool incompleteMessage;
     private float incompleteMessageCD;
-    private bool missionCompleted;
+    public static bool missionCompleted;
     
     void Start()
     {
@@ -22,7 +22,6 @@ public class MissionComplete : MonoBehaviour {
         {
             incompleteMessage = false;
         }
-        //function that determine if the mission has been completed
     }
     
 
@@ -35,7 +34,7 @@ public class MissionComplete : MonoBehaviour {
             {
                 if (missionCompleted)
                 {
-                    //switch to mission completed scene
+                    SceneManager.LoadScene(Scene.SecretBase);
                 }
                 else
                 {
