@@ -30,7 +30,8 @@ public class UseElevator : MonoBehaviour
         isClose = true;
         player = GameObject.FindWithTag(Tags.Player);
 
-        if (SceneManager.PreviousScene() != Scene.MainMenu && SceneManager.PreviousScene() != Scene.Stairway && SceneManager.PreviousScene() != Scene.SecretBase)
+        if (SceneManager.PreviousScene() != Scene.MainMenu && SceneManager.PreviousScene() != Scene.Stairway &&
+            SceneManager.PreviousScene() != Scene.SecretBase)
         {
             if (SceneManager.LoadedScene == Scene.Game)
             {
