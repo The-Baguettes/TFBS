@@ -54,8 +54,8 @@ public class Camerav2 : MonoBehaviour
     }
 
 
-    void Update()
-    {
+    //void Update()
+    //{
 
         //Move the Player with left & right button press together
         /*if(Input.GetMouseButton(1)&&Input.GetMouseButton(0))
@@ -88,7 +88,7 @@ public class Camerav2 : MonoBehaviour
         //
         //                      weapon.gameObject.GetComponent<Rigidbody>().MoveRotation(q);
         //              }
-    }
+    //}
 
     /**
  * Camera logic on LateUpdate to only update after all character movement logic has been handled.
