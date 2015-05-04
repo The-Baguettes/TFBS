@@ -98,8 +98,14 @@ public class Camerav2 : MonoBehaviour
         Vector3 vTargetOffset;
 
         // Don't do anything if target is not defined
-        if (!target || Cursor.visible)
+        if (target == null)
             return;
+
+        if (Cursor.visible)
+        {
+            DungeonCamera.ApplyView(transform, target);
+            return;
+        }
 
         // If either mouse buttons are down, let the mouse govern camera position
 

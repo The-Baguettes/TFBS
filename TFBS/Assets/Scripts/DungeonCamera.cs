@@ -32,10 +32,15 @@ public class DungeonCamera : BaseComponent
 
     void LateUpdate()
     {
-        Quaternion rotation = Quaternion.Euler(0, target.transform.eulerAngles.y, 0);
-        Vector3 t_pos = target.transform.position;
-        
-        transform.position = t_pos + rotation * positionOffset;
-        transform.LookAt(t_pos + rotation * lookatOffset);
+        ApplyView(transform, target.transform);
+    }
+
+    public static void ApplyView(Transform camera, Transform target)
+    {
+        Quaternion rotation = Quaternion.Euler(0, target.eulerAngles.y, 0);
+        Vector3 t_pos = target.position;
+
+        camera.position = t_pos + rotation * positionOffset;
+        camera.LookAt(t_pos + rotation * lookatOffset);
     }
 }
