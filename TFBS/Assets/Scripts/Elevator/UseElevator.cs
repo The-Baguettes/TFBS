@@ -74,6 +74,7 @@ public class UseElevator : MonoBehaviour
                 {
                     if (SceneManager.LoadedScene != Scene.Game)
                     {
+                        Object.FindObjectOfType<PlayerDamage>().SaveHP();
                         SceneManager.LoadScene(Scene.Game);
                     }
                     else
@@ -87,6 +88,7 @@ public class UseElevator : MonoBehaviour
                 {
                     if (SceneManager.LoadedScene != Scene.Floor1)
                     {
+                        Object.FindObjectOfType<PlayerDamage>().SaveHP();
                         SceneManager.LoadScene(Scene.Floor1);
                     }
                     else

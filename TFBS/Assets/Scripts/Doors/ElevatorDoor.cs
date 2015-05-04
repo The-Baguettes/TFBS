@@ -22,18 +22,8 @@ public class ElevatorDoor : MonoBehaviour
     void Update()
     {
         if (doorTrigger.IsPlayerNear)
-        {
-            if (transform.position == positionOpened)
-                doorTrigger.AnimationProgress = 0.0f;
-            else
-                transform.position = Vector3.Lerp(positionClosed, positionOpened, doorTrigger.AnimationProgress/3.0f);
-        }
+            transform.position = Vector3.Lerp(positionClosed, positionOpened, doorTrigger.AnimationProgress);
         else
-        {
-            if (transform.position == positionClosed)
-                doorTrigger.AnimationProgress = 0.0f;
-            else
-                transform.position = Vector3.Lerp(positionOpened, positionClosed, doorTrigger.AnimationProgress/3.0f);
-        }
+            transform.position = Vector3.Lerp(positionOpened, positionClosed, doorTrigger.AnimationProgress);
     }
 }

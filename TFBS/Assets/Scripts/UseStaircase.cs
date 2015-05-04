@@ -26,6 +26,7 @@ public class UseStaircase : MonoBehaviour
     {
         if (other.tag == Tags.Player)
         {
+            Object.FindObjectOfType<PlayerDamage>().SaveHP();
             SceneManager.LoadScene(to);
         }
     }

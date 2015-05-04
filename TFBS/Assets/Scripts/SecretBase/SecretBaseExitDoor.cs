@@ -41,6 +41,7 @@ public class SecretBaseExitDoor : MonoBehaviour
         {
             if (missionSelected)
             {
+                Object.FindObjectOfType<PlayerDamage>().SaveHP();
                 SceneManager.LoadScene(mission);
             }
             else

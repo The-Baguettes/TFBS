@@ -2,11 +2,11 @@
 
 public class DoorTrigger : MonoBehaviour
 {
-    public ElevatorDoor LeftDoor;
-    public ElevatorDoor RightDoor;
+    public float AnimationSpeed = 1;
 
     [HideInInspector]
     public float AnimationProgress;
+    [HideInInspector]
     public bool IsPlayerNear;
 
     void OnTriggerEnter(Collider col)
@@ -33,6 +33,9 @@ public class DoorTrigger : MonoBehaviour
 
     void Update()
     {
-        AnimationProgress += Time.deltaTime;
+        if (AnimationProgress < 1)
+            AnimationProgress += Time.deltaTime * AnimationSpeed;
+        else
+            AnimationProgress = 1;
     }
 }

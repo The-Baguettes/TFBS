@@ -8,7 +8,7 @@
         HealthPoints = savedHP;
     }
 
-    void OnDestroy()
+    public void SaveHP()
     {
         savedHP = HealthPoints;
     }

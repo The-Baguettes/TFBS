@@ -8,7 +8,7 @@ public class MissionComplete : MonoBehaviour {
     private bool incompleteMessage;
     private float incompleteMessageCD;
     public static bool missionCompleted;
-    
+
     void Start()
     {
         contact = false;
@@ -34,6 +34,7 @@ public class MissionComplete : MonoBehaviour {
             {
                 if (missionCompleted)
                 {
+                    Object.FindObjectOfType<PlayerDamage>().SaveHP();
                     SceneManager.LoadScene(Scene.SecretBase);
                 }
                 else
