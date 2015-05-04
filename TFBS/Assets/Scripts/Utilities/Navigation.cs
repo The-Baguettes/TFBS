@@ -34,4 +34,9 @@ public class Navigation : MonoBehaviour
     {
         SceneManager.LoadScene(MetaScene.FirstLevel);
     }
+
+    public void MultiPlayer()
+    {
+        SceneManager.LoadScene(Scene.Environment);
+    }
 }
