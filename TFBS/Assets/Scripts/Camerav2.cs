@@ -73,9 +73,9 @@ public class Camerav2 : MonoBehaviour
         //      weapon.LookAt(hitPosition);
         //}
 
-        Ray ray = here.ScreenPointToRay(new Vector3(Screen.height / 1.05f, Screen.width / 2.7f, 0));
-        Vector3 hit = ray.GetPoint(100);
-        hit = new Vector3(hit.x, hit.y, hit.z);
+        //Ray ray = here.ScreenPointToRay(new Vector3(Screen.height / 1.05f, Screen.width / 2.7f, 0));
+        //Vector3 hit = ray.GetPoint(100);
+        //hit = new Vector3(hit.x, hit.y, hit.z);
         //weapon.LookAt(hit);
 
         //              Ray ray = here.ScreenPointToRay(new Vector3(Screen.height / 2, Screen.width / 2, 0));
@@ -98,7 +98,7 @@ public class Camerav2 : MonoBehaviour
         Vector3 vTargetOffset;
 
         // Don't do anything if target is not defined
-        if (!target)
+        if (!target || Cursor.visible)
             return;
 
         // If either mouse buttons are down, let the mouse govern camera position
