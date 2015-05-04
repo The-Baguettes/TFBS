@@ -9,7 +9,7 @@ public class GameObjective : MonoBehaviour
         //load from the editor
         if (SecretBaseExitDoor.objective == 0)
         {
-            SecretBaseExitDoor.objective = 3;
+            SecretBaseExitDoor.objective = 2;
         }
 
         hud = GameObject.FindObjectOfType<HUD>();

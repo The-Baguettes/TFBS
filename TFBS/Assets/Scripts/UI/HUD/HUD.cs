@@ -133,4 +133,9 @@ public class HUD : BaseComponent
         else
             ObjectiveText.text = value;
     }
+
+    public bool noEnemy()
+    {
+        return enemyCount == 0;
+    }
 }

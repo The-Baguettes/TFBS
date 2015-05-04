@@ -2,8 +2,10 @@
 using System.Threading;
 using System.Collections;
 
-public class MissionComplete : MonoBehaviour {
+public class MissionComplete : MonoBehaviour
+{
 
+    HUD hud;
     private bool contact;
     private bool incompleteMessage;
     private float incompleteMessageCD;
@@ -11,6 +13,7 @@ public class MissionComplete : MonoBehaviour {
 
     void Start()
     {
+        hud = GameObject.FindObjectOfType<HUD>();
         contact = false;
         incompleteMessage = false;
         missionCompleted = false;
@@ -22,8 +25,17 @@ public class MissionComplete : MonoBehaviour {
         {
             incompleteMessage = false;
         }
+        if (!missionCompleted)
+        {
+            if (SecretBaseExitDoor.objective == 2 || SecretBaseExitDoor.objective == 3)
+            {
+                if (hud.noEnemy())
+                {
+                    missionCompleted = true;
+                }
+            }
+        }
     }
-    
 
     void OnGUI()
     {
@@ -34,7 +46,6 @@ public class MissionComplete : MonoBehaviour {
             {
                 if (missionCompleted)
                 {
-                    Object.FindObjectOfType<PlayerDamage>().SaveHP();
                     SceneManager.LoadScene(Scene.SecretBase);
                 }
                 else
