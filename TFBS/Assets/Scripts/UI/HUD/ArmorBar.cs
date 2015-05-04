@@ -23,7 +23,8 @@ public class ArmorBar : BaseComponent
 
     protected override void UnHookEvents()
     {
-        playerDamage.OnChangeHealthPoints -= playerDamage_OnChangeHealthPoints;
+        if (playerDamage != null)
+            playerDamage.OnChangeHealthPoints -= playerDamage_OnChangeHealthPoints;
     }
     #endregion
 
