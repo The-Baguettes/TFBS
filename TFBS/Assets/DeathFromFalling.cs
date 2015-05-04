@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class DeathFromFalling : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    PlayerDamage playerDamage;
+
+    void Start()
     {
-        if (other.tag == Tags.Player)
-        {
-            //kill the player
-        }
+        playerDamage = Object.FindObjectOfType<PlayerDamage>();
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == Tags.Player)
+            playerDamage.Kill();
     }
 }

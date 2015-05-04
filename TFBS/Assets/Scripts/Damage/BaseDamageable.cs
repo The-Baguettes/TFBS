@@ -37,6 +37,14 @@ public abstract class BaseDamageable : BaseComponent
             OnChangeHealthPoints(HealthPoints, amount);
     }
 
+    public void Kill()
+    {
+        HealthPoints = -1;
+
+        if (OnDeath != null)
+            OnDeath();
+    }
+
     public virtual void RemoveHealthPoints(IDamager damager)
     {
         int delta = (int)Mathf.Lerp(
