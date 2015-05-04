@@ -3,10 +3,9 @@ using System.Collections;
 
 public class SecretBaseExitDoor : MonoBehaviour
 {
-    [HideInInspector]
-    public bool missionSelected;
-    [HideInInspector]
-    public int mission;
+    public static bool missionSelected;
+    public static Scene mission;
+    public static int objective;
 
     bool contact;
     bool display;
@@ -42,7 +41,7 @@ public class SecretBaseExitDoor : MonoBehaviour
         {
             if (missionSelected)
             {
-                SceneManager.LoadScene((Scene)mission);
+                SceneManager.LoadScene(mission);
             }
             else
             {
