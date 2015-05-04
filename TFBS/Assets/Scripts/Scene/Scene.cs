@@ -7,4 +7,5 @@
     Game,
     Floor1,
     Stairway,
+    SecretBase,
 }
