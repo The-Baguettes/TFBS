@@ -48,7 +48,7 @@ public class MoveFloor : MonoBehaviour
                 }
                 else
                 {
-                    transform.position = Vector3.Lerp(positionUp, positionDown, animationProgress/3f);
+                    transform.position = Vector3.Lerp(positionUp, positionDown, animationProgress/3.0f);
                 }
             }
             if (!up)
