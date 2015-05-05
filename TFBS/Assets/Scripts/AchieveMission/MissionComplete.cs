@@ -27,7 +27,7 @@ public class MissionComplete : MonoBehaviour
         }
         if (!missionCompleted)
         {
-            if (SecretBaseExitDoor.objective == 2 || SecretBaseExitDoor.objective == 3)
+            if (SecretBaseExitDoor.objective == 1 || SecretBaseExitDoor.objective == 2)
             {
                 if (hud.noEnemy())
                 {
