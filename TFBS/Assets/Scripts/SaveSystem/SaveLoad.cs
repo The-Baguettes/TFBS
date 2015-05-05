@@ -12,7 +12,7 @@ public class SaveLoad : MonoBehaviour
     static Quaternion rotation;
     static int currenthealth;
     static float time;
-    bool loadingSave;
+    static bool loadingSave;
 
     void Start()
     {
@@ -83,6 +83,7 @@ public class SaveLoad : MonoBehaviour
         if (!loadingSave)
             return;
 
+        loadingSave = false;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = position;
         player.transform.rotation = rotation;
