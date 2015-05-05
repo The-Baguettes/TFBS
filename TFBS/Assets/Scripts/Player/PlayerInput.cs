@@ -7,11 +7,13 @@ public class PlayerInput : MonoBehaviour
         KeyCode.Alpha2,
     };
 
+    new NetworkView networkView;
     PlayerMovement playerMovement;
     WeaponManager weaponManager;
 
     void Start()
     {
+        networkView = GetComponent<NetworkView>();
         playerMovement = GetComponent<PlayerMovement>();
         weaponManager = GetComponentInChildren<WeaponManager>();
     }
@@ -38,6 +40,9 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetKeyDown(weaponInputs[i]))
             {
                 weaponManager.SwitchToWeapon(i);
+                if (networkView != null)
+                    networkView.RPC("SwitchToWeapon", RPCMode.Others, i);
+
                 return;
             }
         }
@@ -52,13 +57,25 @@ public class PlayerInput : MonoBehaviour
         */
 
         if (Input.GetButton(Inputs.Fire))
+        {
             weaponManager.UseActive();
+            if (networkView != null)
+                networkView.RPC("UseActive", RPCMode.Others);
+        }
         else if (weaponManager.ActiveGun != null)
         {
             if (Input.GetButtonDown(Inputs.WeaponMeta))
+            {
                 weaponManager.ActiveGun.ToggleSilencer();
+                if (networkView != null)
+                    networkView.RPC("ToggleSilencer", RPCMode.Others);
+            }
             else if (Input.GetButtonDown(Inputs.Reload))
+            {
                 weaponManager.ActiveGun.Reload();
+                if (networkView != null)
+                    networkView.RPC("Reload", RPCMode.Others);
+            }
         }
     }
 }

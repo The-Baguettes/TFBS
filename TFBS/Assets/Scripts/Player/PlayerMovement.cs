@@ -8,11 +8,13 @@ public class PlayerMovement : MonoBehaviour
     const float rotationSpeed = 200f;
 
     Animator animator;
+    new NetworkView networkView;
     WeaponManager weaponManager;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        networkView = GetComponent<NetworkView>();
         weaponManager = GetComponentInChildren<WeaponManager>();
     }
 
@@ -21,14 +23,25 @@ public class PlayerMovement : MonoBehaviour
         if (amount == 0)
         {
             if (weaponManager.ActiveGun == null)
+            {
                 animator.Play(Animations.Idle);
+                if (networkView != null)
+                    networkView.RPC("PlayAnimation", RPCMode.Others, Animations.Idle);
+            }
             else
+            {
                 animator.Play(Animations.IdleAiming);
+                if (networkView != null)
+                    networkView.RPC("PlayAnimation", RPCMode.Others, Animations.IdleAiming);
+            }
 
             return;
         }
 
         animator.Play(amount > 0 ? anim_f : anim_b);
+        if (networkView != null)
+            networkView.RPC("PlayAnimation", RPCMode.Others, amount > 0 ? anim_f : anim_b);
+
         transform.Translate(0, 0, amount * speed * Time.deltaTime);
     }
 

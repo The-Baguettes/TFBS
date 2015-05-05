@@ -875,6 +875,7 @@ GameObject:
   - 136: {fileID: 13689740}
   - 54: {fileID: 5425010}
   - 148: {fileID: 14845176}
+  - 114: {fileID: 11432498}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2989,6 +2990,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 11450028, guid: 7cd90cdbc2114734cab7f1acf0f7d7f6, type: 2}
+--- !u!114 &11432498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950e75a6e55082a4885211580f021f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11435574
 MonoBehaviour:
   m_ObjectHideFlags: 1
