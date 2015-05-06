@@ -9,14 +9,13 @@ public class MissionComplete : MonoBehaviour
     private bool contact;
     private bool incompleteMessage;
     private float incompleteMessageCD;
-    public static bool missionCompleted;
 
     void Start()
     {
         hud = GameObject.FindObjectOfType<HUD>();
         contact = false;
         incompleteMessage = false;
-        missionCompleted = false;
+        Missions.missionCompleted = false;
     }
 
     void Update()
@@ -25,13 +24,13 @@ public class MissionComplete : MonoBehaviour
         {
             incompleteMessage = false;
         }
-        if (!missionCompleted)
+        if (!Missions.missionCompleted)
         {
-            if (SecretBaseExitDoor.objective == 1 || SecretBaseExitDoor.objective == 2)
+            if (Missions.objective == 1 || Missions.objective == 2)
             {
                 if (hud.noEnemy())
                 {
-                    missionCompleted = true;
+                    Missions.missionCompleted = true;
                 }
             }
         }
@@ -44,7 +43,7 @@ public class MissionComplete : MonoBehaviour
             GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 200, 30), "'F' to leave the building");
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (missionCompleted)
+                if (Missions.missionCompleted)
                 {
                     SceneManager.LoadScene(Scene.SecretBase);
                 }

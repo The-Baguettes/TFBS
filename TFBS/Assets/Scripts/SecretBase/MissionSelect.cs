@@ -47,13 +47,13 @@ public class MissionSelect : MonoBehaviour
             }
             else
             {
-                GUI.Label(new Rect((Screen.width / 2) + 500, Screen.height / 2 - 50, 250, 200), "Press 'F' to open the mission selection window");
+                GUI.Label(new Rect((3 * Screen.width / 4) - 50, Screen.height / 2 - 50, 250, 200), "Press 'F' to open the mission selection window");
             }
         }
 
         if (displayConfirmation)
         {
-            GUI.Label(new Rect((Screen.width / 2) + 500, Screen.height / 2 + 300, 250, 200), "Mission has been correctly selected");
+            GUI.Label(new Rect((3 * Screen.width / 4) - 50, Screen.height / 2 + 150, 250, 200), "Mission has been correctly selected");
         }
         if (time + displayTime < Time.time)
         {
@@ -72,27 +72,27 @@ public class MissionSelect : MonoBehaviour
     public void MissionOne()
     {
         MissionSelected();
-        SecretBaseExitDoor.mission = sceneGame;
-        SecretBaseExitDoor.objective = 1;
+        Missions.mission = sceneGame;
+        Missions.objective = 1;
     }
 
     public void MissionTwo()
     {
         MissionSelected();
-        SecretBaseExitDoor.mission = sceneGame;
-        SecretBaseExitDoor.objective = 2;
+        Missions.mission = sceneGame;
+        Missions.objective = 2;
     }
 
     public void MissionThree()
     {
         MissionSelected();
-        SecretBaseExitDoor.mission = sceneGame;
-        SecretBaseExitDoor.objective = 3;
+        Missions.mission = sceneGame;
+        Missions.objective = 3;
     }
 
     void MissionSelected()
     {
-        SecretBaseExitDoor.missionSelected = true;
+        Missions.missionSelected = true;
         missionSelect.enabled = false;
         displayConfirmation = true;
         time = Time.time;

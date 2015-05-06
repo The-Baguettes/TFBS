@@ -27,7 +27,7 @@ public class MissionThreeCompleted : MonoBehaviour
         {
             GameObject.Destroy(book);
             bookPresent = false;
-            MissionComplete.missionCompleted = true;
+            Missions.missionCompleted = true;
         }
     }
 

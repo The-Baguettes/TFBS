@@ -7,23 +7,23 @@ public class GameObjective : MonoBehaviour
     void Start()
     {
         //load from the editor
-        if (SecretBaseExitDoor.objective == 0)
+        if (Missions.objective == 0)
         {
-            SecretBaseExitDoor.objective = 1;
+            Missions.objective = 1;
         }
 
         hud = GameObject.FindObjectOfType<HUD>();
-        if (SecretBaseExitDoor.objective == 1)
+        if (Missions.objective == 1)
         {
             hud.SetObjective("Kill the enemies");
         }
         else
-            if (SecretBaseExitDoor.objective == 2)
+            if (Missions.objective == 2)
             {
                 hud.SetObjective("Kill the enemies");
             }
             else
-                if (SecretBaseExitDoor.objective == 3)
+                if (Missions.objective == 3)
                 {
                     hud.SetObjective("Find the confidential information in the secret room");
                 }
@@ -43,7 +43,7 @@ public class GameObjective : MonoBehaviour
 
     void Update()
     {
-        if (MissionComplete.missionCompleted)
+        if (Missions.missionCompleted)
         {
             hud.SetObjective("Mission completed \nfind a way to escape");
         }

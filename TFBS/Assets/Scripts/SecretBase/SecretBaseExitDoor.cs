@@ -3,10 +3,6 @@ using System.Collections;
 
 public class SecretBaseExitDoor : MonoBehaviour
 {
-    public static bool missionSelected;
-    public static Scene mission;
-    public static int objective;
-
     bool contact;
     bool display;
     public float displayTime;
@@ -14,7 +10,6 @@ public class SecretBaseExitDoor : MonoBehaviour
 
     void Start()
     {
-        missionSelected = false;
         contact = false;
         display = false;
     }
@@ -39,10 +34,10 @@ public class SecretBaseExitDoor : MonoBehaviour
     {
         if (contact)
         {
-            if (missionSelected)
+            if (Missions.missionSelected)
             {
                 Object.FindObjectOfType<PlayerDamage>().SaveHP();
-                SceneManager.LoadScene(mission);
+                SceneManager.LoadScene(Missions.mission);
             }
             else
             {
@@ -52,7 +47,7 @@ public class SecretBaseExitDoor : MonoBehaviour
         }
         if (display)
         {
-            GUI.Label(new Rect((Screen.width / 2) + 500, Screen.height / 2 - 50, 250, 200), "You still haven't selected a mission");
+            GUI.Label(new Rect((3 * Screen.width / 4) + 50, Screen.height / 2 - 50, 250, 200), "You still haven't selected a mission");
         }
         if (time + displayTime < Time.time)
         {
