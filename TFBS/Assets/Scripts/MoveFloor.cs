@@ -114,10 +114,5 @@ public class MoveFloor : MonoBehaviour
             Player.transform.position = Vector3.Lerp(positionDown, positionUp, animationProgress / 3.0f);
         }
     }
-
-    
-
-
-
 }
 
