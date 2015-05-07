@@ -7,6 +7,7 @@ public class MoveFloor : MonoBehaviour
     public float YOffsetFromCenter;
     public float ZOffsetFromCenter;
     bool isPlayerOn;
+    public GameObject ToMove;
     Vector3 positionUp;
     Vector3 positionDown;
 
@@ -15,7 +16,7 @@ public class MoveFloor : MonoBehaviour
 
     void Start()
     {
-        positionUp = transform.position;
+        positionUp = ToMove.transform.position;
         positionDown = new Vector3(positionUp.x + XOffsetFromCenter, positionUp.y + YOffsetFromCenter, positionUp.z + ZOffsetFromCenter);
         up = true;
         isPlayerOn = false;
@@ -41,27 +42,27 @@ public class MoveFloor : MonoBehaviour
         {
             if (up)
             {
-                if (transform.position == positionUp)
+                if (ToMove.transform.position == positionUp)
                 {
                     animationProgress = 0.0f;
-                    transform.position = new Vector3(transform.position.x - 0.0001f, transform.position.y - 0.0001f, transform.position.z - 0.0001f);
+                    ToMove.transform.position = new Vector3(ToMove.transform.position.x - 0.0001f, ToMove.transform.position.y - 0.0001f, ToMove.transform.position.z - 0.0001f);
                 }
                 else
                 {
-                    transform.position = Vector3.Lerp(positionUp, positionDown, animationProgress/3.0f);
+                    ToMove.transform.position = Vector3.Lerp(positionUp, positionDown, animationProgress/3.0f);
                 }
             }
             if (!up)
             {
-                if (transform.position == positionDown)
+                if (ToMove.transform.position == positionDown)
                 {
                     animationProgress = 0.0f;
-                    transform.position = new Vector3(transform.position.x + 0.0001f, transform.position.y + 0.0001f, transform.position.z + 0.0001f);
+                    ToMove.transform.position = new Vector3(ToMove.transform.position.x + 0.0001f, ToMove.transform.position.y + 0.0001f, ToMove.transform.position.z + 0.0001f);
                    
                 }
                 else
                 {
-                    transform.position = Vector3.Lerp(positionDown, positionUp, animationProgress/3.0f);
+                    ToMove.transform.position = Vector3.Lerp(positionDown, positionUp, animationProgress/3.0f);
                 }   
             }
 
@@ -70,11 +71,11 @@ public class MoveFloor : MonoBehaviour
         {
             if(up)
             {
-                transform.position = positionUp;
+                ToMove.transform.position = positionUp;
             }
             else
             {
-                transform.position = positionDown;
+                ToMove.transform.position = positionDown;
             }
         }
         
