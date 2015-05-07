@@ -7,6 +7,7 @@ public class MoveFloor : MonoBehaviour
     public float YOffsetFromCenter;
     public float ZOffsetFromCenter;
     public int withPlayer;
+    int startwithPlayer;
     bool isPlayerOn;
     public GameObject ToMove;
     public GameObject Player;
@@ -26,6 +27,7 @@ public class MoveFloor : MonoBehaviour
         positionDown = new Vector3(positionUp.x + XOffsetFromCenter, positionUp.y + YOffsetFromCenter, positionUp.z + ZOffsetFromCenter);
         up = true;
         isPlayerOn = false;
+        startwithPlayer = withPlayer;
     }
 
     void OnTriggerEnter(Collider col)
@@ -48,13 +50,13 @@ public class MoveFloor : MonoBehaviour
         {
             if (up)
             {
-                if(ToMove.transform.position ==positionDown)
+                if(ToMove.transform.position ==positionDown )
                 {
                     withPlayer = 0;
                 }
                 if (ToMove.transform.position == positionUp)
                 {
-                    withPlayer = 1;
+                    withPlayer = startwithPlayer;
                     animationProgress = 0.0f;
                     ToMove.transform.position = new Vector3(ToMove.transform.position.x - 0.0001f, ToMove.transform.position.y - 0.0001f, ToMove.transform.position.z - 0.0001f);
                 }
@@ -72,7 +74,7 @@ public class MoveFloor : MonoBehaviour
                 }
                 if (ToMove.transform.position == positionDown)
                 {
-                    withPlayer = 1;
+                    withPlayer = startwithPlayer;
                     animationProgress = 0.0f;
                     ToMove.transform.position = new Vector3(ToMove.transform.position.x + 0.0001f, ToMove.transform.position.y + 0.0001f, ToMove.transform.position.z + 0.0001f);                   
                 }
@@ -94,12 +96,11 @@ public class MoveFloor : MonoBehaviour
             {
                 ToMove.transform.position = positionDown;               
             }
-        }
-        
+        }        
         animationProgress += Time.deltaTime;
     }
 
-    public void UpDown(int withPlayer)
+    public void UpDown(int withPlayer) //Takes the player down
     {
         if(withPlayer == 1)
         {
@@ -107,12 +108,14 @@ public class MoveFloor : MonoBehaviour
         }
     }
 
-    public void DownUp(int withPlayer)
+    public void DownUp(int withPlayer) //Takes the player up 
     {
         if(withPlayer == 1)
         {
             Player.transform.position = Vector3.Lerp(positionDown, positionUp, animationProgress / 3.0f);
         }
     }
+
+   
 }
 
