@@ -10,7 +10,14 @@ public class MissionThreeCompleted : MonoBehaviour
     void Start()
     {
         contact = false;
-        bookPresent = true;
+        if (Missions.objective == 3)
+        {
+            bookPresent = true;
+        }
+        else
+        {
+            bookPresent = false;
+        }
     }
 
     void OnGUI()
