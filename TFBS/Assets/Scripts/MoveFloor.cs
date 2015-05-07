@@ -11,6 +11,7 @@ public class MoveFloor : MonoBehaviour
     bool isPlayerOn;
     public GameObject ToMove;
     public GameObject Player;
+    public float smooth;
     Vector3 Up;
     Vector3 Down;
     Vector3 positionUp;
@@ -63,7 +64,7 @@ public class MoveFloor : MonoBehaviour
                 else
                 {
                     UpDown(withPlayer);
-                    ToMove.transform.position = Vector3.Lerp(positionUp, positionDown, animationProgress/3.0f);                   
+                    ToMove.transform.position = Vector3.Lerp(positionUp, positionDown, animationProgress/smooth);                   
                 }
             }
             if (!up)
@@ -81,7 +82,7 @@ public class MoveFloor : MonoBehaviour
                 else
                 {
                     DownUp(withPlayer);
-                    ToMove.transform.position = Vector3.Lerp(positionDown, positionUp, animationProgress / 3.0f);
+                    ToMove.transform.position = Vector3.Lerp(positionDown, positionUp, animationProgress / smooth);
                 }
             }
 
@@ -104,7 +105,7 @@ public class MoveFloor : MonoBehaviour
     {
         if(withPlayer == 1)
         {
-            Player.transform.position = Vector3.Lerp(positionUp,positionDown, animationProgress / 3.0f);
+            Player.transform.position = Vector3.Lerp(positionUp,positionDown, animationProgress / smooth);
         }
     }
 
@@ -112,7 +113,7 @@ public class MoveFloor : MonoBehaviour
     {
         if(withPlayer == 1)
         {
-            Player.transform.position = Vector3.Lerp(positionDown, positionUp, animationProgress / 3.0f);
+            Player.transform.position = Vector3.Lerp(positionDown, positionUp, animationProgress / smooth);
         }
     }
 
