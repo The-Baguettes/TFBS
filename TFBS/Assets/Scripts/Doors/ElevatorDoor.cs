@@ -14,6 +14,7 @@ public class ElevatorDoor : MonoBehaviour
     void Start()
     {
         doorTrigger = GetComponentInParent<DoorTrigger>();
+        doorTrigger.AnimationProgress = 1;
 
         positionClosed = transform.position;
         positionOpened = new Vector3(positionClosed.x + XOffsetFromCenter, positionClosed.y + YOffsetFromCenter, positionClosed.z + ZOffsetFromCenter);

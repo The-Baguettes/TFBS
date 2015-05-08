@@ -14,9 +14,7 @@ public class DoorTrigger : MonoBehaviour
         if (col.tag == Tags.Player)
         {
             IsPlayerNear = true;
-
-            if (AnimationProgress != 0)
-                AnimationProgress = 1 - AnimationProgress;
+            AnimationProgress = 1 - AnimationProgress;
         }
     }
 
@@ -25,9 +23,7 @@ public class DoorTrigger : MonoBehaviour
         if (col.tag == Tags.Player)
         {
             IsPlayerNear = false;
-
-            if (AnimationProgress != 0)
-                AnimationProgress = 1 - AnimationProgress;
+            AnimationProgress = 1 - AnimationProgress;
         }
     }
 
