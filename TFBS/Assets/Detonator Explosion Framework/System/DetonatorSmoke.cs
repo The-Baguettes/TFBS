@@ -10,7 +10,7 @@ public class DetonatorSmoke : DetonatorComponent
 	private Color _baseColor = new Color(.5f, .5f, .5f, .5f);
 	private const float _baseDamping = 0.1300004f;
 	
-	private float _scaledDuration;
+    //private float _scaledDuration;
 
 	private GameObject _smokeA;
 	private DetonatorBurstEmitter _smokeAEmitter;

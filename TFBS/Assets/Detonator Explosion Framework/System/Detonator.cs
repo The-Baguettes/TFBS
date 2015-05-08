@@ -253,7 +253,7 @@ public class Detonator : MonoBehaviour {
 		}
 	}
 	
-	private Component[] _subDetonators;
+    //private Component[] _subDetonators;
 	
 	 public void Explode() 
 	{

@@ -10,7 +10,7 @@ public class DetonatorFireball : DetonatorComponent
 	private Color _baseColor = new Color(1f, .423f, 0f, .5f);
 	private Vector3 _baseVelocity = new Vector3(60f, 60f, 60f);
 //	private float _baseDamping = 0.1300004f;
-	private float _scaledDuration;
+    //private float _scaledDuration;
 
 	private GameObject _fireballA;
 	private DetonatorBurstEmitter _fireballAEmitter;
@@ -61,7 +61,7 @@ public class DetonatorFireball : DetonatorComponent
 		}
 	}
 	
-	private Color _detailAdjustedColor;
+    //private Color _detailAdjustedColor;
 	
 	//Build these to look correct at the stock Detonator size of 10m... then let the size parameter
 	//cascade through to the emitters and let them do the scaling work... keep these absolute.
