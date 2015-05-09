@@ -16,20 +16,20 @@ public class ArmorBar : BaseComponent
     protected override void HookUpEvents()
     {
         playerDamage = GameObject.FindObjectOfType<PlayerDamage>();
-        playerDamage.OnChangeHealthPoints += playerDamage_OnChangeHealthPoints;
+        playerDamage.HealthPointsChanged += playerDamage_HealthPointsChanged;
 
-        playerDamage.OnInitialized(playerDamage_OnInitialized);
+        playerDamage.OnInitialized(playerDamage_Initialized);
     }
 
     protected override void UnHookEvents()
     {
         if (playerDamage != null)
-            playerDamage.OnChangeHealthPoints -= playerDamage_OnChangeHealthPoints;
+            playerDamage.HealthPointsChanged -= playerDamage_HealthPointsChanged;
     }
     #endregion
 
     #region EventHandlers
-    void playerDamage_OnChangeHealthPoints(int value, int delta)
+    void playerDamage_HealthPointsChanged(int value, int delta)
     {
         if (value > 100)
             slider.value = value - 100;
@@ -37,9 +37,9 @@ public class ArmorBar : BaseComponent
             slider.value = 0;
     }
 
-    void playerDamage_OnInitialized()
+    void playerDamage_Initialized()
     {
-        playerDamage_OnChangeHealthPoints(playerDamage.HealthPoints, 0);
+        playerDamage_HealthPointsChanged(playerDamage.HealthPoints, 0);
     }
     #endregion
 }

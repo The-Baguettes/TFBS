@@ -4,7 +4,7 @@
     {
         MaxHealthPoints = 100;
 
-        OnDeath += EnemyDamage_OnDeath;
+        Died += EnemyDamage_OnDeath;
     }
 
     void EnemyDamage_OnDeath()

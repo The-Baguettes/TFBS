@@ -17,7 +17,7 @@ public class AmmoDrop : DropBase
             return false;
 
         weaponManager.ActiveGun.MagazineCount += 1;
-        hud.playerWeaponManager_OnUseActive();
+        hud.playerWeaponManager_ActiveUsed();
         return true;
     }
 }

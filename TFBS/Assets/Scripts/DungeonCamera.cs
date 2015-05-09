@@ -19,12 +19,12 @@ public class DungeonCamera : BaseComponent
     {
         playerDamage = FindObjectOfType<PlayerDamage>();
 
-        playerDamage.OnDeath += playerDamage_OnDeath;
+        playerDamage.Died += playerDamage_Died;
     }
     #endregion
 
     #region EventHandlers
-    void playerDamage_OnDeath()
+    void playerDamage_Died()
     {
         enabled = false;
     }

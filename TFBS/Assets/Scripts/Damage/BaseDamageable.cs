@@ -6,8 +6,8 @@ public abstract class BaseDamageable : BaseComponent
 
     public delegate void HealthPointChangeEventHandler(int value, int delta);
 
-    public event BaseComponent.EventHandler OnDeath;
-    public event HealthPointChangeEventHandler OnChangeHealthPoints;
+    public event BaseComponent.EventHandler Died;
+    public event HealthPointChangeEventHandler HealthPointsChanged;
 
     protected int MaxHealthPoints;
 
@@ -32,17 +32,17 @@ public abstract class BaseDamageable : BaseComponent
             amount = HealthPoints - MaxHealthPoints;
             HealthPoints = MaxHealthPoints;
         }
-        
-        if (OnChangeHealthPoints != null)
-            OnChangeHealthPoints(HealthPoints, amount);
+
+        if (HealthPointsChanged != null)
+            HealthPointsChanged(HealthPoints, amount);
     }
 
     public void Kill()
     {
         HealthPoints = -1;
 
-        if (OnDeath != null)
-            OnDeath();
+        if (Died != null)
+            Died();
     }
 
     public virtual void RemoveHealthPoints(IDamager damager)
@@ -56,13 +56,13 @@ public abstract class BaseDamageable : BaseComponent
 
         if (HealthPoints < 0)
         {
-            if (OnDeath != null)
-                OnDeath();
+            if (Died != null)
+                Died();
 
             Destroy(gameObject);
         }
-        else if (OnChangeHealthPoints != null)
-            OnChangeHealthPoints(HealthPoints, delta);
+        else if (HealthPointsChanged != null)
+            HealthPointsChanged(HealthPoints, delta);
     }
 
     public void Reset()

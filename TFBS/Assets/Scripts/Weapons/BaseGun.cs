@@ -88,7 +88,7 @@ public abstract class BaseGun : BaseWeapon
         MagazineCount--;
         UsesLeft = MagazineSize;
 
-        hud.playerWeaponManager_OnUseActive(); // TODO: Proper event
+        hud.playerWeaponManager_ActiveUsed(); // TODO: Proper event
     }
 
     public void ToggleSilencer()

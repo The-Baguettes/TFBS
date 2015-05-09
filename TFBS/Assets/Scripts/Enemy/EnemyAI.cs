@@ -42,18 +42,18 @@ public class EnemyAI : BaseComponent
     {
         enemyDamage = GetComponent<EnemyDamage>();
 
-        enemyDamage.OnChangeHealthPoints += enemyDamage_OnChangeHealthPoints;
+        enemyDamage.HealthPointsChanged += enemyDamage_HealthPointsChanged;
     }
 
     protected override void UnHookEvents()
     {
         if (enemyDamage != null)
-            enemyDamage.OnChangeHealthPoints -= enemyDamage_OnChangeHealthPoints;
+            enemyDamage.HealthPointsChanged -= enemyDamage_HealthPointsChanged;
     }
     #endregion
 
     #region EventHandlers
-    void enemyDamage_OnChangeHealthPoints(int healthPoints, int delta)
+    void enemyDamage_HealthPointsChanged(int healthPoints, int delta)
     {
         if (!isFollowingPlayer)
             StartLookAround();

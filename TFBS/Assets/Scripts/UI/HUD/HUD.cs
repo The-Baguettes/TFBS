@@ -25,20 +25,20 @@ public class HUD : BaseComponent
         GameObject player = GameObject.FindWithTag(Tags.Player);
         playerDamage = player.GetComponent<PlayerDamage>();
 
-        playerDamage.OnDeath += playerDamage_OnDeath;
-        playerDamage.OnChangeHealthPoints += playerDamage_OnChangeHealthPoints;
+        playerDamage.Died += playerDamage_Died;
+        playerDamage.HealthPointsChanged += playerDamage_HealthPointsChanged;
 
-        playerDamage.OnInitialized(playerDamage_OnInitialized);
+        playerDamage.OnInitialized(playerDamage_Initialized);
 
         playerWeaponManager = player.GetComponentInChildren<WeaponManager>();
-        playerWeaponManager.OnUseActive += playerWeaponManager_OnUseActive;
-        playerWeaponManager.OnWeaponSwitch += playerWeaponManager_OnWeaponSwitch;
+        playerWeaponManager.ActiveUsed += playerWeaponManager_ActiveUsed;
+        playerWeaponManager.SwitchedWeapon += playerWeaponManager_SwitchedWeapon;
 
         EnemyDamage[] enemyDamages = GameObject.FindObjectsOfType<EnemyDamage>();
 
         enemyCount = enemyDamages.Length;
         for (int i = 0; i < enemyCount; i++)
-            enemyDamages[i].OnDeath += enemyDamage_OnDeath;
+            enemyDamages[i].Died += enemyDamage_Died;
 
         UpdateEnemyCount();
         UpdateTotalTime();
@@ -48,34 +48,34 @@ public class HUD : BaseComponent
     {
         if (playerDamage != null)
         {
-            playerDamage.OnDeath -= playerDamage_OnDeath;
-            playerDamage.OnChangeHealthPoints -= playerDamage_OnChangeHealthPoints;
+            playerDamage.Died -= playerDamage_Died;
+            playerDamage.HealthPointsChanged -= playerDamage_HealthPointsChanged;
         }
 
         if (playerWeaponManager != null)
-            playerWeaponManager.OnWeaponSwitch -= playerWeaponManager_OnWeaponSwitch;
+            playerWeaponManager.SwitchedWeapon -= playerWeaponManager_SwitchedWeapon;
     }
     #endregion
 
     #region EventHandlers
-    void enemyDamage_OnDeath()
+    void enemyDamage_Died()
     {
         --enemyCount;
         UpdateEnemyCount();
     }
 
-    void playerDamage_OnInitialized()
+    void playerDamage_Initialized()
     {
-        playerDamage_OnChangeHealthPoints(playerDamage.HealthPoints, 0);
+        playerDamage_HealthPointsChanged(playerDamage.HealthPoints, 0);
     }
 
-    void playerDamage_OnDeath()
+    void playerDamage_Died()
     {
         HealthText.text = "";
         DeathCanvas.enabled = false;
     }
 
-    void playerDamage_OnChangeHealthPoints(int value, int delta)
+    void playerDamage_HealthPointsChanged(int value, int delta)
     {
         DeathCanvas.enabled = value < 50;
 
@@ -91,7 +91,7 @@ public class HUD : BaseComponent
         }
     }
 
-    public void playerWeaponManager_OnUseActive()
+    public void playerWeaponManager_ActiveUsed()
     {
         if (playerWeaponManager.ActiveGun == null)
             WeaponUseText.text = "Uses: " + playerWeaponManager.ActiveWeapon.UsesLeft;
@@ -99,10 +99,10 @@ public class HUD : BaseComponent
             WeaponUseText.text = "Ammo: " + playerWeaponManager.ActiveWeapon.UsesLeft + '/' + playerWeaponManager.ActiveGun.MagazineCount;
     }
 
-    void playerWeaponManager_OnWeaponSwitch()
+    void playerWeaponManager_SwitchedWeapon()
     {
         WeaponText.text = "Weapon: " + playerWeaponManager.ActiveWeapon.name;
-        playerWeaponManager.ActiveWeapon.OnInitialized(playerWeaponManager_OnUseActive);
+        playerWeaponManager.ActiveWeapon.OnInitialized(playerWeaponManager_ActiveUsed);
     }
     #endregion
 

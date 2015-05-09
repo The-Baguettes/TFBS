@@ -8,8 +8,8 @@ public class WeaponManager : BaseComponent
 
     public List<BaseWeapon> Weapons { get; protected set; }
 
-    public event EventHandler OnUseActive;
-    public event EventHandler OnWeaponSwitch;
+    public event EventHandler ActiveUsed;
+    public event EventHandler SwitchedWeapon;
 
     protected override void OnStart()
     {
@@ -26,8 +26,8 @@ public class WeaponManager : BaseComponent
         {
             ActiveWeapon.Use(target);
 
-            if (OnUseActive != null)
-                OnUseActive();
+            if (ActiveUsed != null)
+                ActiveUsed();
         }
     }
 
@@ -44,7 +44,7 @@ public class WeaponManager : BaseComponent
 
         ActiveWeapon.gameObject.SetActive(true);
 
-        if (OnWeaponSwitch != null)
-            OnWeaponSwitch();
+        if (SwitchedWeapon != null)
+            SwitchedWeapon();
     }
 }
