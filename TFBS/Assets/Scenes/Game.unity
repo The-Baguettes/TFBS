@@ -1539,9 +1539,10 @@ GameObject:
   - 33: {fileID: 93588482}
   - 65: {fileID: 93588481}
   - 23: {fileID: 93588480}
+  - 114: {fileID: 93588483}
   m_Layer: 0
   m_Name: Body
-  m_TagString: NoHit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1601,6 +1602,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 93588478}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &93588483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93588478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!1001 &101375373
 Prefab:
   m_ObjectHideFlags: 0
@@ -1876,7 +1889,6 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: .49999997}
   m_Children:
   - {fileID: 391009158}
-  - {fileID: 316517172}
   m_Father: {fileID: 690082635}
   m_RootOrder: 3
 --- !u!114 &123125598
@@ -2105,7 +2117,6 @@ Transform:
   m_LocalScale: {x: 2.49999976, y: 3, z: .49999997}
   m_Children:
   - {fileID: 93588479}
-  - {fileID: 961689897}
   m_Father: {fileID: 1362345697}
   m_RootOrder: 2
 --- !u!114 &145262816
@@ -2794,7 +2805,6 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: .5}
   m_Children:
   - {fileID: 910331578}
-  - {fileID: 713663262}
   m_Father: {fileID: 690082635}
   m_RootOrder: 0
 --- !u!65 &186509027
@@ -5109,59 +5119,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42b6afc3447f5c649ab3ac558c2e6520, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &316517171
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 316517172}
-  - 65: {fileID: 316517174}
-  - 114: {fileID: 316517173}
-  m_Layer: 0
-  m_Name: Damage manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &316517172
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 316517171}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.49999997, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 123125597}
-  m_RootOrder: 1
---- !u!114 &316517173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 316517171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
---- !u!65 &316517174
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 316517171}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &328503981
 GameObject:
   m_ObjectHideFlags: 0
@@ -6311,9 +6268,10 @@ GameObject:
   - 33: {fileID: 391009161}
   - 65: {fileID: 391009160}
   - 23: {fileID: 391009159}
+  - 114: {fileID: 391009162}
   m_Layer: 0
   m_Name: Body
-  m_TagString: NoHit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6373,6 +6331,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 391009157}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &391009162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 391009157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!1 &400068797
 GameObject:
   m_ObjectHideFlags: 0
@@ -6624,59 +6594,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 404209925}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &409305631
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 409305632}
-  - 65: {fileID: 409305634}
-  - 114: {fileID: 409305633}
-  m_Layer: 0
-  m_Name: Damage manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &409305632
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 409305631}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.444000006, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 933652785}
-  m_RootOrder: 1
---- !u!114 &409305633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 409305631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
---- !u!65 &409305634
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 409305631}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.04999995, y: 1.04999995, z: 1.04999995}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &410026007
 Prefab:
   m_ObjectHideFlags: 0
@@ -6803,9 +6720,10 @@ GameObject:
   - 33: {fileID: 426844454}
   - 65: {fileID: 426844453}
   - 23: {fileID: 426844452}
+  - 114: {fileID: 426844455}
   m_Layer: 0
   m_Name: Body
-  m_TagString: NoHit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6865,6 +6783,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 426844450}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &426844455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 426844450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!1001 &432670667
 Prefab:
   m_ObjectHideFlags: 0
@@ -10357,9 +10287,10 @@ GameObject:
   - 33: {fileID: 671375371}
   - 65: {fileID: 671375370}
   - 23: {fileID: 671375369}
+  - 114: {fileID: 671375372}
   m_Layer: 0
   m_Name: Body
-  m_TagString: NoHit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10419,6 +10350,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 671375367}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &671375372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 671375367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!1 &677922993
 GameObject:
   m_ObjectHideFlags: 0
@@ -10733,59 +10676,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 11450028, guid: 7cd90cdbc2114734cab7f1acf0f7d7f6, type: 2}
---- !u!1 &713663261
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 713663262}
-  - 65: {fileID: 713663264}
-  - 114: {fileID: 713663263}
-  m_Layer: 0
-  m_Name: Damage manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &713663262
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 713663261}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.49999997, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 186509026}
-  m_RootOrder: 1
---- !u!114 &713663263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 713663261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
---- !u!65 &713663264
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 713663261}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &715165106
 Prefab:
   m_ObjectHideFlags: 0
@@ -13541,9 +13431,10 @@ GameObject:
   - 33: {fileID: 910331581}
   - 65: {fileID: 910331580}
   - 23: {fileID: 910331579}
+  - 114: {fileID: 910331582}
   m_Layer: 0
   m_Name: Body
-  m_TagString: NoHit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13603,6 +13494,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 910331577}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &910331582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 910331577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!1 &916037981
 GameObject:
   m_ObjectHideFlags: 0
@@ -13896,7 +13799,6 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: .49999994}
   m_Children:
   - {fileID: 1291322059}
-  - {fileID: 409305632}
   m_Father: {fileID: 690082635}
   m_RootOrder: 4
 --- !u!114 &933652786
@@ -14264,59 +14166,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: a0ecf6d325eb2f24abfb13e70179236e, type: 2}
   m_PrefabInternal: {fileID: 2102024313}
---- !u!1 &961689896
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 961689897}
-  - 65: {fileID: 961689899}
-  - 114: {fileID: 961689898}
-  m_Layer: 0
-  m_Name: Damage manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &961689897
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 961689896}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.400000006, y: -.0199999996, z: -.74000001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 145262815}
-  m_RootOrder: 1
---- !u!114 &961689898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 961689896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
---- !u!65 &961689899
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 961689896}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &964572301
 GameObject:
   m_ObjectHideFlags: 0
@@ -14467,9 +14316,10 @@ GameObject:
   - 33: {fileID: 975453772}
   - 65: {fileID: 975453771}
   - 23: {fileID: 975453770}
+  - 114: {fileID: 975453773}
   m_Layer: 0
   m_Name: Body
-  m_TagString: NoHit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14529,6 +14379,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 975453768}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &975453773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 975453768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!1 &975690886
 GameObject:
   m_ObjectHideFlags: 0
@@ -15493,7 +15355,6 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: .49999997}
   m_Children:
   - {fileID: 975453769}
-  - {fileID: 2138696164}
   m_Father: {fileID: 297314558}
   m_RootOrder: 0
 --- !u!114 &1053249163
@@ -18411,9 +18272,10 @@ GameObject:
   - 33: {fileID: 1291322062}
   - 65: {fileID: 1291322061}
   - 23: {fileID: 1291322060}
+  - 114: {fileID: 1291322063}
   m_Layer: 0
   m_Name: Body
-  m_TagString: NoHit
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18473,6 +18335,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1291322058}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1291322063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1291322058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
 --- !u!4 &1294648031 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: a0ecf6d325eb2f24abfb13e70179236e, type: 2}
@@ -20070,59 +19944,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 450687464}
   m_RootOrder: 2
---- !u!1 &1412230498
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1412230499}
-  - 65: {fileID: 1412230501}
-  - 114: {fileID: 1412230500}
-  m_Layer: 0
-  m_Name: Damage manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1412230499
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1412230498}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.49999997, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1953357882}
-  m_RootOrder: 1
---- !u!114 &1412230500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1412230498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
---- !u!65 &1412230501
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1412230498}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.10000002, y: 1.10000002, z: 1.10000002}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1413743497
 GameObject:
   m_ObjectHideFlags: 0
@@ -25466,7 +25287,6 @@ Transform:
   m_LocalScale: {x: 2.5, y: 3, z: .5}
   m_Children:
   - {fileID: 426844451}
-  - {fileID: 1994449527}
   m_Father: {fileID: 2081882071}
   m_RootOrder: 5
 --- !u!114 &1811861714
@@ -27195,7 +27015,6 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: .49999994}
   m_Children:
   - {fileID: 671375368}
-  - {fileID: 1412230499}
   m_Father: {fileID: 1282130793}
   m_RootOrder: 1
 --- !u!114 &1953357883
@@ -28018,59 +27837,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1988468217}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1994449526
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1994449527}
-  - 65: {fileID: 1994449529}
-  - 114: {fileID: 1994449528}
-  m_Layer: 0
-  m_Name: Damage manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1994449527
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1994449526}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.400000006, y: -.0199999996, z: -.74000001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1811861713}
-  m_RootOrder: 1
---- !u!114 &1994449528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1994449526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
---- !u!65 &1994449529
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1994449526}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1995499159
 GameObject:
   m_ObjectHideFlags: 0
@@ -30554,56 +30320,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2135450577}
---- !u!1 &2138696163
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2138696164}
-  - 65: {fileID: 2138696166}
-  - 114: {fileID: 2138696165}
-  m_Layer: 0
-  m_Name: Damage manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2138696164
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2138696163}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.49999997, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1053249162}
-  m_RootOrder: 1
---- !u!114 &2138696165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2138696163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58225150d0dabfe4595b6b7db884de36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyEffect: {fileID: 400000, guid: 809320482fb694b6e8149a226202b86a, type: 2}
---- !u!65 &2138696166
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2138696163}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

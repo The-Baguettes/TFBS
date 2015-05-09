@@ -33,16 +33,13 @@ public abstract class BaseDamageable : BaseComponent
             HealthPoints = MaxHealthPoints;
         }
 
-        if (HealthPointsChanged != null)
-            HealthPointsChanged(HealthPoints, amount);
+        OnHealthPointsChanged(amount);
     }
 
     public void Kill()
     {
         HealthPoints = -1;
-
-        if (Died != null)
-            Died();
+        OnDied();
     }
 
     public virtual void RemoveHealthPoints(IDamager damager)
@@ -56,17 +53,27 @@ public abstract class BaseDamageable : BaseComponent
 
         if (HealthPoints < 0)
         {
-            if (Died != null)
-                Died();
-
+            OnDied();
             Destroy(gameObject);
         }
-        else if (HealthPointsChanged != null)
-            HealthPointsChanged(HealthPoints, delta);
+        else
+            OnHealthPointsChanged(delta);
     }
 
     public void Reset()
     {
         OnStart();
+    }
+
+    protected virtual void OnHealthPointsChanged(int delta)
+    {
+        if (HealthPointsChanged != null)
+            HealthPointsChanged(HealthPoints, delta);
+    }
+
+    protected virtual void OnDied()
+    {
+        if (Died != null)
+            Died();
     }
 }

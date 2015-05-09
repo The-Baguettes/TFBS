@@ -3,12 +3,11 @@
     protected override void Setup()
     {
         MaxHealthPoints = 100;
-
-        Died += EnemyDamage_OnDeath;
     }
 
-    void EnemyDamage_OnDeath()
+    protected override void OnDied()
     {
+        base.OnDied();
         DropSpawner.SpawnCube<AmmoDrop>(transform);
     }
 }
