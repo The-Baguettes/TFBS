@@ -52,10 +52,7 @@ public abstract class BaseDamageable : BaseComponent
         HealthPoints -= delta;
 
         if (HealthPoints < 0)
-        {
             OnDied();
-            Destroy(gameObject);
-        }
         else
             OnHealthPointsChanged(delta);
     }
@@ -75,5 +72,7 @@ public abstract class BaseDamageable : BaseComponent
     {
         if (Died != null)
             Died();
+
+        Destroy(gameObject);
     }
 }
