@@ -2,12 +2,11 @@
 
 public class SlidingDoor : MonoBehaviour
 {
-    public float XOffsetFromCenter;
-    public float YOffsetFromCenter;
-    public float ZOffsetFromCenter;
+    public Vector3 Translation;
 
     AnimationTrigger doorTrigger;
 
+    Transform parent;
     Vector3 positionOpened;
     Vector3 positionClosed;
 
@@ -16,15 +15,16 @@ public class SlidingDoor : MonoBehaviour
         doorTrigger = GetComponentInParent<AnimationTrigger>();
         doorTrigger.AnimationProgress = 1;
 
-        positionClosed = transform.position;
-        positionOpened = new Vector3(positionClosed.x + XOffsetFromCenter, positionClosed.y + YOffsetFromCenter, positionClosed.z + ZOffsetFromCenter);
+        parent = transform.parent;
+        positionClosed = transform.position - parent.position;
+        positionOpened = positionClosed + Translation;
     }
 
     void Update()
     {
         if (doorTrigger.IsPlayerNear)
-            transform.position = Vector3.Lerp(positionClosed, positionOpened, doorTrigger.AnimationProgress);
+            transform.position = parent.position + Vector3.Lerp(positionClosed, positionOpened, doorTrigger.AnimationProgress);
         else
-            transform.position = Vector3.Lerp(positionOpened, positionClosed, doorTrigger.AnimationProgress);
+            transform.position = parent.position + Vector3.Lerp(positionOpened, positionClosed, doorTrigger.AnimationProgress);
     }
 }
