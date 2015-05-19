@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 
-public class ElevatorDoor : MonoBehaviour
+public class SlidingDoor : MonoBehaviour
 {
     public float XOffsetFromCenter;
     public float YOffsetFromCenter;
     public float ZOffsetFromCenter;
 
-    DoorTrigger doorTrigger;
+    AnimationTrigger doorTrigger;
 
     Vector3 positionOpened;
     Vector3 positionClosed;
 
     void Start()
     {
-        doorTrigger = GetComponentInParent<DoorTrigger>();
+        doorTrigger = GetComponentInParent<AnimationTrigger>();
         doorTrigger.AnimationProgress = 1;
 
         positionClosed = transform.position;

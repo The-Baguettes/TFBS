@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class OpenDoor : MonoBehaviour
+public class HingedDoor : MonoBehaviour
 {
     const float smooth = 2.0f;
     readonly Rect uiRect = new Rect(Screen.width / 2 - 75, Screen.height - 100, 200, 30);

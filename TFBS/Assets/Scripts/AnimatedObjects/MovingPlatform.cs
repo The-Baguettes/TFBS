@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveFloor : MonoBehaviour
+public class MovingPlatform : MonoBehaviour
 {
     public float XOffsetFromCenter;
     public float YOffsetFromCenter;

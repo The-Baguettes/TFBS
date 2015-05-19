@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DoorTrigger : MonoBehaviour
+public class AnimationTrigger : MonoBehaviour
 {
     public float AnimationSpeed = 1;
 
