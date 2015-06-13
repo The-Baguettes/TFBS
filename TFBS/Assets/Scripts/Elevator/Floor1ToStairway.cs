@@ -5,7 +5,7 @@ public class Floor1ToStairway : MonoBehaviour
 {
     GameObject player;
     bool floor1;
-
+   
     void Start()
     {
         player = GameObject.FindWithTag(Tags.Player);
