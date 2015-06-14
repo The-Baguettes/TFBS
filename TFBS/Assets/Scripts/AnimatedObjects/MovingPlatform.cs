@@ -16,7 +16,7 @@ public class MovingPlatform : MonoBehaviour
     Vector3 Down;
     Vector3 positionUp;
     Vector3 positionDown;
-
+    
     bool up;
     float animationProgress = 0.0f;
 
@@ -45,6 +45,7 @@ public class MovingPlatform : MonoBehaviour
             up = !up;
         }
     }
+
     void FixedUpdate()
     {
         if (isPlayerOn)
