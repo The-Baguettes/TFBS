@@ -404,7 +404,7 @@ public class TasharenWater : MonoBehaviour
 			reflectionCamera.cullingMask = ~(1 << 4) & mask.value;
 			reflectionCamera.targetTexture = mTex;
 
-			GL.invertCulling = true;
+			GL.SetRevertBackfacing(true);
 			{
 				reflectionCamera.transform.position = newpos;
 				Vector3 euler = cam.transform.eulerAngles;
@@ -412,7 +412,7 @@ public class TasharenWater : MonoBehaviour
 				reflectionCamera.Render();
 				reflectionCamera.transform.position = oldpos;
 			}
-            GL.invertCulling = false;
+			GL.SetRevertBackfacing(false);
 			mIsRendering = false;
 		}
 #endif
