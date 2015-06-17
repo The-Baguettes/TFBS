@@ -98,11 +98,15 @@ public class MissionComplete : MonoBehaviour
                 if (hud.enemyAlive())
                 {
                     PlayerMoney.addMoney(70000);
+                    PlayerBonus.noPrice = true;
                 }
                 else
                 {
                     if (hud.EnemyDead < 3)
+                    {
                         PlayerMoney.useMoney(20000);
+                        PlayerBonus.halfPrice = true;
+                    }
                     else
                         PlayerMoney.useMoney(2500 * hud.EnemyDead);
                     if (hud.noEnemy())
@@ -110,6 +114,7 @@ public class MissionComplete : MonoBehaviour
                         AssassinationMission.enable = true;
                     }
                 }
+                PlayerBonus.shopEnable = true;
                 break;
             default:
                 break;
