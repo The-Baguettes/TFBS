@@ -600,6 +600,27 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e286bad8a6780e841be81604649fe1e9, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &129537618 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100112, guid: 1f566d4dee8ec344e887b2b71c5101c1, type: 3}
+  m_PrefabInternal: {fileID: 1798987345}
+--- !u!143 &129537620
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 129537618}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: .00100000005
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &137379588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,15 +1332,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400096, guid: ff4aa5890fd13dd4b919d830837bcb3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.3985176
+      value: 10.2259998
       objectReference: {fileID: 0}
     - target: {fileID: 400096, guid: ff4aa5890fd13dd4b919d830837bcb3d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -.0579999983
       objectReference: {fileID: 0}
     - target: {fileID: 400096, guid: ff4aa5890fd13dd4b919d830837bcb3d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.6772604
+      value: 9.67700005
       objectReference: {fileID: 0}
     - target: {fileID: 400096, guid: ff4aa5890fd13dd4b919d830837bcb3d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1347,6 +1368,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400096, guid: ff4aa5890fd13dd4b919d830837bcb3d, type: 3}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: ff4aa5890fd13dd4b919d830837bcb3d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 85782ca288fd649458ac2ab3ebd4de7e, type: 2}
+    - target: {fileID: 9500000, guid: ff4aa5890fd13dd4b919d830837bcb3d, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some transforms are animated by both a Humanoid animation
+        clip and a Generic animation clip. Only the Humanoid clip will be applied
+        on those transforms.\n\tTransform 'RightHandRing1'\n\tTransform 'LeftHandRing1'\n\tTransform
+        'LeftToeBase'\n\tTransform 'RightHandPinky2'\n\tTransform 'RightToeBase'\n\tTransform
+        'RightHandMiddle2'\n\tTransform 'RightHandRing3'\n\tTransform 'RightHandMiddle1'\n\tTransform
+        'LeftHandPinky2'\n\tTransform 'LeftHandMiddle1'\n\tand more ...\n\tFrom animation
+        clip 'Idle_Combat_Base'\n\tFrom animation clip 'Move_Walk225'\n\tFrom animation
+        clip 'Move_Sprint450'\n\tFrom animation clip 'Idle_Combat_Shoulders'\n\tFrom
+        animation clip 'Idle_Combat_Neck'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 400096, guid: ff4aa5890fd13dd4b919d830837bcb3d, type: 3}
+      propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2536,6 +2577,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 8e805e94b50588d4088d2472e8889178, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 85782ca288fd649458ac2ab3ebd4de7e, type: 2}
+    - target: {fileID: 9500000, guid: 8e805e94b50588d4088d2472e8889178, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some transforms are animated by both a Humanoid animation
+        clip and a Generic animation clip. Only the Humanoid clip will be applied
+        on those transforms.\n\tTransform 'RightHandRing1'\n\tTransform 'LeftHandRing1'\n\tTransform
+        'RightHandPinky2'\n\tTransform 'RightHandMiddle2'\n\tTransform 'RightHandMiddle1'\n\tTransform
+        'LeftHandPinky2'\n\tTransform 'LeftHandMiddle1'\n\tTransform 'LeftHandMiddle2'\n\tTransform
+        'LeftHandRing2'\n\tTransform 'RightHandRing2'\n\tand more ...\n\tFrom animation
+        clip 'Idle_Combat_Base'\n\tFrom animation clip 'Move_Walk225'\n\tFrom animation
+        clip 'Move_Sprint450'\n\tFrom animation clip 'Idle_Combat_Shoulders'\n\tFrom
+        animation clip 'Idle_Combat_Neck'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 400088, guid: 8e805e94b50588d4088d2472e8889178, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e805e94b50588d4088d2472e8889178, type: 3}
   m_IsPrefabParent: 0
@@ -3224,6 +3285,27 @@ Transform:
   - {fileID: 1332615391}
   m_Father: {fileID: 0}
   m_RootOrder: 17
+--- !u!1 &621054927 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100086, guid: 8e805e94b50588d4088d2472e8889178, type: 3}
+  m_PrefabInternal: {fileID: 488141679}
+--- !u!143 &621054929
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 621054927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: .00100000005
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!4 &628396478 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ea53be57f4c1e3344b7417cbc89c1ef7, type: 3}
@@ -3913,6 +3995,27 @@ Transform:
   - {fileID: 2081634907}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &760129264 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100098, guid: ff4aa5890fd13dd4b919d830837bcb3d, type: 3}
+  m_PrefabInternal: {fileID: 264207041}
+--- !u!143 &760129266
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 760129264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: .00100000005
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &776862310
 GameObject:
   m_ObjectHideFlags: 0
@@ -10024,6 +10127,22 @@ Prefab:
     - target: {fileID: 400112, guid: 1f566d4dee8ec344e887b2b71c5101c1, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 1f566d4dee8ec344e887b2b71c5101c1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 85782ca288fd649458ac2ab3ebd4de7e, type: 2}
+    - target: {fileID: 9500000, guid: 1f566d4dee8ec344e887b2b71c5101c1, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some transforms are animated by both a Humanoid animation
+        clip and a Generic animation clip. Only the Humanoid clip will be applied
+        on those transforms.\n\tTransform 'RightHandRing1'\n\tTransform 'LeftHandRing1'\n\tTransform
+        'LeftToeBase'\n\tTransform 'RightHandPinky2'\n\tTransform 'RightToeBase'\n\tTransform
+        'RightHandMiddle2'\n\tTransform 'RightHandRing3'\n\tTransform 'RightHandMiddle1'\n\tTransform
+        'LeftHandPinky2'\n\tTransform 'LeftHandMiddle1'\n\tand more ...\n\tFrom animation
+        clip 'Idle_Combat_Base'\n\tFrom animation clip 'Move_Walk225'\n\tFrom animation
+        clip 'Move_Sprint450'\n\tFrom animation clip 'Idle_Combat_Shoulders'\n\tFrom
+        animation clip 'Idle_Combat_Neck'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f566d4dee8ec344e887b2b71c5101c1, type: 3}
