@@ -153,7 +153,7 @@ public class EnemyAI : BaseComponent
         RaycastHit hit;
         return Physics.Raycast(transform.position, transform.forward, out hit) && hit.collider.tag == Tags.Player;
     }
-
+    
     void Shoot()
     {
         if (firearm.UsesLeft == 0)

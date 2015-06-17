@@ -12,8 +12,6 @@ public class MovingPlatform : MonoBehaviour
     public GameObject ToMove;
     public GameObject Player;
     public float smooth;
-    Vector3 Up;
-    Vector3 Down;
     Vector3 positionUp;
     Vector3 positionDown;
     
