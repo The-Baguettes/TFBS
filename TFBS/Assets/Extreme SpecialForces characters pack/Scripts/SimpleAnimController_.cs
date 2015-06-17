@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class SimpleAnimController : MonoBehaviour {
+public class SimpleAnimController_ : MonoBehaviour {
 	private GameObject target;	
 	private Animator anim;	
 	private float acceleration, speed;
