@@ -8,4 +8,5 @@
     Floor1,
     Stairway,
     SecretBase,
+    Shop,
 }
