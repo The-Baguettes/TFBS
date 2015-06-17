@@ -10,11 +10,13 @@ public class HUD : BaseComponent
     public Text ArmorText;
     public Text EnemyCountText;
     public Text ObjectiveText;
+    public Text MoneyText;
     public Canvas DeathCanvas;
 
     public static float TotalTime;
 
     int enemyCount;
+    int enemyDead;
 
     #region EventManagement
     PlayerDamage playerDamage;
@@ -61,6 +63,7 @@ public class HUD : BaseComponent
     void enemyDamage_Died()
     {
         --enemyCount;
+        enemyDead++;
         UpdateEnemyCount();
     }
 
@@ -134,8 +137,26 @@ public class HUD : BaseComponent
             ObjectiveText.text = value;
     }
 
+    public void changeMoneyText()
+    {
+        MoneyText.text = "Money: " + PlayerMoney.Money + "€";
+    }
+
     public bool noEnemy()
     {
         return enemyCount == 0;
+    }
+    public bool enemyAlive()
+    {
+        return enemyDead == 0;
+    }
+
+    public int EnemyCount
+    {
+        get { return enemyCount; }
+    }
+    public int EnemyDead
+    {
+        get { return enemyDead; }
     }
 }

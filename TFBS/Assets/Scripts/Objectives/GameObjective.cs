@@ -9,7 +9,7 @@ public class GameObjective : MonoBehaviour
         //load from the editor
         if (Missions.objective == 0)
         {
-            Missions.objective = 1;
+            Missions.objective = 3;
         }
 
         hud = GameObject.FindObjectOfType<HUD>();
@@ -45,7 +45,12 @@ public class GameObjective : MonoBehaviour
     {
         if (Missions.missionCompleted)
         {
-            hud.SetObjective("Mission completed \nfind a way to escape");
+            hud.SetObjective("Mission completed \nfind a way to escape the building");
         }
     }
+
+    /* MISSION 3 : vol de document
+       MISSION 2 : sauvetage d'otages
+       MISSION 1 : destruction d'une étage
+     */
 }

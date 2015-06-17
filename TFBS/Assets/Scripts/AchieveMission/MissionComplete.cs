@@ -9,9 +9,11 @@ public class MissionComplete : MonoBehaviour
     private bool contact;
     private bool incompleteMessage;
     private float incompleteMessageCD;
+    public bool given;
 
     void Start()
     {
+        given = false;
         hud = GameObject.FindObjectOfType<HUD>();
         contact = false;
         incompleteMessage = false;
@@ -20,6 +22,10 @@ public class MissionComplete : MonoBehaviour
 
     void Update()
     {
+        if (given)
+        {
+            given = false;
+        }
         if (incompleteMessageCD + 4 < Time.time)
         {
             incompleteMessage = false;
@@ -45,6 +51,11 @@ public class MissionComplete : MonoBehaviour
             {
                 if (Missions.missionCompleted)
                 {
+                    if (!given)
+                    {
+                        given = true;
+                        reward();
+                    }
                     SceneManager.LoadScene(Scene.SecretBase);
                 }
                 else
@@ -75,5 +86,34 @@ public class MissionComplete : MonoBehaviour
         {
             contact = false;
         }
+    }
+
+    void reward()
+    {
+        //récompense de mission
+        switch (Missions.objective)
+        {
+            //mission 3 : vol de document
+            case 3: PlayerMoney.addMoney(70000);
+                if (hud.enemyAlive())
+                {
+                    PlayerMoney.addMoney(70000);
+                }
+                else
+                {
+                    if (hud.EnemyDead < 3)
+                        PlayerMoney.useMoney(20000);
+                    else
+                        PlayerMoney.useMoney(2500 * hud.EnemyDead);
+                    if (hud.noEnemy())
+                    {
+                        AssassinationMission.enable = true;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+        Debug.Log(PlayerMoney.Money);
     }
 }
