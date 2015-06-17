@@ -114,6 +114,5 @@ public class MissionComplete : MonoBehaviour
             default:
                 break;
         }
-        Debug.Log(PlayerMoney.Money);
     }
 }

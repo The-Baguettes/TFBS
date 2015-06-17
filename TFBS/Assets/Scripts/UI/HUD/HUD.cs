@@ -116,6 +116,11 @@ public class HUD : BaseComponent
 
         if (oldTime != (int)TotalTime)
             UpdateTotalTime();
+
+        if (MoneyText.text != changeMoneyText())
+        {
+            MoneyText.text = changeMoneyText();
+        }
     }
 
     void UpdateEnemyCount()
@@ -137,9 +142,9 @@ public class HUD : BaseComponent
             ObjectiveText.text = value;
     }
 
-    public void changeMoneyText()
+    public string changeMoneyText()
     {
-        MoneyText.text = "Money: " + PlayerMoney.Money + "€";
+        return "Money: " + PlayerMoney.Money + "€";
     }
 
     public bool noEnemy()
