@@ -10,6 +10,7 @@ public class MissionOneComplete : MonoBehaviour
     public GameObject bombE;
 
     public GameObject light;
+    public Transform explosion;
 
     bool contact;
 
@@ -30,6 +31,11 @@ public class MissionOneComplete : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     //animation
+                    Instantiate(explosion, bombA.transform.position, bombA.transform.rotation);
+                    Instantiate(explosion, bombB.transform.position, bombB.transform.rotation);
+                    Instantiate(explosion, bombC.transform.position, bombC.transform.rotation);
+                    Instantiate(explosion, bombD.transform.position, bombD.transform.rotation);
+                    Instantiate(explosion, bombE.transform.position, bombE.transform.rotation);
 
                     bombA.active = false;
                     bombB.active = false;
@@ -38,6 +44,8 @@ public class MissionOneComplete : MonoBehaviour
                     bombE.active = false;
 
                     light.GetComponent<Light>().enabled = false;
+
+                    Missions.missionCompleted = true;
                 }
             }
         }

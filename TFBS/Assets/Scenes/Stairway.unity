@@ -4763,11 +4763,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22426478, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22426478, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 478154, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4791,11 +4791,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22405792, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22405792, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 464966, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_RootOrder
@@ -12754,6 +12754,7 @@ MonoBehaviour:
   bombD: {fileID: 1358099514}
   bombE: {fileID: 2017208442}
   light: {fileID: 2112637837}
+  explosion: {fileID: 400000, guid: b9dd5ecd168e0b54295932b5b107b983, type: 2}
 --- !u!1001 &1444844310
 Prefab:
   m_ObjectHideFlags: 0
