@@ -15,8 +15,8 @@ public abstract class BaseDamageable : BaseComponent
 
     sealed protected override void Start()
     {
-        base.Start();
         Reset();
+        base.Start();
     }
 
     public virtual void AddHealthPoints(int amount)

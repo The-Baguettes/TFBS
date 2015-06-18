@@ -54,14 +54,14 @@ public abstract class BaseGun : BaseWeapon
 
     protected override void Start()
     {
-        base.Start();
-
         UsesLeft = -1;
 
         Setup();
 
         if (UsesLeft == -1)
             UsesLeft = MagazineSize;
+
+        base.Start();
     }
 
     protected override void OnUse(Transform target)

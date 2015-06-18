@@ -36,8 +36,8 @@ public class EnemyAI : BaseComponent
 
     protected override void Start()
     {
-        base.Start();
         navAgent.SetDestination(waypoints[0].position);
+        base.Start();
     }
 
     #region EventManagement
