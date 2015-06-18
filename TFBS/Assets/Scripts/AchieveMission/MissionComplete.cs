@@ -14,7 +14,6 @@ public class MissionComplete : MonoBehaviour
         given = false;
         hud = GameObject.FindObjectOfType<HUD>();
         contact = false;
-        Missions.missionCompleted = false;
     }
 
     void Update()

@@ -9,7 +9,7 @@ public class Missions : MonoBehaviour
     public static Scene mission;
     public static int objective;
     public static bool missionCompleted;
-    public string finishedMission;
+    public static string finishedMission;
 
     public Button button;
     public Button button1;
@@ -17,8 +17,11 @@ public class Missions : MonoBehaviour
 
     void Start()
     {
-        MissionSuccess();
-        display();
+        if (SceneManager.LoadedScene == Scene.SecretBase)
+        {
+            MissionSuccess();
+            display();
+        }
     }
 
     void MissionSuccess()
@@ -32,7 +35,6 @@ public class Missions : MonoBehaviour
 
     void MissionReset()
     {
-        missionSelected = false;
         missionCompleted = false;
     }
 
