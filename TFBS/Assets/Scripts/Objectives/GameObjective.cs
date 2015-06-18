@@ -15,12 +15,12 @@ public class GameObjective : MonoBehaviour
         hud = GameObject.FindObjectOfType<HUD>();
         if (Missions.objective == 1)
         {
-            hud.SetObjective("Destroy the laboratory using the stairway");
+            hud.SetObjective("Use the stairway");
         }
         else
             if (Missions.objective == 2)
             {
-                hud.SetObjective("Save the hostages at the first floor using the elevator");
+                hud.SetObjective("Use the elevator");
             }
             else
                 if (Missions.objective == 3)
@@ -31,15 +31,7 @@ public class GameObjective : MonoBehaviour
                 {
                     hud.SetObjective(null);
                 }
-        //hud.SetObjective("Find the elevator");
     }
-
-    /*
-    void OnTriggerEnter(Collider checkpointcol)
-    {
-        if (checkpointcol.tag == Tags.Player)
-            hud.SetObjective(null);
-    }*/
 
     void Update()
     {
