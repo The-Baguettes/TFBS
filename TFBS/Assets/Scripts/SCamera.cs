@@ -7,7 +7,8 @@ public class SCamera : MonoBehaviour
     Vector3 minAngle;
     Vector3 maxAngle;
     Vector3 targetAngle;
-    public float toRotate;
+    public float toRotateLeft;
+    public float toRotateRight;
     public float smooth;
     float animationStartTime;
     bool vrai;
@@ -16,8 +17,8 @@ public class SCamera : MonoBehaviour
     
     void Start()
     {
-        minAngle = transform.eulerAngles + new Vector3(0,  - toRotate / 2, 0);
-        maxAngle = transform.eulerAngles + new Vector3(0, +toRotate / 2, 0);
+        minAngle = transform.eulerAngles + new Vector3(0, -toRotateLeft / 2, 0);
+        maxAngle = transform.eulerAngles + new Vector3(0, toRotateRight / 2, 0);
         targetAngle = minAngle;
 
     }
@@ -56,54 +57,4 @@ public class SCamera : MonoBehaviour
                 targetAngle = minAngle;
         }
     }
-    /*void Update()
-    {
-                if (final)
-                {
-                    if (ToMove.transform.position == positionDown)
-                    {
-                        final = !final;
-                        //vrai = !vrai;
-                    }
-                    else
-                    {
-                        if (ToMove.transform.position == positionUp && vrai)
-                        {
-                            StartCoroutine(Displacement());
-                            animationProgress = 0.0f;
-                            vrai = !vrai;
-                            ToMove.transform.position = new Vector3(ToMove.transform.position.x - 0.0001f, ToMove.transform.position.y - 0.0001f, ToMove.transform.position.z - 0.0001f);
-                        }
-                        else
-                        {
-                            ToMove.transform.position = Vector3.Lerp(positionUp, positionDown, animationProgress / smooth);
-                        }
-                    }
-                }
-                else
-                {
-                    {
-                        if (ToMove.transform.position == positionUp)
-                        {
-                            final = !final;
-                            vrai = !vrai;
-                        }
-                        else
-                        {
-                            if (ToMove.transform.position == positionDown && vrai)
-                            {
-                                StartCoroutine(Displacement());
-                                animationProgress = 0.0f;
-                                vrai = !vrai;
-                                ToMove.transform.position = new Vector3(ToMove.transform.position.x + 0.0001f, ToMove.transform.position.y + 0.0001f, ToMove.transform.position.z + 0.0001f);
-                            }
-                            else
-                            {
-                                ToMove.transform.position = Vector3.Lerp(positionDown, positionUp, animationProgress / smooth);
-                            }
-                        }
-                    }
-                }
-            }
-    }*/
 }

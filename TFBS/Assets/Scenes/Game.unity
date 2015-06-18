@@ -7653,7 +7653,7 @@ Camera:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 438418961}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
@@ -7704,8 +7704,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  toRotate: 90
-  smooth: .00200000009
+  toRotateLeft: 45
+  toRotateRight: 45
+  smooth: .5
 --- !u!135 &438418969
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -12479,19 +12480,19 @@ Prefab:
     m_Modifications:
     - target: {fileID: 22405792, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22405792, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22426478, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22426478, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 461138, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_LocalPosition.x
@@ -12512,6 +12513,10 @@ Prefab:
     - target: {fileID: 464966, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
       propertyPath: m_LocalPosition.z
       value: 2.01999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 159508, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24bde5755b8c65049a7904f616cd49f7, type: 2}
