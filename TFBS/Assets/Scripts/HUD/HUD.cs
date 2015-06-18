@@ -18,6 +18,11 @@ public class HUD : BaseComponent
     int enemyCount;
     int enemyDead;
 
+    protected void Awake()
+    {
+        GetComponent<Canvas>().enabled = true;
+    }
+
     #region EventManagement
     PlayerDamage playerDamage;
     WeaponManager playerWeaponManager;

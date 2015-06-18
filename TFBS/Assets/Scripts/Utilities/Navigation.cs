@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Navigation : MonoBehaviour
+public class Navigation : BaseComponent
 {
     #region Meta
     public void Back()
