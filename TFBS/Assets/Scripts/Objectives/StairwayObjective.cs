@@ -15,7 +15,7 @@ public class StairwayObjective : MonoBehaviour
         hud = GameObject.FindObjectOfType<HUD>();
         if (Missions.objective == 1)
         {
-            hud.SetObjective("Destroy the laboratory by placing c4 on the blue spotlights \nthen find a room leading underground to trigger the explosion."
+            hud.SetObjective("Destroy the laboratory by placing 5 bombs on the blue spotlights \nthen find a room leading underground to trigger the explosion."
                 + "\nOptional: Find the alarm to evacuate scientist \nfrom the building, then you have to wait a minute.");
         }
         else
