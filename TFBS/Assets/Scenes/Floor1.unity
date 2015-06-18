@@ -11881,7 +11881,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 3c1fef4a5b13d9544b0fcc1894d0ea16, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: .707106829
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 3c1fef4a5b13d9544b0fcc1894d0ea16, type: 3}
       propertyPath: m_LocalRotation.z
@@ -11889,7 +11889,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 3c1fef4a5b13d9544b0fcc1894d0ea16, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: .707106709
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 3c1fef4a5b13d9544b0fcc1894d0ea16, type: 3}
       propertyPath: m_RootOrder
@@ -11899,7 +11899,8 @@ Prefab:
       propertyPath: m_TagString
       value: 'Hostage '
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 3c1fef4a5b13d9544b0fcc1894d0ea16, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 3c1fef4a5b13d9544b0fcc1894d0ea16, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &1526744018 stripped
@@ -13799,6 +13800,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac5da74d253b624e9231c6b75ceb240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &1741196149
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1741196146}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d6c3f4ecff99a9242b94ebfc7894ce52, type: 3}
+  m_Animations:
+  - {fileID: 7400000, guid: b8052fe7c28d42a498b7541c66810f37, type: 3}
+  - {fileID: 7400000, guid: 5c17919c4f1d27b45b8553e137cf2043, type: 3}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 1
 --- !u!195 &1741196150
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -13819,6 +13836,34 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!54 &1741196151
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1741196146}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &1741196152
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1741196146}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .5
+  m_Height: 2.61999989
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &1751032960
 Prefab:
   m_ObjectHideFlags: 0
