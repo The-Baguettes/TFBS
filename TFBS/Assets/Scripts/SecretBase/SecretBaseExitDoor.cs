@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SecretBaseExitDoor : MonoBehaviour
 {
+    public Canvas map;
     bool contact;
     bool display;
     public float displayTime;
@@ -10,6 +12,7 @@ public class SecretBaseExitDoor : MonoBehaviour
 
     void Start()
     {
+        map.enabled = false;
         contact = false;
         display = false;
     }
@@ -36,14 +39,18 @@ public class SecretBaseExitDoor : MonoBehaviour
         {
             if (Missions.missionSelected)
             {
+                map.enabled = true;
                 Object.FindObjectOfType<PlayerDamage>().SaveHP();
-                SceneManager.LoadScene(Missions.mission);
             }
             else
             {
                 display = true;
                 time = Time.time;
             }
+        }
+        else
+        {
+            map.enabled = false;
         }
         if (display)
         {

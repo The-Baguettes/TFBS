@@ -53,6 +53,7 @@ public class Missions : MonoBehaviour
                     break;
                 case '3': button2.enabled = false;
                     button2.GetComponentInChildren<Text>().text = "Success";
+                    PlayerBonus.shopEnable = true;
                     break;
                 default:
                     break;
