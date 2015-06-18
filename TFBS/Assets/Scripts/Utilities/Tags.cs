@@ -8,6 +8,7 @@
     public const string Bullet = "Bullet";
     public const string Enemy = "Enemy";
     public const string Player = "Player";
+    public const string Hostage = "Hostage";
 
     // Misc
     public const string NoHit = "NoHit";
