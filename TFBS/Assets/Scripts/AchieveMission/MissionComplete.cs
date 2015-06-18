@@ -7,8 +7,6 @@ public class MissionComplete : MonoBehaviour
 
     HUD hud;
     private bool contact;
-    private bool incompleteMessage;
-    private float incompleteMessageCD;
     public bool given;
 
     void Start()
@@ -16,7 +14,6 @@ public class MissionComplete : MonoBehaviour
         given = false;
         hud = GameObject.FindObjectOfType<HUD>();
         contact = false;
-        incompleteMessage = false;
         Missions.missionCompleted = false;
     }
 
@@ -26,49 +23,22 @@ public class MissionComplete : MonoBehaviour
         {
             given = false;
         }
-        if (incompleteMessageCD + 4 < Time.time)
-        {
-            incompleteMessage = false;
-        }
-        if (!Missions.missionCompleted)
-        {
-            if (Missions.objective == 1 || Missions.objective == 2)
-            {
-                if (hud.noEnemy())
-                {
-                    Missions.missionCompleted = true;
-                }
-            }
-        }
     }
 
     void OnGUI()
     {
-        if (contact && !incompleteMessage)
+        if (contact)
         {
             GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 200, 30), "'F' to leave the building");
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (Missions.missionCompleted)
+                if (Missions.missionCompleted && !given)
                 {
-                    if (!given)
-                    {
-                        given = true;
-                        reward();
-                    }
-                    SceneManager.LoadScene(Scene.SecretBase);
+                    given = true;
+                    reward();
                 }
-                else
-                {
-                    contact = false;
-                    incompleteMessage = true;
-                    incompleteMessageCD = Time.time;
-                }
+                SceneManager.LoadScene(Scene.SecretBase);
             }
-        }
-        if (incompleteMessage)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 200, 100), "You still haven't completed the mission!");
         }
     }
 
@@ -115,6 +85,37 @@ public class MissionComplete : MonoBehaviour
                     }
                 }
                 PlayerBonus.shopEnable = true;
+                break;
+            //mission 2: sauvetage d'otage
+            case 2: if (PlayerBonus.deadHostage && hud.noEnemy()) //if hostage dead: 30K compensation
+                {
+                    PlayerMoney.addMoney(30000);
+                }
+                else
+                {
+                    if (PlayerBonus.doubleHostage) //if double save: full reward
+                    {
+                        PlayerMoney.addMoney(270000);
+                        PlayerBonus.noPrice = true;
+                        PlayerBonus.shopEnable = true;
+                        PlayerBonus.recruit = true;
+                    }
+                    else
+                    {
+                        PlayerMoney.addMoney(90000);//simple hostage
+                        if (PlayerBonus.hardHostage) //extra for hard hostage
+                        {
+                            PlayerMoney.addMoney(90000);
+                            PlayerBonus.noPrice = true; //no loss for killing or buying items
+                        }
+                        else
+                            PlayerBonus.recruit = true; //recruit a fighter
+                    }
+                }
+                break;
+                //mission 1: destruction de labo
+            case 1: PlayerMoney.addMoney(100000);
+                PlayerMoney.useMoney(hud.EnemyDead * 2500);
                 break;
             default:
                 break;

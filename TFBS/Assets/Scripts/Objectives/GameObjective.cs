@@ -15,17 +15,17 @@ public class GameObjective : MonoBehaviour
         hud = GameObject.FindObjectOfType<HUD>();
         if (Missions.objective == 1)
         {
-            hud.SetObjective("Kill the enemies");
+            hud.SetObjective("Destroy the laboratory using the stairway");
         }
         else
             if (Missions.objective == 2)
             {
-                hud.SetObjective("Kill the enemies");
+                hud.SetObjective("Save the hostages at the first floor using the elevator");
             }
             else
                 if (Missions.objective == 3)
                 {
-                    hud.SetObjective("Find the confidential information in the secret room");
+                    hud.SetObjective("Find the confidential information in the secret room at this floor");
                 }
                 else
                 {
