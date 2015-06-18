@@ -205,6 +205,7 @@ ModelImporter:
     400198: //RootNode
     7400000: Move_Walk225
     9500000: //RootNode
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -215,15 +216,7 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: "MuscleClip 'WalksRuns' conversion warning: Bone length
-      is different in avatar and animation\n\n     'RightEye' : position error = 21.737984
-      mm\n\n     'LeftEye' : position error = 21.738939 mm\n\nMuscleClip 'WalksRuns'conversion
-      warning: 'Reference/Hips' has translation animation. It is not supported.\n\nMuscleClip
-      'WalksRuns' conversion warning: 'Reference/Hips' is between humanoid transforms
-      and has rotation animation. This might lower retargeting quality.\n\nMuscleClip
-      'WalksRuns' conversion warning: 'Reference/Hips/Spine/Spine1/Spine2' is between
-      humanoid transforms and has rotation animation. This might lower retargeting
-      quality.\n\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
@@ -1227,9 +1220,8 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 1f566d4dee8ec344e887b2b71c5101c1,
-    type: 3}
-  animationType: 3
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
   additionalBone: 1
   userData: 
   assetBundleName: 

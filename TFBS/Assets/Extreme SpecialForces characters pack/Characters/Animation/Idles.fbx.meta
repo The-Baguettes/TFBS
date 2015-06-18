@@ -207,6 +207,7 @@ ModelImporter:
     7400002: Idle_Combat_Shoulders
     7400004: Idle_Combat_Neck
     9500000: //RootNode
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -217,19 +218,7 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: "MuscleClip 'Idles' conversion warning: Bone length is
-      different in avatar and animation\n\n     'RightEye' : position error = 21.737984
-      mm\n\n     'LeftEye' : position error = 21.738939 mm\n\nMuscleClip 'Idles'conversion
-      warning: 'Reference/Hips' has translation animation. It is not supported.\n\nMuscleClip
-      'Idles' conversion warning: 'Reference/Hips/Spine/Spine1/Spine2' is between
-      humanoid transforms and has rotation animation. This might lower retargeting
-      quality.\n\nMuscleClip 'Idles'conversion warning: 'Reference/Hips' has translation
-      animation. It is not supported.\n\nMuscleClip 'Idles' conversion warning: 'Reference/Hips/Spine/Spine1/Spine2'
-      is between humanoid transforms and has rotation animation. This might lower
-      retargeting quality.\n\nMuscleClip 'Idles'conversion warning: 'Reference/Hips'
-      has translation animation. It is not supported.\n\nMuscleClip 'Idles' conversion
-      warning: 'Reference/Hips/Spine/Spine1/Spine2' is between humanoid transforms
-      and has rotation animation. This might lower retargeting quality.\n\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
@@ -1285,9 +1274,8 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 1f566d4dee8ec344e887b2b71c5101c1,
-    type: 3}
-  animationType: 3
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

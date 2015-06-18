@@ -16,11 +16,10 @@ public class Hostage : MonoBehaviour
 
     void Update()
     {
-        GetComponent<Animation>().Play("Idle_Combat_Base");
         if (leader != null)
         {
             navmesh.SetDestination(leader.transform.position);
-            GetComponent<Animation>().Play("Move_Sprint450");
+            GetComponent<Animation>().Play();
         }
     }
 
