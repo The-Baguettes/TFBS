@@ -21,7 +21,7 @@ public class EnemyAI : BaseComponent
     int currentWaypoint;
     List<Transform> waypoints;
 
-    protected override void OnStart()
+    protected void Awake()
     {
         leader = GameObject.FindWithTag(Tags.Player).transform;
 
@@ -32,6 +32,11 @@ public class EnemyAI : BaseComponent
         waypoints.Remove(WaypointsContainer.transform);
 
         navAgent = GetComponent<NavMeshAgent>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
         navAgent.SetDestination(waypoints[0].position);
     }
 

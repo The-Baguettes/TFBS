@@ -13,14 +13,10 @@ public abstract class BaseDamageable : BaseComponent
 
     protected abstract void Setup();
 
-    sealed protected override void OnStart()
+    sealed protected override void Start()
     {
-        HealthPoints = -1;
-
-        Setup();
-
-        if (HealthPoints == -1)
-            HealthPoints = MaxHealthPoints;
+        base.Start();
+        Reset();
     }
 
     public virtual void AddHealthPoints(int amount)
@@ -59,7 +55,12 @@ public abstract class BaseDamageable : BaseComponent
 
     public void Reset()
     {
-        OnStart();
+        HealthPoints = -1;
+
+        Setup();
+
+        if (HealthPoints == -1)
+            HealthPoints = MaxHealthPoints;
     }
 
     protected virtual void OnHealthPointsChanged(int delta)

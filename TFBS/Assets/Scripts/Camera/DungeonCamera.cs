@@ -7,7 +7,7 @@ public class DungeonCamera : BaseComponent
 
     GameObject target;
 
-    protected override void OnStart()
+    protected void Awake()
     {
         target = GameObject.FindWithTag(Tags.Player);
     }

@@ -24,7 +24,8 @@ public abstract class BaseGun : BaseWeapon
     protected abstract void Setup();
 
     HUD hud;
-    protected override void OnStart()
+
+    protected void Awake()
     {
         hud = FindObjectOfType<HUD>();
 
@@ -49,6 +50,11 @@ public abstract class BaseGun : BaseWeapon
             if (tmp != null)
                 FireSilencedClip = tmp.GetComponent<AudioSource>().clip;
         }
+    }
+
+    protected override void Start()
+    {
+        base.Start();
 
         UsesLeft = -1;
 

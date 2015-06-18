@@ -5,7 +5,7 @@ public class ArmorBar : BaseComponent
 {
     Slider slider;
 
-    protected override void OnStart()
+    protected void Awake()
     {
         slider = GetComponent<Slider>();
     }

@@ -8,18 +8,14 @@ public abstract class BaseComponent : MonoBehaviour
     event EventHandler Initialized;
 
     #region OverridableMethods
-    protected virtual void OnStart()
-    { }
-
     protected virtual void HookUpEvents()
     { }
     protected virtual void UnHookEvents()
     { }
     #endregion
 
-    protected void Start()
+    protected virtual void Start()
     {
-        OnStart();
         HookUpEvents();
 
         isInitialized = true;

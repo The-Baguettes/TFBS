@@ -11,7 +11,7 @@ public class WeaponManager : BaseComponent
     public event EventHandler ActiveUsed;
     public event EventHandler SwitchedWeapon;
 
-    protected override void OnStart()
+    protected void Awake()
     {
         Weapons = new List<BaseWeapon>();
         GetComponentsInChildren<BaseWeapon>(Weapons);
