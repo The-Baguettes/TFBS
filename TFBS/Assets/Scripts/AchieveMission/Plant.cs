@@ -7,9 +7,11 @@ public class Plant : MonoBehaviour
     GameObject bomb;
     public string gameObjectName;
     public GameObject light;
+    GameObject audio;
 
     void Start()
     {
+        audio = GameObject.Find("AudioBomb");
         contact = false;
         bomb = GameObject.Find(gameObjectName);
         bomb.active = false;
@@ -40,6 +42,7 @@ public class Plant : MonoBehaviour
             {
                 bomb.active = true;
                 light.GetComponent<Light>().enabled = false;
+                audio.GetComponent<AudioSource>().Play();
             }
         }
     }
