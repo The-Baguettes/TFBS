@@ -80,7 +80,7 @@ public class MissionComplete : MonoBehaviour
                         PlayerMoney.useMoney(2500 * hud.EnemyDead);
                     if (hud.noEnemy())
                     {
-                        AssassinationMission.enable = true;
+                        PlayerBonus.enableAssassinationMission = true;
                     }
                 }
                 PlayerBonus.shopEnable = true;
@@ -98,6 +98,7 @@ public class MissionComplete : MonoBehaviour
                         PlayerBonus.noPrice = true;
                         PlayerBonus.shopEnable = true;
                         PlayerBonus.recruit = true;
+                        PlayerBonus.enableAssassinationMission = true;
                     }
                     else
                     {

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class Missions : MonoBehaviour
 {
     public static bool missionSelected;
-    public static Scene mission;
     public static int objective;
     public static bool missionCompleted;
     public static string finishedMission;
@@ -14,6 +13,9 @@ public class Missions : MonoBehaviour
     public Button button;
     public Button button1;
     public Button button2;
+    public Button button3;
+    public Button button4;
+    public Button button5;
 
     void Start()
     {
@@ -60,6 +62,15 @@ public class Missions : MonoBehaviour
                 case '3': button2.enabled = false;
                     button2.GetComponentInChildren<Text>().text = "Success";
                     PlayerBonus.shopEnable = true;
+                    break;
+                case '4': button3.enabled = false;
+                    button.GetComponentInChildren<Text>().text = "Success";
+                    break;
+                case '5': button4.enabled = false;
+                    button.GetComponentInChildren<Text>().text = "Success";
+                    break;
+                case '6': button5.enabled = false;
+                    button.GetComponentInChildren<Text>().text = "Success";
                     break;
                 default:
                     break;

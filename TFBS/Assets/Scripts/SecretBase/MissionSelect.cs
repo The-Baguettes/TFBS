@@ -7,13 +7,12 @@ public class MissionSelect : MonoBehaviour
     bool displayConfirmation;
     float time;
     public float displayTime;
-    Canvas missionSelect;
-    public Scene sceneGame;
+    public Canvas missionSelect;
+    public string displayMessage;
 
-    void Start()
+    void Awake()
     {
         contact = false;
-        missionSelect = GameObject.Find("MissionSelect").GetComponent<Canvas>();
         missionSelect.enabled = false;
         displayConfirmation = false;
     }
@@ -40,16 +39,18 @@ public class MissionSelect : MonoBehaviour
         {
             if (missionSelect.enabled)
             {
-                if (GUI.Button(new Rect(Screen.width -200, Screen.height - 100, 100, 50), "Close", "button"))
+                if (GUI.Button(new Rect(Screen.width - 200, Screen.height - 100, 100, 50), "Close", "button"))
                 {
                     missionSelect.enabled = false;
                 }
             }
             else
             {
-                GUI.Label(new Rect((3 * Screen.width / 4) - 50, Screen.height / 2 - 50, 250, 200), "Press 'F' to open the mission selection window");
+                GUI.Label(new Rect((3 * Screen.width / 4) - 50, Screen.height / 2 - 50, 250, 200), "Press 'F' to open the " + displayMessage);
             }
         }
+        else
+            missionSelect.enabled = false;
 
         if (displayConfirmation)
         {
@@ -72,22 +73,37 @@ public class MissionSelect : MonoBehaviour
     public void MissionOne()
     {
         MissionSelected();
-        Missions.mission = sceneGame;
         Missions.objective = 1;
     }
 
     public void MissionTwo()
     {
         MissionSelected();
-        Missions.mission = sceneGame;
         Missions.objective = 2;
     }
 
     public void MissionThree()
     {
         MissionSelected();
-        Missions.mission = sceneGame;
         Missions.objective = 3;
+    }
+
+    public void MissionFour()
+    {
+        MissionSelected();
+        Missions.objective = 4;
+    }
+
+    public void MissionFive()
+    {
+        MissionSelected();
+        Missions.objective = 5;
+    }
+
+    public void MissionSix()
+    {
+        MissionSelected();
+        Missions.objective = 6;
     }
 
     void MissionSelected()
