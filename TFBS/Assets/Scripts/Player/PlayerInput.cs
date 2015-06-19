@@ -5,6 +5,7 @@ public class PlayerInput : MonoBehaviour
     static readonly KeyCode[] weaponInputs = {
         KeyCode.Alpha1,
         KeyCode.Alpha2,
+        KeyCode.Alpha3,
     };
 
     new NetworkView networkView;
