@@ -16,7 +16,8 @@ public static class PlayerBonus
     public static bool recruit;
 
     public static bool scientistAlive;
-
     public static bool enableAssassinationMission;
+
+    public static bool hostageFollowing;
 }
 

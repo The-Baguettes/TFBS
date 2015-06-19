@@ -11,7 +11,7 @@ public class Hostage : MonoBehaviour
     {
         navmesh = GetComponent<NavMeshAgent>();
         navmesh.stoppingDistance = 4.0f;
-       
+        navmesh.speed = 10f;
     }
 
     void Update()
