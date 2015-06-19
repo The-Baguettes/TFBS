@@ -3,7 +3,6 @@ using System.Collections;
 
 public class AutoLight : MonoBehaviour
 {
-
     bool contact;
     public GameObject Candle1;
     public GameObject Candle2;
