@@ -42,6 +42,10 @@ public class Missions : MonoBehaviour
     {
         int i = 0;
         int n;
+        if (finishedMission == null)
+        {
+            return;
+        }
         while (i < finishedMission.Length)
         {
             n = finishedMission[i];
