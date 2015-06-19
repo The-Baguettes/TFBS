@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameOverMenu : MenuBase
+public class GameOverMenu : Navigation
 {
     PlayerDamage playerDamage;
 

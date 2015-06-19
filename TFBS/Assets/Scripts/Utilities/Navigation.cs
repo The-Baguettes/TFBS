@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
 
-public class Navigation : BaseComponent
+public class Navigation : MenuBase
 {
-    #region Meta
-    public void Back()
+    protected GameOverMenu GameOver;
+    protected MainMenu MainMenu;
+    //protected SettingsMenu Settings;
+
+    protected override void Awake()
     {
-        SceneManager.LoadPreviousScene();
+        base.Awake();
+
+        GameOver = GameObject.FindObjectOfType<GameOverMenu>();
+        MainMenu = GameObject.FindObjectOfType<MainMenu>();
+        //Settings = GameObject.FindObjectOfType<SettingsMenu>();
     }
-    
+
     public void Quit()
     {
 #if UNITY_EDITOR
@@ -16,27 +23,20 @@ public class Navigation : BaseComponent
         Application.Quit();
 #endif
     }
-    #endregion
 
-    #region Menus
-    public void MainMenu()
+    public void ShowGameOver()
     {
-        SceneManager.LoadScene(Scene.MainMenu);
+        GameOver.Show();
     }
 
-    public void SettingsMenu()
+    public void ShowMainMenu()
     {
+        MainMenu.Show();
+    }
+
+    public void ShowSettings()
+    {
+        //Settings.Show();
         SceneManager.LoadScene(Scene.SettingsMenu);
-    }
-    #endregion
-
-    public void Play()
-    {
-        SceneManager.LoadScene(MetaScene.FirstLevel);
-    }
-
-    public void MultiPlayer()
-    {
-        SceneManager.LoadScene(Scene.Environment);
     }
 }

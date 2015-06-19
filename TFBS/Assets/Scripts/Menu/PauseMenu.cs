@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PauseMenu : MenuBase
+public class PauseMenu : Navigation
 {
     public GameObject mainCamera;
     public GameObject mapCamera;

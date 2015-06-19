@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityStandardAssets.ImageEffects;
 
-public abstract class MenuBase : Navigation
+public abstract class MenuBase : BaseComponent
 {
     public static bool IsPaused;
 
@@ -12,7 +12,7 @@ public abstract class MenuBase : Navigation
 
     static readonly Stack<MenuBase> active = new Stack<MenuBase>();
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         Canvas = GetComponent<Canvas>();
 
