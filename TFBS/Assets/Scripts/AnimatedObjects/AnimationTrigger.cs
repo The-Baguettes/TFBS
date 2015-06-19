@@ -11,7 +11,7 @@ public class AnimationTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == Tags.Player)
+        if (col.tag == Tags.Player || col.tag == Tags.Hostage)
         {
             IsPlayerNear = true;
             AnimationProgress = 1 - AnimationProgress;
@@ -20,7 +20,7 @@ public class AnimationTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        if (col.tag == Tags.Player)
+        if (col.tag == Tags.Player || col.tag == Tags.Hostage)
         {
             IsPlayerNear = false;
             AnimationProgress = 1 - AnimationProgress;

@@ -36,6 +36,10 @@ public class Floor1ToStairway : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (PlayerBonus.hostageFollowing)
+        {
+            return;
+        }
         if (other.tag == Tags.Player)
         {
             if (!floor1)

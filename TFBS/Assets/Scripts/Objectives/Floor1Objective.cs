@@ -37,7 +37,7 @@ public class Floor1Objective : MonoBehaviour
     {
         if (Missions.missionCompleted)
         {
-            hud.SetObjective("Mission completed \nfind a way to escape the building. Exit are at level 0.");
+            hud.SetObjective("Mission completed \nfind a way to escape the building. Exit are at first floor.");
         }
     }
 

@@ -62,7 +62,7 @@ public class MissionComplete : MonoBehaviour
         //récompense de mission
         switch (Missions.objective)
         {
-            //mission 3 : vol de document
+            //mission 1 : vol de document
             case 3: PlayerMoney.addMoney(70000);
                 if (hud.enemyAlive())
                 {
@@ -113,9 +113,18 @@ public class MissionComplete : MonoBehaviour
                     }
                 }
                 break;
-                //mission 1: destruction de labo
+                //mission 3: destruction de labo
             case 1: PlayerMoney.addMoney(100000);
                 PlayerMoney.useMoney(hud.EnemyDead * 2500);
+                break;
+                //mission 4
+            case 4: PlayerMoney.addMoney(60000);
+                break;
+                //mission 5
+            case 5: PlayerMoney.addMoney(90000);
+                break;
+                //mission 6
+            case 6: PlayerMoney.addMoney(150000);
                 break;
             default:
                 break;
