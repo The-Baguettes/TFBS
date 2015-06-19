@@ -8,17 +8,18 @@ public class SCamera : MonoBehaviour
     Vector3 maxAngle;
     Vector3 targetAngle;
     public float toRotateLeft;
-    public float toRotateRight;
+   // public float toRotateRight;
     public float smooth;
     float animationStartTime;
-    bool vrai;
+    public  GameObject ToMove;
+    bool spotted;
     bool final;
     float animationProgress = 0.0f;
     
     void Start()
     {
-        minAngle = transform.eulerAngles + new Vector3(0, -toRotateLeft / 2, 0);
-        maxAngle = transform.eulerAngles + new Vector3(0, toRotateRight / 2, 0);
+        minAngle = ToMove.transform.eulerAngles + new Vector3(0, -toRotateLeft / 2, 0);
+        maxAngle = ToMove.transform.eulerAngles + new Vector3(0, toRotateLeft / 2, 0);
         targetAngle = minAngle;
 
     }
@@ -27,11 +28,14 @@ public class SCamera : MonoBehaviour
     {
         if (col.tag == Tags.Player)
         {
-            
-            //TO DO DETECT PLAYER
+            Alarm();   
         }
     }
 
+    public void Alarm()
+    {
+            
+    }
     
     IEnumerator Displacement()
     {
@@ -46,7 +50,7 @@ public class SCamera : MonoBehaviour
             return;
         }
         animationProgress += Time.deltaTime*smooth;
-        transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, targetAngle,animationProgress);
+        ToMove.transform.eulerAngles = Vector3.Lerp(ToMove.transform.eulerAngles, targetAngle,animationProgress);
         if(animationProgress >= 1)
         {
             animationProgress = 0;
