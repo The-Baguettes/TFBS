@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SCamera : MonoBehaviour
 {
-   // public bool isPlayer;
+    // public bool isPlayer;
     Vector3 minAngle;
     Vector3 maxAngle;
     Vector3 targetAngle;
@@ -12,7 +12,8 @@ public class SCamera : MonoBehaviour
     public float smooth;
     float animationStartTime;
     public GameObject ToMove;
-    bool spotted;
+    [HideInInspector]
+    public bool spotted;
     bool final;
     float animationProgress = 0.0f;
     public GameObject redLight;
@@ -32,7 +33,7 @@ public class SCamera : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        if(col.tag== Tags.Player && spotted)
+        if (col.tag == Tags.Player && spotted)
         {
             StartCoroutine(Alarm());
         }
@@ -42,21 +43,49 @@ public class SCamera : MonoBehaviour
     {
         if (spotted)
         {
-            for (int i = 0; i < 10; i++)
-            {//sound
+            for (int i = 0; i < 30; i++)
+            {//sound    
                 redLight.SetActive(true);
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(3f);
                 redLight.SetActive(false);
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
             }
         }
     }
 
-    IEnumerator Displacement(float a)
-    {
-        yield return new WaitForSeconds(a);
-    }
 
+
+    // TO FIX 
+    /*IEnumerable Alarm2()
+    {
+        List<Light> redList = new List<Light>(redLight.transform.childCount);
+        redLight.GetComponentsInChildren<Light>(redList);
+        while (redList.Count != 0)
+        {
+            for (int i = 0; i < redList.Count; i++)
+            {
+                redList[i].intensity -= 0.1f;
+                if (redList[i].intensity <= 0)
+                {
+                    redList.RemoveAt(i);
+                }
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+        redLight.GetComponentsInChildren<Light>(redList);
+        while (redList.Count != 0)
+        {
+            for (int i = 0; i < redList.Count; i++)
+            {
+                redList[i].intensity += 0.1f;
+                if (redList[i].intensity <= redLight.transform.GetChild(i).GetComponent<Light>().intensity)
+                {
+                    redList.RemoveAt(i);
+                }
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+    }*/
 
     void Update()
     {
