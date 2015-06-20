@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class CivilAI : MonoBehaviour
 {
-
     NavMeshAgent navAgent1;
     NavMeshAgent navAgent2;
     int currentWaypoint;
@@ -12,7 +11,7 @@ public class CivilAI : MonoBehaviour
     public GameObject wayPoints;
     GameObject WaypointsContainer1;
     GameObject WaypointsContainer2;
-   // public GameObject hidingPlace;
+    //public GameObject hidingPlace;
     //public GameObject player;    
     [HideInInspector]
     public int isSpotted;
@@ -45,22 +44,18 @@ public class CivilAI : MonoBehaviour
     }*/
     void Start()
     {
-        #region WayPoint1
-        WaypointsContainer1 = wayPoints.transform.GetChild(0).gameObject;       
-        wayList1 = new List<Transform>();      
+        WaypointsContainer1 = wayPoints.transform.GetChild(0).gameObject;
+        WaypointsContainer2 = wayPoints.transform.GetChild(1).gameObject;
+        wayList1 = new List<Transform>();
+        wayList2 = new List<Transform>();
         WaypointsContainer1.GetComponentsInChildren<Transform>(wayList1);
+        WaypointsContainer2.GetComponentsInChildren<Transform>(wayList2); 
+        wayList1.Remove(WaypointsContainer1.transform);
+        wayList2.Remove(WaypointsContainer2.transform);       
         navAgent1 = GetComponent<NavMeshAgent>();
         navAgent1.SetDestination(wayList1[0].position);
-        wayList1.Remove(WaypointsContainer1.transform);
-        #endregion
-        #region Waypoint2
-        WaypointsContainer2 = wayPoints.transform.GetChild(1).gameObject;
-        wayList2 = new List<Transform>();
-        wayList2.Remove(WaypointsContainer2.transform);
-        WaypointsContainer2.GetComponentsInChildren<Transform>(wayList2);        
         navAgent2 = GetComponent<NavMeshAgent>();
         navAgent2.SetDestination(wayList2[0].position);
-        #endregion
     }
     void Update()
     {
@@ -74,17 +69,15 @@ public class CivilAI : MonoBehaviour
                 navAgent1.SetDestination(wayList1[currentWaypoint].position);
             }
         }
-        if(isSpotted == 0)
+        else
         {
             if (!navAgent2.pathPending && navAgent2.remainingDistance <= 1
                        && (!navAgent2.hasPath || navAgent2.velocity.sqrMagnitude == 0f))
             {
-                currentWaypoint = ++currentWaypoint % wayList1.Count;
+                currentWaypoint = ++currentWaypoint % wayList2.Count;
                 navAgent2.SetDestination(wayList2[currentWaypoint].position);
             }
         }
-
-       
     }
     /*void Fear()
     {
