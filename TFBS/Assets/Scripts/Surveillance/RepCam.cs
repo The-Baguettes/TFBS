@@ -20,12 +20,10 @@ public class RepCam : MonoBehaviour {
         {
             if(listCamera.transform.GetChild(i).GetComponent<SCamera>().spotted)
             {
-                print(i + 1);
                 lastSpotted =  i + 1;
             }
         }
-    }
-	
+    }	
 	void Update () {
         checkSpotted();
 	}

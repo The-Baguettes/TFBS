@@ -27,10 +27,8 @@ public class SCamera : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == Tags.Player)
-        {
             spotted = true;
-          //  print(0);
-        }
+        
     }
 
     void OnTriggerExit(Collider col)
