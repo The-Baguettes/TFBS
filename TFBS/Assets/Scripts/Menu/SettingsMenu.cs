@@ -34,6 +34,6 @@ public class SettingsMenu : Navigation
 
     public void AdjustQuality()
     {
-        QualitySettings.SetQualityLevel((int)quality.value);
+        QualitySettings.SetQualityLevel((int)quality.value, true);
     }
 }
