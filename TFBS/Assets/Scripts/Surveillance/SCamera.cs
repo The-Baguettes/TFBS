@@ -14,7 +14,6 @@ public class SCamera : MonoBehaviour
     public GameObject ToMove;
     [HideInInspector]
     public bool spotted;
-    bool final;
     float animationProgress = 0.0f;
     public GameObject redLight;
     void Start()
@@ -28,7 +27,10 @@ public class SCamera : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == Tags.Player)
+        {
             spotted = true;
+          //  print(0);
+        }
     }
 
     void OnTriggerExit(Collider col)
