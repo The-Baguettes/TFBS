@@ -3,6 +3,7 @@
 public class StairwayObjective : MonoBehaviour
 {
     HUD hud;
+    public GameObject gameObject;
 
     void Start()
     {
@@ -32,6 +33,10 @@ public class StairwayObjective : MonoBehaviour
                 {
                     hud.SetObjective(null);
                 }
+        if (Missions.objective != 1 || Missions.missionCompleted)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()

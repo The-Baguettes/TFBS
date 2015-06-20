@@ -4,6 +4,7 @@ using System.Collections;
 public class SaveHostage : MonoBehaviour
 {
     bool saved;
+    public GameObject objectiveLight;
 
     void Start()
     {
@@ -15,6 +16,7 @@ public class SaveHostage : MonoBehaviour
         {
             saved = true;
             other.gameObject.active = false;
+            objectiveLight.GetComponent<Light>().enabled = false;
             Missions.missionCompleted = true;
         }
     }

@@ -10,13 +10,14 @@ public class MissionThreeCompleted : MonoBehaviour
     void Start()
     {
         contact = false;
-        if (Missions.objective == 3)
+        if (Missions.objective == 3 && !Missions.missionCompleted)
         {
             bookPresent = true;
         }
         else
         {
             bookPresent = false;
+            Destroy(book);
         }
     }
 
@@ -30,7 +31,7 @@ public class MissionThreeCompleted : MonoBehaviour
 
     void Update()
     {
-        if (contact && Input.GetKeyDown(KeyCode.F))
+        if (bookPresent && contact && Input.GetKeyDown(KeyCode.F))
         {
             GameObject.Destroy(book);
             bookPresent = false;

@@ -2543,6 +2543,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 304864696}
+  - 114: {fileID: 304864697}
   m_Layer: 0
   m_Name: 'Hostage '
   m_TagString: 'Hostage '
@@ -2563,8 +2564,21 @@ Transform:
   - {fileID: 1640809408}
   - {fileID: 706943975}
   - {fileID: 1239427507}
+  - {fileID: 1646308813}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &304864697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 304864695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01814828bb73c2240b20c62d09dd64e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObject: {fileID: 304864695}
 --- !u!1 &304968771
 GameObject:
   m_ObjectHideFlags: 0
@@ -7213,6 +7227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d2807bbe04ad8b4fa7af88d808f2235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectiveLight: {fileID: 1646308812}
 --- !u!65 &888603919
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11339,6 +11354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01814828bb73c2240b20c62d09dd64e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObject: {fileID: 0}
 --- !u!65 &1262960290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14057,12 +14073,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1646308812}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 110.009003, y: 5.33599997, z: 16.6299992}
+  m_LocalPosition: {x: 26.5690002, y: 4.57800007, z: -4.83455849}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 888603920}
-  m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_Father: {fileID: 304864696}
+  m_RootOrder: 3
 --- !u!108 &1646308814
 Light:
   m_ObjectHideFlags: 0

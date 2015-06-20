@@ -3,6 +3,7 @@
 public class Floor1Objective : MonoBehaviour
 {
     HUD hud;
+    public GameObject gameObject;
 
     void Start()
     {
@@ -31,6 +32,10 @@ public class Floor1Objective : MonoBehaviour
                 {
                     hud.SetObjective(null);
                 }
+        if (Missions.objective != 2 || Missions.missionCompleted)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
