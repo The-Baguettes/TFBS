@@ -4,7 +4,7 @@ public class Navigation : MenuBase
 {
     protected GameOverMenu GameOver;
     protected MainMenu MainMenu;
-    //protected SettingsMenu Settings;
+    protected SettingsMenu Settings;
 
     protected override void Awake()
     {
@@ -12,7 +12,7 @@ public class Navigation : MenuBase
 
         GameOver = GameObject.FindObjectOfType<GameOverMenu>();
         MainMenu = GameObject.FindObjectOfType<MainMenu>();
-        //Settings = GameObject.FindObjectOfType<SettingsMenu>();
+        Settings = GameObject.FindObjectOfType<SettingsMenu>();
     }
 
     public void Quit()
@@ -36,7 +36,6 @@ public class Navigation : MenuBase
 
     public void ShowSettings()
     {
-        //Settings.Show();
-        SceneManager.LoadScene(Scene.SettingsMenu);
+        Settings.Show();
     }
 }

@@ -57,7 +57,7 @@ public abstract class MenuBase : BaseComponent
     protected static void HideAll()
     {
         while (active.Count != 0)
-            active.Peek().Hide();
+            active.Pop().Hide();
     }
 
     void ToggleBlur(bool value)

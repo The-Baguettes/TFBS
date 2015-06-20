@@ -1,27 +1,38 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsMenu : Navigation
 {
+    Slider music;
     Slider quality;
 
-    public void Awake()
+    protected override void Awake()
     {
-        if (SharedState.MusicSource != null)
-        {
-            Slider slider = FindObjectOfType<Slider>();
-            slider.value = SharedState.MusicSource.volume;
-        }
-        quality = GameObject.Find("SliderQ").GetComponent<Slider>();
+        base.Awake();
+
+        music = transform.FindChild("Music").GetComponentInChildren<Slider>();
+        quality = transform.FindChild("Quality").GetComponentInChildren<Slider>();
     }
 
-    public void AdjustMusic(float volume)
+    protected override void Show()
     {
+        base.Show();
+
+        quality.value = QualitySettings.GetQualityLevel();
+
         if (SharedState.MusicSource != null)
-            SharedState.MusicSource.volume = volume;
+            music.value = SharedState.MusicSource.volume;
+        else
+            music.interactable = false;
     }
 
-    public void Quality()
+    public void AdjustMusic()
+    {
+        if (SharedState.MusicSource != null)
+            SharedState.MusicSource.volume = music.value;
+    }
+
+    public void AdjustQuality()
     {
         QualitySettings.SetQualityLevel((int)quality.value);
     }
