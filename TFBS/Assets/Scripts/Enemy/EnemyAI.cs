@@ -4,12 +4,15 @@ using System.Collections.Generic;
 public class EnemyAI : BaseComponent
 {
     const int fieldOfView = 160 / 2;
-    
+
     public GameObject WaypointsContainer;
+    [HideInInspector]
+    public GameObject WaypointsContainerBis;//ADD by micka
     BaseGun firearm;
     Transform leader;
     NavMeshAgent navAgent;
-
+    NavMeshAgent navAgentBis;//ADD by micka
+    
     bool lookingAround;
     float totalRotation;
     float angleBeforeLookAround;
@@ -18,18 +21,22 @@ public class EnemyAI : BaseComponent
 
     int currentWaypoint;
     List<Transform> waypoints;
-
+    List<Transform> waypointsBis; //ADD by micka
     protected void Awake()
     {
         leader = GameObject.FindWithTag(Tags.Player).transform;
-
+        
         firearm = GetComponentInChildren<BaseGun>();
 
         waypoints = new List<Transform>();
+        waypointsBis = new List<Transform>();//ADD by micka
         WaypointsContainer.GetComponentsInChildren<Transform>(waypoints);
+        WaypointsContainerBis.GetComponentsInChildren<Transform>(waypointsBis);//ADD by micka
         waypoints.Remove(WaypointsContainer.transform);
+        waypointsBis.Remove(WaypointsContainerBis.transform);
 
         navAgent = GetComponent<NavMeshAgent>();
+        navAgentBis = GetComponent<NavMeshAgent>();
     }
 
     protected override void Start()
@@ -68,6 +75,15 @@ public class EnemyAI : BaseComponent
             UpdateLookAround();
         else if (isFollowingPlayer)
             UpdateFollowLeader();
+        else if (GameObject.Find("Surveillance").GetComponent<RepCam>().lastSpotted > 0)
+        {
+            if (!navAgentBis.pathPending && navAgentBis.remainingDistance <= 1
+                 && (!navAgentBis.hasPath || navAgentBis.velocity.sqrMagnitude == 0f))
+            {
+                currentWaypoint = ++currentWaypoint % waypointsBis.Count;
+                navAgentBis.SetDestination(waypointsBis[currentWaypoint].position);
+            }
+        }
         else if (!navAgent.pathPending && navAgent.remainingDistance <= 1
                  && (!navAgent.hasPath || navAgent.velocity.sqrMagnitude == 0f))
         {

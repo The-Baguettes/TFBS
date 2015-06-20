@@ -6,6 +6,8 @@ public class RepCam : MonoBehaviour {
 
     public GameObject listCamera;
     [HideInInspector]
+    public int nbCam;
+    [HideInInspector]
     public int result;
     [HideInInspector]
     public int lastSpotted;
@@ -23,6 +25,8 @@ public class RepCam : MonoBehaviour {
             if(listCamera.transform.GetChild(i).GetComponent<SCamera>().spotted)
             {
                  lastSpotted =  i + 1;
+                 nbCam = i;
+                 return;
             }
         }
     }	

@@ -38,7 +38,7 @@ public class SCamera : MonoBehaviour
     {
         if (spotted)
         {
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 2; i++)
             {//sound    
                 redLight.SetActive(true);
                 yield return new WaitForSeconds(3f);
@@ -46,6 +46,7 @@ public class SCamera : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
         }
+        spotted = false;
     }
 
 
