@@ -112,6 +112,7 @@ public class CivilAI : MonoBehaviour
     void Update()
     {        
         isSpotted = GameObject.Find("Surveillance").GetComponent<RepCam>().lastSpotted;
+        print(GameObject.Find("Surveillance").GetComponent<RepCam>().lastSpotted);
         hideRoom = Fear();
         if (isSpotted > 0)
         {

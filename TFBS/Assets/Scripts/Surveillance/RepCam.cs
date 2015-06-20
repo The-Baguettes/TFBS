@@ -9,18 +9,20 @@ public class RepCam : MonoBehaviour {
     public int result;
     [HideInInspector]
     public int lastSpotted;
+
 	void Start () {
         result = 0;
         lastSpotted = 0;
 	}
 
     void checkSpotted()
-    {      
+    {
+        lastSpotted = 0;
         for (int i = 0; i < listCamera.transform.childCount; i++)
         {
             if(listCamera.transform.GetChild(i).GetComponent<SCamera>().spotted)
             {
-                lastSpotted =  i + 1;
+                 lastSpotted =  i + 1;
             }
         }
     }	
