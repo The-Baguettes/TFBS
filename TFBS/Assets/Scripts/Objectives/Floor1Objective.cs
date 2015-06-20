@@ -10,11 +10,11 @@ public class Floor1Objective : MonoBehaviour
         //load from the editor
         if (Missions.objective == 0)
         {
-            Missions.objective = 2;
+            Missions.objective = 5;
         }
 
         hud = GameObject.FindObjectOfType<HUD>();
-        if (Missions.objective == 1)
+        if (Missions.objective == 1 || Missions.objective == 6)
         {
             hud.SetObjective("Use the door next to the elevator");
         }
@@ -24,13 +24,13 @@ public class Floor1Objective : MonoBehaviour
                 hud.SetObjective("Save the hostage at this level.");
             }
             else
-                if (Missions.objective == 3)
+                if (Missions.objective == 3 || Missions.objective == 4)
                 {
                     hud.SetObjective("Take the elevator");
                 }
                 else
                 {
-                    hud.SetObjective(null);
+                    hud.SetObjective("Kill all the enemies at this floor");
                 }
         if (Missions.objective != 2 || Missions.missionCompleted)
         {
@@ -40,6 +40,9 @@ public class Floor1Objective : MonoBehaviour
 
     void Update()
     {
+        if (Missions.objective == 5 && hud.noEnemy())
+            Missions.missionCompleted = true;
+
         if (Missions.missionCompleted)
         {
             hud.SetObjective("Mission completed \nfind a way to escape the building. Exit are at first floor.");

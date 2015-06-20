@@ -9,16 +9,16 @@ public class GameObjective : MonoBehaviour
         //load from the editor
         if (Missions.objective == 0)
         {
-            Missions.objective = 3;
+            Missions.objective = 4;
         }
 
         hud = GameObject.FindObjectOfType<HUD>();
-        if (Missions.objective == 1)
+        if (Missions.objective == 1 || Missions.objective == 6)
         {
             hud.SetObjective("Use the stairway");
         }
         else
-            if (Missions.objective == 2)
+            if (Missions.objective == 2 || Missions.objective == 5)
             {
                 hud.SetObjective("Use the elevator");
             }
@@ -29,12 +29,17 @@ public class GameObjective : MonoBehaviour
                 }
                 else
                 {
-                    hud.SetObjective(null);
+                    hud.SetObjective("Kill all the enemies at this floor");
                 }
     }
 
     void Update()
     {
+        if (Missions.objective == 4 && hud.noEnemy())
+        {
+            Missions.missionCompleted = true;
+        }
+
         if (Missions.missionCompleted)
         {
             hud.SetObjective("Mission completed \nfind a way to escape the building");
