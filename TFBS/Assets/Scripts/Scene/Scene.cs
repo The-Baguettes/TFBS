@@ -2,7 +2,7 @@
 {
     // Scenes MUST be in the same order as in Unity > File > Build Settings
     MainMenu,
-    SettingsMenu,
+    //SettingsMenu,
     Environment,
     Game,
     Floor1,

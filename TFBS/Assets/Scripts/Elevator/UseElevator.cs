@@ -24,8 +24,8 @@ public class UseElevator : MonoBehaviour
         displayCD = 0;
         display = false;
         contact = false;
-        PauseCanvas = GameObject.Find("PauseCanvas").GetComponent<Canvas>();
-        GameOverCanvas = GameObject.Find("GameOverCanvas").GetComponent<Canvas>();
+        PauseCanvas = GameObject.Find("Pause").GetComponent<Canvas>();
+        GameOverCanvas = GameObject.Find("Game Over").GetComponent<Canvas>();
         leftDoorClosePosition = leftDoor.transform.position.z;
         isClose = true;
         player = GameObject.FindWithTag(Tags.Player);
