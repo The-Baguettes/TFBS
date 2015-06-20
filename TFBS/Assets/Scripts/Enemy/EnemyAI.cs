@@ -6,9 +6,7 @@ public class EnemyAI : BaseComponent
     const int fieldOfView = 160 / 2;
     
     public GameObject WaypointsContainer;
-
     BaseGun firearm;
-
     Transform leader;
     NavMeshAgent navAgent;
 
@@ -46,7 +44,6 @@ public class EnemyAI : BaseComponent
     protected override void HookUpEvents()
     {
         enemyDamage = GetComponent<EnemyDamage>();
-
         enemyDamage.HealthPointsChanged += enemyDamage_HealthPointsChanged;
     }
 
