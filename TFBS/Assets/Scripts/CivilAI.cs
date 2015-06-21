@@ -109,8 +109,8 @@ public class CivilAI : MonoBehaviour
         navAgent5.SetDestination(wayList5[0].position);
         #endregion
     }
-    void Update()
-    {        
+    /*void Update()
+    {
         isSpotted = GameObject.Find("Surveillance").GetComponent<RepCam>().lastSpotted;
         hideRoom = Fear();
         if (isSpotted > 0)
@@ -160,7 +160,7 @@ public class CivilAI : MonoBehaviour
                 navAgent5.SetDestination(wayList5[currentWaypoint].position);
             }
         }
-    }
+    }*/
     int Fear()
     {
         int last = 0;
