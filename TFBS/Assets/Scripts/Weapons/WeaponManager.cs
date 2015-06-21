@@ -33,7 +33,6 @@ public class WeaponManager : BaseComponent
 
     public void SwitchToWeapon(int n)
     {
-        print(n);
         if (n < 0 || n >= Weapons.Count)
             return;
 
