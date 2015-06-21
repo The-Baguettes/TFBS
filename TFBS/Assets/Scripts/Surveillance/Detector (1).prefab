@@ -172,7 +172,7 @@ Camera:
   field of view: 46
   orthographic: 0
   orthographic size: 5
-  m_Depth: -2
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -321,8 +321,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toRotateLeft: 90
+  audio: {fileID: 0}
   smooth: .5
-  ToMove: {fileID: 146600}
+  ToMove: {fileID: 188808}
   spotted: 0
   redLight: {fileID: 0}
 --- !u!124 &12470302
