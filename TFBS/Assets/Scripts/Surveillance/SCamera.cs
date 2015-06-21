@@ -8,6 +8,7 @@ public class SCamera : MonoBehaviour
     Vector3 maxAngle;
     Vector3 targetAngle;
     public float toRotateLeft;
+    public GameObject audio;
     // public float toRotateRight;
     public float smooth;
     float animationStartTime;
@@ -39,7 +40,8 @@ public class SCamera : MonoBehaviour
         if (spotted)
         {
             for (int i = 0; i < 2; i++)
-            {//sound    
+            {
+                audio.GetComponent<AudioSource>().Play();
                 redLight.SetActive(true);
                 yield return new WaitForSeconds(3f);
                 redLight.SetActive(false);
