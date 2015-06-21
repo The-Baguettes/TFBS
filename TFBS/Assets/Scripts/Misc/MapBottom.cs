@@ -4,11 +4,9 @@ public class MapBottom : MonoBehaviour
 {
     void OnTriggerEnter(Collider col)
     {
-        BaseDamageable damageable = col.GetComponent<BaseDamageable>();
+        if (col.tag != Tags.Player)
+            return;
 
-        if (damageable != null)
-            damageable.Kill();
-
-        Destroy(col.gameObject);
+        col.GetComponent<BaseDamageable>().Kill();
     }
 }
