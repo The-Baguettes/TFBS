@@ -10,9 +10,7 @@ public abstract class Projectile : MonoBehaviour, IDamager
 
     public Rigidbody Model { get; protected set; }
 
-    protected float DestroyAfter = 5f;
-
-    float destroyTime = float.PositiveInfinity;
+    protected float DestroyAfter = 5;
 
     protected abstract void OnAwake();
 
@@ -42,16 +40,8 @@ public abstract class Projectile : MonoBehaviour, IDamager
 
     public void OnFire(Vector3 spawnPoint)
     {
-        destroyTime = Time.timeSinceLevelLoad + DestroyAfter;
-
         UsedFrom = spawnPoint;
-    }
 
-    void Update()
-    {
-        if (Time.timeSinceLevelLoad < destroyTime)
-            return;
-
-        Destroy(gameObject);
+        Destroy(gameObject, DestroyAfter);
     }
 }
