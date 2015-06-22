@@ -12,4 +12,5 @@
 
     // Misc
     public const string NoHit = "NoHit";
+    public const string SharedState = "SharedState";
 }
