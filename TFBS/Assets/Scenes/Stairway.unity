@@ -19537,7 +19537,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1822098076}
   - 33: {fileID: 1822098075}
-  - 64: {fileID: 1822098074}
   - 65: {fileID: 1822098077}
   - 114: {fileID: 1822098073}
   m_Layer: 0
@@ -19558,18 +19557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 006c030742220c742a699e431c286455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!64 &1822098074
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1822098072}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1822098075
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19584,8 +19571,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1822098072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 52.3499985, y: -10.0100002, z: -13.1599998}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalPosition: {x: 45, y: -10, z: 23}
+  m_LocalScale: {x: 12, y: 1, z: 8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
