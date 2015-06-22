@@ -29,7 +29,15 @@ public class HUD : BaseComponent
 
     protected override void HookUpEvents()
     {
-        GameObject player = GameObject.FindWithTag(Tags.Player);
+        GameObject player = null;
+
+        if (!NetworkManager.IsMultiPlayer)
+            player = GameObject.FindWithTag(Tags.Player);
+        else if (NetworkManager.LocalPlayer == null)
+            return;
+        else
+            player = NetworkManager.LocalPlayer;
+        
         playerDamage = player.GetComponent<PlayerDamage>();
 
         playerDamage.Died += playerDamage_Died;

@@ -12,6 +12,7 @@ public class NetworkManager : MonoBehaviour
     public MonoBehaviour[] ScriptsToDisable;
 
     public static bool IsMultiPlayer = true;
+    public static GameObject LocalPlayer;
 
     //LoadingIndicator loadIndicator;
 
@@ -43,9 +44,6 @@ public class NetworkManager : MonoBehaviour
         //loadIndicator.Toggle();
 
         Destroy(GameObject.FindWithTag(Tags.Player));
-
-        GameObject common = GameObject.Find("Common");
-        Destroy(common.transform.FindChild("HUD"));
 
         NetworkConnectionError err = Network.InitializeServer(4, 25000, !Network.HavePublicAddress());
 
@@ -79,10 +77,10 @@ public class NetworkManager : MonoBehaviour
 
     void SpawnPlayer()
     {
-        GameObject player = Network.Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, 0) as GameObject;
-        player.AddComponent<PlayerInput>();
+        LocalPlayer = Network.Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, 0) as GameObject;
+        LocalPlayer.AddComponent<PlayerInput>();
 
-        GameObject.FindWithTag(Tags.MainCamera).GetComponent<Camerav2>().target = player.transform;
+        GameObject.FindWithTag(Tags.MainCamera).GetComponent<Camerav2>().target = LocalPlayer.transform;
 
         Instantiate(HUDPrefab);
     }

@@ -4,7 +4,6 @@ using System.Collections;
 
 public class DamageAlert : MonoBehaviour
 {
-    GameObject damageAlert;
     Image damageImage;
     Color color;
     Color normalColor;
@@ -19,15 +18,20 @@ public class DamageAlert : MonoBehaviour
 
     void Start()
     {
-        gameobj = GameObject.FindWithTag(Tags.Player);
+        if (!NetworkManager.IsMultiPlayer)
+            gameobj = GameObject.FindWithTag(Tags.Player);
+        else if (NetworkManager.LocalPlayer == null)
+            return;
+        else
+            gameobj = NetworkManager.LocalPlayer;
+
         playerDamage = gameobj.GetComponent<PlayerDamage>();
         currentHealth = playerDamage.HealthPoints;
         previousHealth = currentHealth;
         damageCD = 0f;
 
         damaged = false;
-        damageAlert = GameObject.Find("DamageAlert");
-        damageImage = damageAlert.GetComponent<Image>();
+        damageImage = GetComponent<Image>();
         color = damageImage.color;
         damagedColor = color;
         color.a = 0f;
