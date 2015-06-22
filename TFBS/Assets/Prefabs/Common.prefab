@@ -94,7 +94,7 @@ GameObject:
   - 225: {fileID: 22509792}
   - 114: {fileID: 11444062}
   m_Layer: 5
-  m_Name: HUDCanvas
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9628,8 +9628,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Name
-      value: Menus
+      value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: PlayerPrefab
+      value: 
+      objectReference: {fileID: 168784, guid: e4cb0310801b58d4581cfdafe206b1ec, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 194470}
