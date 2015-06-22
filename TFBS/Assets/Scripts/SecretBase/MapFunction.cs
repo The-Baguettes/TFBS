@@ -5,12 +5,18 @@ using System.Collections;
 public class MapFunction : MonoBehaviour
 {
     GameObject shop;
+    GameObject street;
     void Start() //maybe replace with update
     {
         shop = GameObject.Find("Shop");
+        street = GameObject.Find("Street");
         if (!PlayerBonus.shopEnable)
         {
             shop.active = false;
+        }
+        if (PlayerMoney.Money < 250000)
+        {
+            street.active = false;
         }
     }
 
@@ -24,6 +30,10 @@ public class MapFunction : MonoBehaviour
         if (PlayerBonus.shopEnable)
         {
             shop.active = true;
+        }
+        if (PlayerMoney.Money >= 250000)
+        {
+            street.active = true;
         }
     }
 }
