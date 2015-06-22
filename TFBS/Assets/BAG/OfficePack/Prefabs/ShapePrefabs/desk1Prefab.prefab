@@ -50,7 +50,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 111: {fileID: 11100000}
+  - 65: {fileID: 6569304}
+  - 208: {fileID: 20873178}
   m_Layer: 0
   m_Name: desk1Prefab
   m_TagString: Untagged
@@ -212,23 +213,36 @@ MeshCollider:
 --- !u!1002 &6400003
 EditorExtensionImpl:
   serializedVersion: 6
---- !u!111 &11100000
-Animation:
+--- !u!65 &6569304
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.60000014, y: 1.29999995, z: 1.21078694}
+  m_Center: {x: -2.08616228e-07, y: .322981328, z: .816273332}
+--- !u!1002 &11100001
+EditorExtensionImpl:
+  serializedVersion: 6
+--- !u!208 &20873178
+NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!1002 &11100001
-EditorExtensionImpl:
-  serializedVersion: 6
+  m_Shape: 1
+  m_Extents: {x: 1.30000007, y: .650000036, z: .605000019}
+  m_MoveThreshold: .100000001
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: .323000014, z: .816000044}
+  m_TimeToStationary: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
