@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class EnemyAI : BaseComponent
 {
     const int fieldOfView = 160 / 2;
-
+    Animator anim;
     public GameObject WaypointsContainer;
 
     BaseGun firearm;
@@ -23,7 +23,7 @@ public class EnemyAI : BaseComponent
     protected void Awake()
     {
         leader = GameObject.FindWithTag(Tags.Player).transform;
-
+        anim = GetComponent<Animator>();
         firearm = GetComponentInChildren<BaseGun>();
 
         waypoints = new List<Transform>();
@@ -69,6 +69,7 @@ public class EnemyAI : BaseComponent
 
     void Update()
     {
+        
         if (lookingAround)
             UpdateLookAround();
         else if (isFollowingPlayer)
