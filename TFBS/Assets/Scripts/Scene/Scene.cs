@@ -9,4 +9,6 @@
     Stairway,
     SecretBase,
     Shop,
+    FinalScene,
+    Credit,
 }
