@@ -80,12 +80,12 @@ public class Alarm : BaseComponent
 
         spotlight.enabled = false;
 
-        if (audio == null)
-            return;
+        if (audio != null)
+        {
+            yield return new WaitForSeconds(audio.clip.length - audio.time);
 
-        yield return new WaitForSeconds(audio.clip.length - audio.time);
-
-        if (soundTimes == 0)
-            audio.Stop();
+            if (soundTimes == 0)
+                audio.Stop();
+        }
     }
 }
