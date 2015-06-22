@@ -1,37 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
 {
     const string typeName = "TFBS";
     const string gameName = "The Game";
 
-    public GameObject PlayerPrefab;
-
-    public static bool IsMultiPlayer;
-
-    List<Transform> availableSpawns;
+    public GameObject playerPrefab;
 
     void Awake()
     {
         MasterServer.ipAddress = "127.0.0.1";
-
-        availableSpawns = new List<Transform>(transform.childCount);
-        GetComponentsInChildren<Transform>(availableSpawns);
     }
 
     void Start()
     {
-        if (!IsMultiPlayer)
-        {
-            Destroy(this);
-            return;
-        }
-
-        Destroy(GameObject.FindWithTag(Tags.MainCamera));
-        Destroy(GameObject.FindWithTag(Tags.Player));
-
         NetworkConnectionError err = Network.InitializeServer(4, 25000, !Network.HavePublicAddress());
 
         if (err == NetworkConnectionError.NoError)
@@ -54,28 +36,17 @@ public class NetworkManager : MonoBehaviour
 
     void OnServerInitialized()
     {
-        StartCoroutine(SpawnPlayer());
+        SpawnPlayer(-2, 1, 0);
     }
 
     void OnConnectedToServer()
     {
-        StartCoroutine(SpawnPlayer());
+        SpawnPlayer(2, 1, 0);
     }
 
-    IEnumerator SpawnPlayer()
+    void SpawnPlayer(float x, float y, float z)
     {
-        while (availableSpawns.Count == 0)
-            yield return new WaitForSeconds(.1f);
-
-        Transform spawn;
-        lock (availableSpawns)
-        {
-            int i = Random.Range(0, availableSpawns.Count);
-            spawn = availableSpawns[i];
-            availableSpawns.RemoveAt(i);
-        }
-
-        GameObject player = Network.Instantiate(PlayerPrefab, spawn.position, spawn.rotation, 0) as GameObject;
+        GameObject player = Network.Instantiate(playerPrefab, new Vector3(x, y, z), Quaternion.identity, 0) as GameObject;
         player.AddComponent<PlayerInput>();
         player.AddComponent<PlayerNetworking>();
 
@@ -84,9 +55,5 @@ public class NetworkManager : MonoBehaviour
 
         cam.target = player.transform;
         cam.here = mainCam.GetComponent<Camera>();
-
-        yield return new WaitForSeconds(5);
-        lock (availableSpawns)
-            availableSpawns.Add(spawn);
     }
 }
