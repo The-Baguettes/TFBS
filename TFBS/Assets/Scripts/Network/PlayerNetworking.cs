@@ -46,6 +46,9 @@ public class PlayerNetworking : MonoBehaviour
             AvailableSpawns.RemoveAt(i);
         }
 
+        transform.position = spawn.position;
+        transform.rotation = spawn.rotation;
+
         yield return new WaitForSeconds(5);
 
         while (Vector3.Distance(transform.position, spawn.position) < 5)
