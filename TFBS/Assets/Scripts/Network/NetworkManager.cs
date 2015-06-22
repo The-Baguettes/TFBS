@@ -18,6 +18,12 @@ public class NetworkManager : MonoBehaviour
 
     void Awake()
     {
+        if (!IsMultiPlayer)
+        {
+            Destroy(this);
+            return;
+        }
+
         MasterServer.ipAddress = "127.0.0.1";
 
         PlayerNetworking.AvailableSpawns = new List<Transform>(transform.childCount);
@@ -35,12 +41,6 @@ public class NetworkManager : MonoBehaviour
 
     void Start()
     {
-        if (!IsMultiPlayer)
-        {
-            Destroy(this);
-            return;
-        }
-
         //loadIndicator.Toggle();
 
         Destroy(GameObject.FindWithTag(Tags.Player));
