@@ -5087,6 +5087,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 571f3cc6cf641c8498e3eae32bc2ee83, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &252649069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 252649070}
+  m_Layer: 0
+  m_Name: Civils
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &252649070
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 252649069}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 51.0671425, y: -16.2952652, z: 17.0501175}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1271227386}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
 --- !u!1 &254868202
 GameObject:
   m_ObjectHideFlags: 0
@@ -8042,7 +8070,7 @@ Transform:
   - {fileID: 2086242191}
   - {fileID: 618499468}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &390898959
 GameObject:
   m_ObjectHideFlags: 0
@@ -13392,7 +13420,7 @@ Transform:
   - {fileID: 1970163528}
   - {fileID: 1657867328}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1001 &657014902
 Prefab:
   m_ObjectHideFlags: 0
@@ -14513,7 +14541,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ef71c84e985513441a0112fe4030915e, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ef71c84e985513441a0112fe4030915e, type: 2}
       propertyPath: m_LocalScale.z
@@ -24919,12 +24947,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1271227385}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: 8.55000019, y: 1, z: 23.3500004}
+  m_LocalPosition: {x: -42.5171432, y: 17.2952652, z: 6.29988289}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1868612909}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 252649070}
+  m_RootOrder: 0
 --- !u!195 &1271227387
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -31504,13 +31532,15 @@ MonoBehaviour:
   ObjectsToDestroy:
   - {fileID: 2104830616}
   - {fileID: 1420792596}
-  - {fileID: 2065353051}
   - {fileID: 1987609227}
+  - {fileID: 723217428}
+  - {fileID: 252649069}
   ScriptsToDisable:
   - {fileID: 254868203}
   - {fileID: 1792230866}
   - {fileID: 291783639}
   - {fileID: 550189818}
+  - {fileID: 1952753300}
 --- !u!1 &1600879959
 GameObject:
   m_ObjectHideFlags: 0
@@ -35560,7 +35590,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: f63df71161fd98c4191fdbc25700aa62, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f63df71161fd98c4191fdbc25700aa62, type: 2}
