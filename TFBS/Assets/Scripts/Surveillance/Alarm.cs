@@ -52,10 +52,10 @@ public class Alarm : BaseComponent
 
     IEnumerator soundAlarm()
     {
-        do {
-            audio.Play();
-            spotlight.enabled = true;
+        audio.Play();
+        spotlight.enabled = true;
 
+        do {
             for (int i = 0; i < animateTimes; i++)
             {
                 while (spotlight.intensity < maxIntensity)
@@ -71,10 +71,13 @@ public class Alarm : BaseComponent
                 }
             }
 
-            spotlight.enabled = false;
-            audio.Stop();
-
             // Decrement at the end to allow reusing coroutine
-        } while (soundTimes-- > 0);
+        } while (--soundTimes > 0);
+
+        spotlight.enabled = false;
+        yield return new WaitForSeconds(audio.clip.length - audio.time);
+
+        if (soundTimes == 0)
+            audio.Stop();
     }
 }
