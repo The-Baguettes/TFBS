@@ -32,6 +32,14 @@ public abstract class BaseDamageable : BaseComponent
         OnHealthPointsChanged(amount);
     }
 
+    public virtual void SetHealthPoints(int value)
+    {
+        int delta = HealthPoints - value;
+        HealthPoints = value;
+
+        OnHealthPointsChanged(delta);
+    }
+
     public void Kill()
     {
         HealthPoints = -1;

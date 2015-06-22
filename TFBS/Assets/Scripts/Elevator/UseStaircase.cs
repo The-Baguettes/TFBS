@@ -9,7 +9,7 @@ public class UseStaircase : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag(Tags.Player);
-        if (SceneManager.PreviousScene() != Scene.MainMenu)
+        if (!SaveLoad.IsLoadingSave)
         {
             if (SceneManager.LoadedScene == Scene.Stairway && SceneManager.PreviousScene() == Scene.Game) //game to staiway
             {

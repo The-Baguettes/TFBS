@@ -1,120 +1,74 @@
 ﻿using UnityEngine;
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections;
 
 public class SaveLoad : MonoBehaviour
 {
-    static string folder;
+    public static bool IsLoadingSave { get; private set; }
 
-    static Vector3 position;
-    static Quaternion rotation;
-    static int currenthealth;
-    static float time;
-    static bool loadingSave;
+    static bool isLoadingSave;
 
-    void Start()
+    public static bool HasSave()
     {
-        folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        folder = Path.Combine(folder, "TFBS");
-        if (!Directory.Exists(folder))
-            Directory.CreateDirectory(folder);
-    }
-
-    string SaveInformation()
-    {
-        string level = Application.loadedLevel.ToString();
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        string position = player.transform.position.x + "|" + player.transform.position.y + "|" + player.transform.position.z + "|";
-        string rotation = player.transform.rotation.x + "|" + player.transform.rotation.y + "|" + player.transform.rotation.z + "|" + player.transform.rotation.w + "|";
-        string health = GameObject.FindObjectOfType<PlayerDamage>().HealthPoints.ToString();
-        string time = HUD.TotalTime.ToString();
-        string result = level + "\r\n" + position + "\r\n" + rotation + "\r\n" + health + "\r\n" + time;
-        return result;
+        return PlayerPrefs.HasKey("Level");
     }
 
     public void Save()
     {
-        StreamWriter sav = new StreamWriter(File.Create("save.txt"));
-        sav.Write(SaveInformation());
-        sav.Close();
-    }
+        PlayerPrefs.SetInt("Level", Application.loadedLevel);
 
-    static float ToFloat(string a)
-    {
-        float result;
-        float.TryParse(a, out result);
-        return result;
+        GameObject player = GameObject.FindWithTag(Tags.Player);
+        PlayerDamage playerDamage = player.GetComponent<PlayerDamage>();
+
+        PlayerPrefs.SetFloat("Time", HUD.TotalTime);
+
+        PlayerPrefs.SetFloat("PosX", player.transform.position.x);
+        PlayerPrefs.SetFloat("PosY", player.transform.position.y);
+        PlayerPrefs.SetFloat("PosZ", player.transform.position.z);
+
+        PlayerPrefs.SetFloat("RotX", player.transform.rotation.x);
+        PlayerPrefs.SetFloat("RotY", player.transform.rotation.y);
+        PlayerPrefs.SetFloat("RotZ", player.transform.rotation.z);
+        PlayerPrefs.SetFloat("RotW", player.transform.rotation.w);
+
+        PlayerPrefs.SetInt("HP", playerDamage.HealthPoints);
+        PlayerPrefs.SetInt("Money", PlayerMoney.Money);
     }
 
     public void Load()
     {
-        StreamReader loa = new StreamReader("save.txt");
-        string lvl = loa.ReadLine();
-        string pos = loa.ReadLine();
-        string rot = loa.ReadLine();
-        string hea = loa.ReadLine();
-        string tim = loa.ReadLine();
-        position = ToVector3(pos);
-        rotation = ToQuaternion(rot);
-        currenthealth = (int)ToFloat(hea);
-        time = ToFloat(tim);
-
-        loadingSave = true;
-        DontDestroyOnLoad(gameObject);
-        SceneManager.LoadScene((Scene)ToFloat(lvl));
-    }
-
-    Vector3 ToVector3(string a) //transform a string to a Vector3
-    {
-        List<string> pos2 = LoadSeparator(a);
-        return new Vector3(ToFloat(pos2[0]), ToFloat(pos2[1]), ToFloat(pos2[2]));
-    }
-
-    Quaternion ToQuaternion(string a) //transform a string to a Vector3
-    {
-        List<string> pos2 = LoadSeparator(a);
-        return new Quaternion(ToFloat(pos2[0]), ToFloat(pos2[1]), ToFloat(pos2[2]), ToFloat(pos2[3]));
+        isLoadingSave = true;
+        SceneManager.LoadScene((Scene)PlayerPrefs.GetInt("Level"));
     }
 
     void OnLevelWasLoaded()
     {
-        if (!loadingSave)
+        if (!isLoadingSave || Application.loadedLevel != PlayerPrefs.GetInt("Level"))
             return;
 
-        loadingSave = false;
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = position;
-        player.transform.rotation = rotation;
-        HUD.TotalTime = time;
+        isLoadingSave = false;
 
-        Destroy(gameObject);
+        GameObject player = GameObject.FindWithTag(Tags.Player);
+        PlayerDamage playerDamage = player.GetComponent<PlayerDamage>();
+
+        HUD.TotalTime = PlayerPrefs.GetFloat("Time");
+
+        float x = PlayerPrefs.GetFloat("PosX");
+        float y = PlayerPrefs.GetFloat("PosY");
+        float z = PlayerPrefs.GetFloat("PosZ");
+        player.transform.position = new Vector3(x, y, z);
+
+        float w;
+        x = PlayerPrefs.GetFloat("RotX");
+        y = PlayerPrefs.GetFloat("RotY");
+        z = PlayerPrefs.GetFloat("RotZ");
+        w = PlayerPrefs.GetFloat("RotW");
+        player.transform.rotation = new Quaternion(x, y, z, w);
+
+        playerDamage.SetHealthPoints(PlayerPrefs.GetInt("HP"));
+        PlayerMoney.Money = PlayerPrefs.GetInt("Money");
     }
 
-    static List<string> LoadSeparator(string a)
+    void OnDestroy()
     {
-        string memoire = "";
-        char delimiter;
-        List<string> list = new List<string>();
-        for (int i = 0; i < a.Length; i++)
-        {
-            delimiter = a[i];
-            if (delimiter == '|')
-            {
-                list.Add(memoire);
-                memoire = "";
-            }
-            else
-            {
-                memoire = memoire + a[i];
-            }
-        }
-        return list;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
+        IsLoadingSave = isLoadingSave;
     }
 }

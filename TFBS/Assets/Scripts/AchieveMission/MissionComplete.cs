@@ -63,10 +63,11 @@ public class MissionComplete : MonoBehaviour
         switch (Missions.objective)
         {
             //mission 1 : vol de document
-            case 3: PlayerMoney.addMoney(70000);
+            case 3:
+                PlayerMoney.Money += 70000;
                 if (hud.enemyAlive())
                 {
-                    PlayerMoney.addMoney(70000);
+                    PlayerMoney.Money += 70000;
                     PlayerBonus.noPrice = true;
                 }
                 else
@@ -86,15 +87,16 @@ public class MissionComplete : MonoBehaviour
                 PlayerBonus.shopEnable = true;
                 break;
             //mission 2: sauvetage d'otage
-            case 2: if (PlayerBonus.deadHostage && hud.noEnemy()) //if hostage dead: 30K compensation
+            case 2:
+                if (PlayerBonus.deadHostage && hud.noEnemy()) //if hostage dead: 30K compensation
                 {
-                    PlayerMoney.addMoney(30000);
+                    PlayerMoney.Money += 30000;
                 }
                 else
                 {
                     if (PlayerBonus.doubleHostage) //if double save: full reward
                     {
-                        PlayerMoney.addMoney(270000);
+                        PlayerMoney.Money += 270000;
                         PlayerBonus.noPrice = true;
                         PlayerBonus.shopEnable = true;
                         PlayerBonus.recruit = true;
@@ -102,10 +104,10 @@ public class MissionComplete : MonoBehaviour
                     }
                     else
                     {
-                        PlayerMoney.addMoney(90000);//simple hostage
+                        PlayerMoney.Money += 90000;//simple hostage
                         if (PlayerBonus.hardHostage) //extra for hard hostage
                         {
-                            PlayerMoney.addMoney(90000);
+                            PlayerMoney.Money += 90000;
                             PlayerBonus.noPrice = true; //no loss for killing or buying items
                         }
                         else
@@ -114,17 +116,21 @@ public class MissionComplete : MonoBehaviour
                 }
                 break;
                 //mission 3: destruction de labo
-            case 1: PlayerMoney.addMoney(100000);
+            case 1:
+                PlayerMoney.Money += 100000;
                 PlayerMoney.useMoney(hud.EnemyDead * 2500);
                 break;
                 //mission 4
-            case 4: PlayerMoney.addMoney(60000);
+            case 4:
+                PlayerMoney.Money += 60000;
                 break;
                 //mission 5
-            case 5: PlayerMoney.addMoney(90000);
+            case 5:
+                PlayerMoney.Money += 90000;
                 break;
                 //mission 6
-            case 6: PlayerMoney.addMoney(150000);
+            case 6:
+                PlayerMoney.Money += 150000;
                 break;
             default:
                 break;
