@@ -11,7 +11,7 @@ public class NetworkManager : MonoBehaviour
     public GameObject[] ObjectsToDestroy;
     public MonoBehaviour[] ScriptsToDisable;
 
-    public static bool IsMultiPlayer = true;
+    public static bool IsMultiPlayer;
     public static GameObject LocalPlayer;
 
     //LoadingIndicator loadIndicator;
