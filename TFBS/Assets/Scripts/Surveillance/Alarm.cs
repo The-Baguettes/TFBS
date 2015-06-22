@@ -19,7 +19,9 @@ public class Alarm : BaseComponent
     protected void Awake()
     {
         audio = GetComponent<AudioSource>();
-        audio.loop = true;
+
+        if (audio != null)
+            audio.loop = true;
 
         spotlight = GetComponent<Light>();
         spotlight.enabled = false;
@@ -52,7 +54,9 @@ public class Alarm : BaseComponent
 
     IEnumerator soundAlarm()
     {
-        audio.Play();
+        if (audio != null)
+            audio.Play();
+    
         spotlight.enabled = true;
 
         do {
@@ -75,6 +79,10 @@ public class Alarm : BaseComponent
         } while (--soundTimes > 0);
 
         spotlight.enabled = false;
+
+        if (audio == null)
+            return;
+
         yield return new WaitForSeconds(audio.clip.length - audio.time);
 
         if (soundTimes == 0)
