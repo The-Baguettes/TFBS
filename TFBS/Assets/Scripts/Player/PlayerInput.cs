@@ -38,7 +38,7 @@ public class PlayerInput : MonoBehaviour
 
         for (int i = 0; i < weaponInputs.Length; i++)
         {
-            if (Input.GetKeyDown(weaponInputs[i]))
+            if (Input.GetKeyDown(weaponInputs[i]) && PlayerBonus.weaponsAvailable[i])
             {
                 weaponManager.SwitchToWeapon(i);
                 if (networkView != null)
@@ -47,15 +47,6 @@ public class PlayerInput : MonoBehaviour
                 return;
             }
         }
-
-        /*
-        //I need this for some test -CAI Richard-
-        if (Input.GetButtonDown(Inputs.Reload))
-        {
-            PlayerDamage playerDamage = GameObject.FindWithTag(Tags.Player).GetComponent<PlayerDamage>();
-            playerDamage.AddHealthPoints(10);
-        }
-        */
 
         if (Input.GetButton(Inputs.Fire))
         {

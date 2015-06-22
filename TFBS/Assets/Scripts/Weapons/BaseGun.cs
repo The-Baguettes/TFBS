@@ -69,8 +69,8 @@ public abstract class BaseGun : BaseWeapon
         // TODO: Aim at target
         Projectile proj = Instantiate(Projectile, ProjectileSpawn.position, ProjectileSpawn.rotation) as Projectile;
         Rigidbody body = proj.GetComponent<Rigidbody>();
-        if(target!=null)
-        proj.transform.LookAt(target);
+        if (target != null)
+            proj.transform.LookAt(target);
         body.velocity = ProjectileSpawn.TransformDirection(0, 0, FireStrength);
         proj.OnFire(ProjectileSpawn.position);
     }
@@ -100,6 +100,8 @@ public abstract class BaseGun : BaseWeapon
     public void ToggleSilencer()
     {
         if (Silencer == null)
+            return;
+        if (!PlayerBonus.suppressor)
             return;
 
         Silencer.SetActive(!Silencer.activeSelf);
