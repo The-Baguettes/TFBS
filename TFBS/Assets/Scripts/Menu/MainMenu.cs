@@ -1,4 +1,6 @@
-﻿public class MainMenu : Navigation
+﻿using UnityEngine;
+
+public class MainMenu : Navigation
 {
     protected override void Start()
     {
@@ -10,12 +12,13 @@
 
     public void Play()
     {
+        NetworkManager.IsMultiPlayer = false;
         SceneManager.LoadScene(MetaScene.FirstLevel);
     }
 
     public void MultiPlayer()
     {
-        // TODO
-        throw new System.NotImplementedException();
+        NetworkManager.IsMultiPlayer = true;
+        SceneManager.LoadScene(Scene.Floor1);
     }
 }

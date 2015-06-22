@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     new NetworkView networkView;
     WeaponManager weaponManager;
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         networkView = GetComponent<NetworkView>();

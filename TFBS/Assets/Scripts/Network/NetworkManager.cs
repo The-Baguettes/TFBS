@@ -1,19 +1,52 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
 {
     const string typeName = "TFBS";
     const string gameName = "The Game";
 
-    public GameObject playerPrefab;
+    public GameObject HUDPrefab;
+    public GameObject PlayerPrefab;
+    public GameObject[] ObjectsToDestroy;
+    public MonoBehaviour[] ScriptsToDisable;
+
+    public static bool IsMultiPlayer = true;
+
+    //LoadingIndicator loadIndicator;
 
     void Awake()
     {
         MasterServer.ipAddress = "127.0.0.1";
+
+        PlayerNetworking.AvailableSpawns = new List<Transform>(transform.childCount);
+        GetComponentsInChildren<Transform>(PlayerNetworking.AvailableSpawns);
+        PlayerNetworking.AvailableSpawns.RemoveAt(0);
+
+        for (int i = 0; i < ObjectsToDestroy.Length; i++)
+            Destroy(ObjectsToDestroy[i]);
+
+        for (int i = 0; i < ScriptsToDisable.Length; i++)
+            Destroy(ScriptsToDisable[i]);
+
+        //loadIndicator = GameObject.FindObjectOfType<LoadingIndicator>();
     }
 
     void Start()
     {
+        if (!IsMultiPlayer)
+        {
+            Destroy(this);
+            return;
+        }
+
+        //loadIndicator.Toggle();
+
+        Destroy(GameObject.FindWithTag(Tags.Player));
+
+        GameObject common = GameObject.Find("Common");
+        Destroy(common.transform.FindChild("HUD"));
+
         NetworkConnectionError err = Network.InitializeServer(4, 25000, !Network.HavePublicAddress());
 
         if (err == NetworkConnectionError.NoError)
@@ -36,24 +69,21 @@ public class NetworkManager : MonoBehaviour
 
     void OnServerInitialized()
     {
-        SpawnPlayer(-2, 1, 0);
+        SpawnPlayer();
     }
 
     void OnConnectedToServer()
     {
-        SpawnPlayer(2, 1, 0);
+        SpawnPlayer();
     }
 
-    void SpawnPlayer(float x, float y, float z)
+    void SpawnPlayer()
     {
-        GameObject player = Network.Instantiate(playerPrefab, new Vector3(x, y, z), Quaternion.identity, 0) as GameObject;
+        GameObject player = Network.Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity, 0) as GameObject;
         player.AddComponent<PlayerInput>();
-        player.AddComponent<PlayerNetworking>();
 
-        GameObject mainCam = GameObject.FindWithTag(Tags.MainCamera);
-        Camerav2 cam = mainCam.AddComponent<Camerav2>();
+        GameObject.FindWithTag(Tags.MainCamera).GetComponent<Camerav2>().target = player.transform;
 
-        cam.target = player.transform;
-        cam.here = mainCam.GetComponent<Camera>();
+        Instantiate(HUDPrefab);
     }
 }
