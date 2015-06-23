@@ -39,7 +39,7 @@ public class SurveillanceCam : BaseComponent
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == Tags.Player)
+        if (PlayerSpotted != null && col.tag == Tags.Player)
             PlayerSpotted(col.transform.position);
     }
 
