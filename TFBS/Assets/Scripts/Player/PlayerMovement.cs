@@ -2,8 +2,8 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    const float sprintSpeed = 15f;
-    const float walkSpeed = 10f;
+    const float sprintSpeed = 10f;
+    const float walkSpeed = 7f;
     const float sneakSpeed = 5f;
     const float rotationSpeed = 200f;
 
