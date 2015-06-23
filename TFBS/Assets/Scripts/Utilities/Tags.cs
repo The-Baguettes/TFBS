@@ -9,6 +9,7 @@
     public const string Enemy = "Enemy";
     public const string Player = "Player";
     public const string Hostage = "Hostage";
+    public const string Civil = "Civil";
 
     // Misc
     public const string NoHit = "NoHit";

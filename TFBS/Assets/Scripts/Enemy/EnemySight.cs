@@ -8,7 +8,7 @@ class EnemySight : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (PlayerInSight != null && col.tag == Tags.Player && IsVisible(col))
+        if (PlayerInSight != null && col.tag == Tags.Player && (IsVisible(col) || Vector3.Distance(transform.position, col.transform.position) < 5))
             PlayerInSight(col.transform.position);
     }
 

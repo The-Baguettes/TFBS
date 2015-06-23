@@ -44,17 +44,17 @@ public class HingedDoor : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == Tags.Player)
+        if (col.tag == Tags.Player)
             playerIsNear = true;
-        else if (col.gameObject.tag == Tags.Enemy)
+        else if (col.tag == Tags.Enemy || col.tag == Tags.Civil || col.tag == Tags.Hostage)
             botIsNear = true;
     }
 
     void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.tag == Tags.Player)
+        if (col.tag == Tags.Player)
             playerIsNear = false;
-        else if (col.gameObject.tag == Tags.Enemy)
+        else if (col.tag == Tags.Enemy || col.tag == Tags.Civil || col.tag == Tags.Hostage)
         {
             botIsNear = false;
             open = false;
