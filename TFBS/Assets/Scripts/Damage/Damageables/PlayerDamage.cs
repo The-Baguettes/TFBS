@@ -4,6 +4,8 @@
 
     protected override void Setup()
     {
+        DestroyOnDeath = false;
+
         MaxHealthPoints = 200;
         HealthPoints = savedHP;
     }
