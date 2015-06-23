@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 public class EnemyAI : BaseComponent
 {
-    const int fieldOfView = 160 / 2;
     Animator anim;
     public GameObject WaypointsContainer;
 
+    EnemySight sight;
+    
     BaseGun firearm;
     Transform leader;
+    Collider leaderCol;
     NavMeshAgent navAgent;
 
     bool lookingAround;
@@ -23,10 +25,13 @@ public class EnemyAI : BaseComponent
     protected void Awake()
     {
         leader = GameObject.FindWithTag(Tags.Player).transform;
+        leaderCol = leader.GetComponent<Collider>();
+
         anim = GetComponent<Animator>();
         firearm = GetComponentInChildren<BaseGun>();
+        sight = GetComponentInChildren<EnemySight>();
 
-        waypoints = new List<Transform>();
+        waypoints = new List<Transform>(WaypointsContainer.transform.childCount);
         WaypointsContainer.GetComponentsInChildren<Transform>(waypoints);
         waypoints.Remove(WaypointsContainer.transform);
 
@@ -48,6 +53,7 @@ public class EnemyAI : BaseComponent
         enemyDamage.HealthPointsChanged += enemyDamage_HealthPointsChanged;
 
         SurveillanceCam.PlayerSpotted += StartFollowLeader;
+        sight.PlayerInSight += sight_PlayerInSight;
     }
 
     protected override void UnHookEvents()
@@ -56,6 +62,7 @@ public class EnemyAI : BaseComponent
             enemyDamage.HealthPointsChanged -= enemyDamage_HealthPointsChanged;
 
         SurveillanceCam.PlayerSpotted -= StartFollowLeader;
+        sight.PlayerInSight -= sight_PlayerInSight;
     }
     #endregion
 
@@ -65,11 +72,19 @@ public class EnemyAI : BaseComponent
         if (!isFollowingPlayer)
             StartLookAround();
     }
+
+    void sight_PlayerInSight(Vector3 spottedAt)
+    {
+        if (lookingAround)
+            StopLookAround();
+
+        StartFollowLeader(leader.transform.position);
+        Shoot();
+    }
     #endregion
 
     void Update()
     {
-        
         if (lookingAround)
             UpdateLookAround();
         else if (isFollowingPlayer)
@@ -90,7 +105,7 @@ public class EnemyAI : BaseComponent
 
     void UpdateFollowLeader()
     {
-        if (!isLeaderInSight() && isAtDestination())
+        if (sight.IsVisible(leaderCol))
         {
             isFollowingPlayer = false;
             StartLookAround();
@@ -139,33 +154,10 @@ public class EnemyAI : BaseComponent
     }
     #endregion
 
-    void OnTriggerStay(Collider col)
-    {
-        if (col.transform == leader && isLeaderInFieldOfView() && isLeaderInSight())
-        {
-            if (lookingAround)
-                StopLookAround();
-
-            StartFollowLeader(leader.transform.position);
-            Shoot();
-        }
-    }
-
     bool isAtDestination()
     {
         return !navAgent.pathPending && navAgent.remainingDistance <= 1
                && (!navAgent.hasPath || navAgent.velocity.sqrMagnitude == 0f);
-    }
-
-    bool isLeaderInFieldOfView()
-    {
-        return Vector3.Angle(leader.position - transform.position, transform.forward) < fieldOfView;
-    }
-
-    bool isLeaderInSight()
-    {
-        RaycastHit hit;
-        return Physics.Raycast(transform.position, transform.forward, out hit) && hit.collider.tag == Tags.Player;
     }
 
     void Shoot()

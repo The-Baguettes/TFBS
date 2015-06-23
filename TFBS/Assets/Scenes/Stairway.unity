@@ -4949,8 +4949,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 513844869}
-  - 33: {fileID: 513844871}
   - 135: {fileID: 513844870}
+  - 114: {fileID: 513844871}
   m_Layer: 0
   m_Name: Vision
   m_TagString: NoHit
@@ -4982,13 +4982,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &513844871
-MeshFilter:
+--- !u!114 &513844871
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 513844868}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8baa77191b66383418b5f358825b5733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &521567357
 GameObject:
   m_ObjectHideFlags: 0
@@ -17331,8 +17335,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1585471943}
-  - 33: {fileID: 1585471945}
   - 135: {fileID: 1585471944}
+  - 114: {fileID: 1585471945}
   m_Layer: 0
   m_Name: Vision
   m_TagString: NoHit
@@ -17364,13 +17368,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1585471945
-MeshFilter:
+--- !u!114 &1585471945
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1585471942}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8baa77191b66383418b5f358825b5733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1591192716
 Prefab:
   m_ObjectHideFlags: 0
@@ -21691,8 +21699,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1986582095}
-  - 33: {fileID: 1986582097}
   - 135: {fileID: 1986582096}
+  - 114: {fileID: 1986582097}
   m_Layer: 0
   m_Name: Vision
   m_TagString: NoHit
@@ -21724,13 +21732,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1986582097
-MeshFilter:
+--- !u!114 &1986582097
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986582094}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8baa77191b66383418b5f358825b5733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1986819412
 GameObject:
   m_ObjectHideFlags: 0
