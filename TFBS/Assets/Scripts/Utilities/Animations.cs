@@ -17,4 +17,9 @@
     public const string WalkForwardAiming = "Walk Forwards Aiming";
     public const string WalkBackwards = "Walk Backwards";
     public const string WalkBackwardsAiming = "Walk Backwards Aiming";
+
+    public const string StrafeLeft = "Strafe Left";
+    public const string StrafeLeftAiming = "Strafe Left Aiming";
+    public const string StrafeRight = "Strafe Right";
+    public const string StrafeRightAiming = "Strafe Right Aiming";
 }
