@@ -54,7 +54,7 @@ public class Alarm : BaseComponent
 
     IEnumerator soundAlarm()
     {
-        if (audio != null)
+        if (audio != null && audio.clip != null)
             audio.Play();
     
         spotlight.enabled = true;
@@ -80,7 +80,7 @@ public class Alarm : BaseComponent
 
         spotlight.enabled = false;
 
-        if (audio != null)
+        if (audio != null && audio.clip != null)
         {
             yield return new WaitForSeconds(audio.clip.length - audio.time);
 
