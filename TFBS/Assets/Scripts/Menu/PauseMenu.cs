@@ -2,8 +2,15 @@
 
 public class PauseMenu : Navigation
 {
-    public GameObject mainCamera;
-    public GameObject mapCamera;
+    public Camera mainCamera;
+    public Camera mapCamera;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        mapCamera.enabled = false;
+    }
 
     void Update()
     {
@@ -19,7 +26,7 @@ public class PauseMenu : Navigation
 
     public void Map()
     {
-        mapCamera.SetActive(!mapCamera.activeSelf);
-        mainCamera.SetActive(!mainCamera.activeSelf);
+        mapCamera.enabled = !mapCamera.enabled;
+        mainCamera.enabled = !mainCamera.enabled;
     }
 }
