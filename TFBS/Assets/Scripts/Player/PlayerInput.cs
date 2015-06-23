@@ -27,14 +27,12 @@ public class PlayerInput : MonoBehaviour
         float move_h = Input.GetAxis(Inputs.Horizontal);
         float move_v = Input.GetAxis(Inputs.Vertical);
 
-        playerMovement.Rotate(move_h);
-
         if (Input.GetButton(Inputs.Sneak))
-            playerMovement.Sneak(move_v);
+            playerMovement.Sneak(move_h, move_v);
         else if (Input.GetButton(Inputs.Sprint))
-            playerMovement.Sprint(move_v);
+            playerMovement.Sprint(move_h, move_v);
         else
-            playerMovement.Walk(move_v);
+            playerMovement.Walk(move_h, move_v);
 
         for (int i = 0; i < weaponInputs.Length; i++)
         {

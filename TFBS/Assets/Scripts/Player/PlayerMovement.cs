@@ -18,9 +18,9 @@ public class PlayerMovement : MonoBehaviour
         weaponManager = GetComponentInChildren<WeaponManager>();
     }
 
-    void Move(float amount, float speed, string anim_f, string anim_b)
+    void Move(float amount_h, float amount_v, float speed, string anim_f, string anim_b)
     {
-        if (amount == 0)
+        if (amount_v == 0 && amount_h == 0)
         {
             if (weaponManager.ActiveGun == null)
             {
@@ -38,39 +38,34 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        animator.Play(amount > 0 ? anim_f : anim_b);
+        animator.Play(amount_v > 0 ? anim_f : anim_b);
         if (networkView != null)
-            networkView.RPC("PlayAnimation", RPCMode.Others, amount > 0 ? anim_f : anim_b);
+            networkView.RPC("PlayAnimation", RPCMode.Others, amount_v > 0 ? anim_f : anim_b);
 
-        transform.Translate(0, 0, amount * speed * Time.deltaTime);
+        transform.Translate(amount_h * speed * Time.deltaTime, 0, amount_v * speed * Time.deltaTime);
     }
 
-    public void Sneak(float amount)
+    public void Sneak(float amount_h, float amount_v)
     {
         if (weaponManager.ActiveGun == null)
-            Move(amount, sneakSpeed, Animations.SneakForward, Animations.SneakBackwards);
+            Move(amount_h, amount_v, sneakSpeed, Animations.SneakForward, Animations.SneakBackwards);
         else
-            Move(amount, sneakSpeed, Animations.SneakForwardAiming, Animations.SneakBackwardsAiming);
+            Move(amount_h, amount_v, sneakSpeed, Animations.SneakForwardAiming, Animations.SneakBackwardsAiming);
     }
 
-    public void Sprint(float amount)
+    public void Sprint(float amount_h, float amount_v)
     {
         if (weaponManager.ActiveGun == null)
-            Move(amount, sprintSpeed, Animations.SprintForward, Animations.SprintBackwards);
+            Move(amount_h, amount_v, sprintSpeed, Animations.SprintForward, Animations.SprintBackwards);
         else
-            Move(amount, sprintSpeed, Animations.SprintForwardAiming, Animations.SprintBackwardsAiming);
+            Move(amount_h, amount_v, sprintSpeed, Animations.SprintForwardAiming, Animations.SprintBackwardsAiming);
     }
 
-    public void Walk(float amount)
+    public void Walk(float amount_h, float amount_v)
     {
         if (weaponManager.ActiveGun == null)
-            Move(amount, walkSpeed, Animations.WalkForward, Animations.WalkBackwards);
+            Move(amount_h, amount_v, walkSpeed, Animations.WalkForward, Animations.WalkBackwards);
         else
-            Move(amount, walkSpeed, Animations.WalkForwardAiming, Animations.WalkBackwardsAiming);
-    }
-
-    public void Rotate(float amount)
-    {
-        transform.Rotate(0, amount * rotationSpeed * Time.deltaTime, 0);
+            Move(amount_h, amount_v, walkSpeed, Animations.WalkForwardAiming, Animations.WalkBackwardsAiming);
     }
 }
