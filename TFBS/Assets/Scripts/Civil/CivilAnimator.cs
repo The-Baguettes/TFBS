@@ -13,7 +13,7 @@ public class CivilAnimator : MonoBehaviour
 
     void Update()
     {
-        if (navAgent.speed == 0)
+        if (navAgent.velocity.sqrMagnitude == 0)
             animator.Play("idle");
         else
             animator.Play("walk");
