@@ -9,7 +9,7 @@ public class AssassinationMissions : MonoBehaviour
     {
         if (!PlayerBonus.enableAssassinationMission)
         {
-            office.active = false;
+            office.SetActive(false);
         }
     }
 }

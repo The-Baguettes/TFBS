@@ -40,7 +40,9 @@ public class PlayerInput : MonoBehaviour
             {
                 weaponManager.SwitchToWeapon(i);
                 if (networkView != null)
+#pragma warning disable 0618
                     networkView.RPC("SwitchToWeapon", RPCMode.Others, i);
+#pragma warning restore 0618
 
                 return;
             }
@@ -50,7 +52,9 @@ public class PlayerInput : MonoBehaviour
         {
             weaponManager.UseActive();
             if (networkView != null)
+#pragma warning disable 0618
                 networkView.RPC("UseActive", RPCMode.Others);
+#pragma warning restore 0618
         }
         else if (weaponManager.ActiveGun != null)
         {
@@ -58,13 +62,17 @@ public class PlayerInput : MonoBehaviour
             {
                 weaponManager.ActiveGun.ToggleSilencer();
                 if (networkView != null)
+#pragma warning disable 0618
                     networkView.RPC("ToggleSilencer", RPCMode.Others);
+#pragma warning restore 0618
             }
             else if (Input.GetButtonDown(Inputs.Reload))
             {
                 weaponManager.ActiveGun.Reload();
                 if (networkView != null)
+#pragma warning disable 0618
                     networkView.RPC("Reload", RPCMode.Others);
+#pragma warning restore 0618
             }
         }
     }

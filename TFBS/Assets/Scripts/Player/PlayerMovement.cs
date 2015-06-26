@@ -25,13 +25,17 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.Play(Animations.Idle);
                 if (networkView != null)
+#pragma warning disable 0618
                     networkView.RPC("PlayAnimation", RPCMode.Others, Animations.Idle);
+#pragma warning restore 0618
             }
             else
             {
                 animator.Play(Animations.IdleAiming);
                 if (networkView != null)
+#pragma warning disable 0618
                     networkView.RPC("PlayAnimation", RPCMode.Others, Animations.IdleAiming);
+#pragma warning restore 0618
             }
 
             return;
@@ -45,7 +49,9 @@ public class PlayerMovement : MonoBehaviour
 
         animator.Play(anim);
         if (networkView != null)
+#pragma warning disable 0618
             networkView.RPC("PlayAnimation", RPCMode.Others, anim);
+#pragma warning restore 0618
 
         transform.Translate(amount_h * speed * Time.deltaTime, 0, amount_v * speed * Time.deltaTime);
     }

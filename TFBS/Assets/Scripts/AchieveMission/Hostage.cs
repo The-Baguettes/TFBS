@@ -5,7 +5,6 @@ public class Hostage : MonoBehaviour
 {
     Transform leader;
     NavMeshAgent navmesh;
-    int rotspeed = 60;
 
     void Awake()
     {

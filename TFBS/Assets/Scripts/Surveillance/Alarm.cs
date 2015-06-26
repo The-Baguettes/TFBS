@@ -8,7 +8,7 @@ public class Alarm : BaseComponent
 
     const int animateTimes = (int)(totalDuration / lightCycleDuration);
 
-    AudioSource audio;
+    new AudioSource audio;
     Light spotlight;
 
     float loopDelay;

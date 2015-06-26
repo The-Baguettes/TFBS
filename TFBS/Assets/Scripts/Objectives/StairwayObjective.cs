@@ -3,7 +3,7 @@
 public class StairwayObjective : MonoBehaviour
 {
     HUD hud;
-    public GameObject gameObject;
+    new public GameObject gameObject;
 
     void Start()
     {

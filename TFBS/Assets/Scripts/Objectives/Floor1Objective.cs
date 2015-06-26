@@ -3,7 +3,7 @@
 public class Floor1Objective : MonoBehaviour
 {
     HUD hud;
-    public GameObject gameObject;
+    new public GameObject gameObject;
 
     void Start()
     {

@@ -17,7 +17,6 @@ public class Camerav2 : MonoBehaviour
 
      float xSpeed = 20.0f;
      float ySpeed = 20.0f;
-     float targetSpeed = 5.0f;
 
 
     public int yMinLimit = -80;

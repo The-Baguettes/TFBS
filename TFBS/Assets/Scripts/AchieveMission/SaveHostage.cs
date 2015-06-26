@@ -15,7 +15,7 @@ public class SaveHostage : MonoBehaviour
         if (other.tag == Tags.Hostage)
         {
             saved = true;
-            other.gameObject.active = false;
+            other.gameObject.SetActive(false);
             objectiveLight.GetComponent<Light>().enabled = false;
             Missions.missionCompleted = true;
         }

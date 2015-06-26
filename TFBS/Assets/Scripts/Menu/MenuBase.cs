@@ -19,8 +19,9 @@ public abstract class MenuBase : BaseComponent
         OnHideLast();
     }
 
-    protected void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         active.Clear();
     }
 

@@ -5,7 +5,7 @@ public class PickupHostage : MonoBehaviour
 {
     public bool hard;
     public Hostage hostage;
-    public GameObject light;
+    new public GameObject light;
     public GameObject light2;
 
     HUD hud;

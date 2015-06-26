@@ -58,31 +58,41 @@ public class PlayerNetworking : MonoBehaviour
             AvailableSpawns.Add(spawn);
     }
 
+#pragma warning disable 0618
     [RPC]
+#pragma warning restore 0618
     void PlayAnimation(string anim)
     {
         animator.Play(anim);
     }
 
+#pragma warning disable 0618
     [RPC]
+#pragma warning restore 0618
     void SwitchToWeapon(int n)
     {
         weaponManager.SwitchToWeapon(n);
     }
 
+#pragma warning disable 0618
     [RPC]
+#pragma warning restore 0618
     void UseActive()
     {
         weaponManager.UseActive();
     }
 
+#pragma warning disable 0618
     [RPC]
+#pragma warning restore 0618
     void ToggleSilencer()
     {
         weaponManager.ActiveGun.ToggleSilencer();
     }
 
+#pragma warning disable 0618
     [RPC]
+#pragma warning restore 0618
     void Reload()
     {
         weaponManager.ActiveGun.Reload();

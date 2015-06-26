@@ -12,11 +12,11 @@ public class MapFunction : MonoBehaviour
         street = GameObject.Find("Street");
         if (!PlayerBonus.shopEnable)
         {
-            shop.active = false;
+            shop.SetActive(false);
         }
         if (PlayerMoney.Money < 250000)
         {
-            street.active = false;
+            street.SetActive(false);
         }
     }
 
@@ -29,11 +29,11 @@ public class MapFunction : MonoBehaviour
     {
         if (PlayerBonus.shopEnable)
         {
-            shop.active = true;
+            shop.SetActive(true);
         }
         if (PlayerMoney.Money >= 250000)
         {
-            street.active = true;
+            street.SetActive(true);
         }
     }
 }

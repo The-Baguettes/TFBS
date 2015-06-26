@@ -3,7 +3,6 @@ using System.Collections;
 
 public class AutoLight : MonoBehaviour
 {
-    bool contact;
     public GameObject Candle1;
     public GameObject Candle2;
     public float speed;
@@ -24,15 +23,6 @@ public class AutoLight : MonoBehaviour
         if (other.tag == Tags.Player)
         {
             StartCoroutine(LightSystem());
-            contact = true;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag == Tags.Player)
-        {
-            contact = false;
         }
     }
 }

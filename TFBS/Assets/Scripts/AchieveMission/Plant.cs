@@ -6,15 +6,15 @@ public class Plant : MonoBehaviour
     bool contact;
     GameObject bomb;
     public string gameObjectName;
-    public GameObject light;
-    GameObject audio;
+    new public GameObject light;
+    new GameObject audio;
 
     void Start()
     {
         audio = GameObject.Find("AudioBomb");
         contact = false;
         bomb = GameObject.Find(gameObjectName);
-        bomb.active = false;
+        bomb.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -35,12 +35,12 @@ public class Plant : MonoBehaviour
 
     void OnGUI()
     {
-        if (contact && !bomb.active)
+        if (contact && !bomb.activeSelf)
         {
             GUI.Label(new Rect((Screen.width / 2) - 150, Screen.height / 2 - 50, 250, 200), "Press 'F' to plant a C4");
             if (Input.GetKeyDown(KeyCode.F))
             {
-                bomb.active = true;
+                bomb.SetActive(true);
                 light.GetComponent<Light>().enabled = false;
                 audio.GetComponent<AudioSource>().Play();
             }

@@ -9,7 +9,7 @@ public class MissionOneComplete : MonoBehaviour
     public GameObject bombD;
     public GameObject bombE;
 
-    public GameObject light;
+    new public GameObject light;
     public Transform explosion;
     public Transform destructible;
 
@@ -28,7 +28,7 @@ public class MissionOneComplete : MonoBehaviour
 
     void OnGUI()
     {
-        if (bombA.active && bombB.active && bombC.active && bombD.active && bombE.active)
+        if (bombA.activeSelf && bombB.activeSelf && bombC.activeSelf && bombD.activeSelf && bombE.activeSelf)
         {
             light.GetComponent<Light>().enabled = true;
             if (contact)
@@ -83,11 +83,11 @@ public class MissionOneComplete : MonoBehaviour
                     Instantiate(explosion, bombD.transform.position, bombD.transform.rotation);
                     Instantiate(explosion, bombE.transform.position, bombE.transform.rotation);
 
-                    bombA.active = false;
-                    bombB.active = false;
-                    bombC.active = false;
-                    bombD.active = false;
-                    bombE.active = false;
+                    bombA.SetActive(false);
+                    bombB.SetActive(false);
+                    bombC.SetActive(false);
+                    bombD.SetActive(false);
+                    bombE.SetActive(false);
 
                     light.GetComponent<Light>().enabled = false;
                     bombSound.GetComponent<AudioSource>().Play();

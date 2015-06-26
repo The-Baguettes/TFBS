@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class EnemyAI : BaseComponent
 {
-    Animator anim;
     public GameObject WaypointsContainer;
 
     EnemySight sight;
@@ -27,7 +26,6 @@ public class EnemyAI : BaseComponent
         leader = GameObject.FindWithTag(Tags.Player).transform;
         leaderCol = leader.GetComponent<Collider>();
 
-        anim = GetComponent<Animator>();
         firearm = GetComponentInChildren<BaseGun>();
         sight = GetComponentInChildren<EnemySight>();
 

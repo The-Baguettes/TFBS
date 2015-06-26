@@ -27,7 +27,7 @@ public abstract class BaseComponent : MonoBehaviour
         }
     }
 
-    protected void OnDestroy()
+    protected virtual void OnDestroy()
     {
         UnHookEvents();
     }

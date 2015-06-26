@@ -6,7 +6,7 @@ public class FireAlarm : MonoBehaviour
     bool contact;
     bool pressed;
     int time;
-    GameObject audio;
+    new GameObject audio;
 
     void Start()
     {
