@@ -109,6 +109,9 @@ public class HUD : BaseComponent
 
     public void playerWeaponManager_ActiveUsed()
     {
+        if (playerWeaponManager.ActiveWeapon == null)
+            return;
+
         if (playerWeaponManager.ActiveGun == null)
             WeaponUseText.text = "Uses: " + playerWeaponManager.ActiveWeapon.UsesLeft;
         else
