@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
     const float sprintSpeed = 10f;
     const float walkSpeed = 7f;
     const float sneakSpeed = 5f;
-    const float rotationSpeed = 200f;
 
     Animator animator;
     new NetworkView networkView;
