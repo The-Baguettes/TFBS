@@ -4,7 +4,7 @@
 
     protected override void Setup()
     {
-        DestroyOnDeath = false;
+        DestroyOnDeath = NetworkManager.IsMultiPlayer;
 
         MaxHealthPoints = 200;
         HealthPoints = savedHP;

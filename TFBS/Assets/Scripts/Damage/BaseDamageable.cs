@@ -10,7 +10,7 @@ public abstract class BaseDamageable : BaseComponent
     public event HealthPointChangeEventHandler HealthPointsChanged;
 
     protected int MaxHealthPoints;
-    protected bool DestroyOnDeath;
+    protected bool DestroyOnDeath = true;
 
     protected abstract void Setup();
 

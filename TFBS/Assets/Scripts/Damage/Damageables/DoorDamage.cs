@@ -6,6 +6,8 @@ public class DoorDamage : BaseDamageable
 
     protected override void Setup()
     {
+        DestroyOnDeath = false;
+
         MaxHealthPoints = 20;
     }
 
