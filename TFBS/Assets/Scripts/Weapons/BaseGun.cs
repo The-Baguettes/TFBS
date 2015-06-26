@@ -25,6 +25,8 @@ public abstract class BaseGun : BaseWeapon
 
     HUD hud;
 
+    static readonly Vector3 lookAtOffset = new Vector3(0, 1.5f, 0);
+
     protected void Awake()
     {
         hud = FindObjectOfType<HUD>();
@@ -66,7 +68,8 @@ public abstract class BaseGun : BaseWeapon
 
     protected override void OnUse(Transform target)
     {
-        // TODO: Aim at target
+        ProjectileSpawn.LookAt(target.position + lookAtOffset); 
+        
         Projectile proj = Instantiate(Projectile, ProjectileSpawn.position, ProjectileSpawn.rotation) as Projectile;
         Rigidbody body = proj.GetComponent<Rigidbody>();
         if (target != null)

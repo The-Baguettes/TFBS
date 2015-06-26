@@ -164,8 +164,6 @@ public class EnemyAI : BaseComponent
             firearm.Reload();
 
         transform.LookAt(leader);
-        firearm.transform.LookAt(leader);
-        firearm.transform.Rotate(0, -90, 0);
         firearm.Use(leader);
     }
 }
